@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { AppContext } from "../../context/AppContext";
 import { AuthContext } from "../../context/AuthContext";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css"; // Add custom CSS for the cursor
 import logoBlack from "../../assets/picture/logo.png";
 import logoWhite from "../../assets/picture/logo_white.png";
@@ -15,8 +15,10 @@ const Header = () => {
   const [isCursorVisible, setIsCursorVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
+  const [isLoggingOut, setIsLoggingOut] = useState(false); // State for lazy logout
   const headerRef = useRef(null);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   // Handle scroll event
   const handleScroll = () => {
@@ -69,6 +71,17 @@ const Header = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  // Lazy logout with delay
+  const handleLogout = () => {
+    setIsLoggingOut(true); // Start lazy logout
+    setTimeout(() => {
+      logout(); // Perform logout after delay
+      setIsDropdownOpen(false); // Close dropdown
+      setIsLoggingOut(false); // Reset lazy logout state
+      navigate("/login");
+    }, 1500); // 1.5-second delay
+  };
 
   return (
     <>
@@ -180,17 +193,27 @@ const Header = () => {
 
                       {/* Logout Button */}
                       <button
-                        onClick={() => {
-                          logout();
-                          setIsDropdownOpen(false);
-                        }}
+                        onClick={handleLogout}
                         className="w-full px-4 py-3 flex items-center space-x-3 text-sm text-neutral-700 hover:bg-neutral-300 transition-all duration-200"
+                        disabled={isLoggingOut} // Disable button while logging out
                       >
-                        <Icon
-                          icon="mdi:logout"
-                          className="w-5 h-5 text-gray-700"
-                        />
-                        <span>Logout</span>
+                        {isLoggingOut ? (
+                          <div className="flex items-center space-x-3">
+                            <span>Logging out</span>
+                            <Icon
+                              icon="eos-icons:three-dots-loading"
+                              className="w-5 h-5 "
+                            />
+                          </div>
+                        ) : (
+                          <>
+                            <Icon
+                              icon="mdi:logout"
+                              className="w-5 h-5 text-neural-700"
+                            />
+                            <span>Logout</span>
+                          </>
+                        )}
                       </button>
                     </>
                   ) : (
