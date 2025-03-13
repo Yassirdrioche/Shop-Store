@@ -64,22 +64,21 @@ const BlogDetails = () => {
           <div className="prose prose-lg text-gray-700">{post.content}</div>
 
           {/* Buttons */}
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex  lg:flex-row flex-col gap-4">
             {/* Back Button */}
-            <button
-              onClick={() => window.history.back()}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500"
-            >
-              <Icon icon="mdi:arrow-left" className="mr-2 text-xl" />
-              Back to Home
-            </button>
+            <Link to="/">
+              <button className="flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white justify-center text-2xl  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500 gap-2 w-full md:w-1/2">
+                <Icon icon="mdi:arrow-left" className=" text-xl" />
+                Back to Home
+              </button>
+            </Link>
 
             {/* Shop Button */}
             <Link
               to="/shop" // Replace with your actual shop route
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500 gap-2"
+              className="flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white justify-center text-2xl  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500 gap-2 w-full md:w-1/2"
             >
-              <Icon icon="weui:shop-outlined" className=" h-8 w-8" />
+              <Icon icon="weui:shop-outlined" className="text-xl" />
               <span className=" leading-7">Shop Now</span>
             </Link>
           </div>
