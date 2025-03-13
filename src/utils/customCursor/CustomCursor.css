@@ -17,3 +17,8 @@
   transition: transform 100ms ease-out;
   z-index: 999999;
 }
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
