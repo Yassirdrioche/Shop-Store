@@ -32,7 +32,7 @@ body {
   top: 0;
   left: 0;
   height: 6px;
-  background-color: #000000;
+  background-color: #18c5d1;
   animation: progress linear;
   z-index: 999999;
   animation-timeline: scroll();
