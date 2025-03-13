@@ -95,8 +95,8 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white">Contact Us</h4>
             <ul className="text-gray-400 space-y-2">
               <li>Email: support@yourStore.com</li>
-              <li>Phone: +212 641420859</li>
-              <li>Address: 123 Store St, City, Country</li>
+              <li>Phone: +212 6-41420859</li>
+              <li>Address: 123 Store St, Agadir, Morocco</li>
             </ul>
           </div>
 
@@ -112,7 +112,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full px-4 py-2 rounded-lg bg-neutral-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
               />
               <button
                 type="submit"
