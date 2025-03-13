@@ -15,7 +15,7 @@ const ProductGrid = () => {
       {/* Zigzag Layout */}
       <div className=" bg-neutral-100  space-y-6 md:space-y-0 ">
         {/* Row 1: Image on the Left */}
-        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0 gap-6 sticky top-0 z-50 ">
+        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0  sticky top-0 z-50 ">
           {/* Background Image Div */}
           <div
             className="relative h-[400px] overflow-hidden "
@@ -54,7 +54,7 @@ const ProductGrid = () => {
         </div>
 
         {/* Row 2: Image on the Right */}
-        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0 gap-6 sticky top-0 z-50 ">
+        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0  sticky top-0 z-50 ">
           <div
             className="text-center flex-col  flex  items-center order-2 md:order-1 h-full w-full z-50 bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
             data-aos="fade-right"
@@ -93,7 +93,7 @@ const ProductGrid = () => {
         </div>
 
         {/* Row 3: Image on the Left */}
-        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0 gap-6 sticky top-0 z-50">
+        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0  sticky top-0 z-50">
           {/* Background Image Div */}
           <div
             className="relative h-[400px] overflow-hidden "
@@ -132,7 +132,7 @@ const ProductGrid = () => {
         </div>
 
         {/* Row 4: Image on the Right */}
-        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0 gap-6 sticky top-0 z-50">
+        <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0  sticky top-0 z-50">
           <div
             className="text-center flex-col  flex  items-center order-2 md:order-1 h-full w-full
              bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
