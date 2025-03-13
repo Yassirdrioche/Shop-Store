@@ -45,11 +45,11 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className=" bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto ">
+    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-         BLOG POSTS
+          BLOG POSTS
         </h2>
 
         {/* Embla Carousel Container */}
@@ -64,7 +64,7 @@ const Blog = () => {
                     : "scale-90 blur-sm"
                 }`}
               >
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full ">
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full">
                   {/* Blog Image */}
                   <img
                     src={post.image}
@@ -98,7 +98,6 @@ const Blog = () => {
                     </div>
 
                     {/* Read More Button */}
-
                     <Link
                       to={`/blog/${post.id}`}
                       className="inline-block px-6 py-2 text-white font-semibold rounded-lg transition duration-200 bg-black"

@@ -8,13 +8,36 @@
 }
 
 .embla__slide {
-  flex: 0 0 40%;
+  flex: 0 0 100%; /* Default to full width on small screens */
   min-width: 0;
   transition: transform 0.7s ease-in-out;
 }
-.bounce {
-  animation: bounce 4s  infinite;
+
+/* Medium screens (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 50%; /* Show 2 slides at a time */
+  }
 }
+
+/* Large screens (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 33.33%; /* Show 3 slides at a time */
+  }
+}
+
+/* Extra-large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .embla__slide {
+    flex: 0 0 50%; /* Show 4 slides at a time */
+  }
+}
+
+.bounce {
+  animation: bounce 4s infinite;
+}
+
 @keyframes bounce {
   0%,
   100% {
