@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
 import { toast } from "react-toastify"; // For notifications
 import { Icon } from "@iconify/react"; // For icons
-
+import "./Login.css";
 const Login = () => {
   const { login } = useContext(AuthContext); // Access login function from AuthContext
   const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-neutral-900 border-b border-neutral-200">
+    <div className="flex min-h-screen  bg-neutral-900 border-b border-neutral-200 login">
       {/* Left Side: Image */}
       <div
         className="hidden lg:block w-1/2 bg-cover bg-center"

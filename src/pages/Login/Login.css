@@ -1,0 +1,8 @@
+@media (min-width: 300px ) and (max-width:1024px)  {
+  .login {
+    background-image: url("../../assets/picture/login.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
