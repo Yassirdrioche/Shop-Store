@@ -36,8 +36,8 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 w-64 h-full bg-gradient-to-b bg-transparent backdrop-blur-lg shadow-2xl
-        mix-blend-screen transition-transform duration-300 z-[999] ${
+        className={`fixed top-0 left-0 w-64 h-full bg-black bg-opacity-60 backdrop-blur-2xl shadow-2xl
+         transition-transform duration-300 z-[999] ${
           isToggled ? "translate-x-0" : "-translate-x-full"
         }`}
       >
