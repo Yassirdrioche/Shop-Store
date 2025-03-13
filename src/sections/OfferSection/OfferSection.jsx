@@ -90,9 +90,7 @@ const OfferSection = () => {
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <Icon icon="mdi:calendar-clock" className="text-xl" />
-                    <span className="text-sm">
-                      Offer valid until December 31, 2023
-                    </span>
+                    <span className="text-sm">Offer valid April 30, 2025</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Icon icon="mdi:gift" className="text-xl" />
