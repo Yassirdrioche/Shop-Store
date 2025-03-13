@@ -16,19 +16,19 @@ const BlogDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-20 px-4 sm:px-6 lg:px-8 ">
+    <div className="min-h-screen bg-gray-50 py-28 px-4 sm:px-6 lg:px-8 ">
       {/* Page Title */}
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h1 className="text-5xl font-bold text-gray-900">Blog Details</h1>
+      <div className="max-w-7xl mx-auto text-center ">
+        <h1 className="text-5xl font-bold text-neutral-900">Blog Details</h1>
         <p className="mt-4 text-lg text-gray-600">
           Dive deeper into our latest blog posts.
         </p>
       </div>
 
       {/* Flex Container */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-16">
         {/* Left Side: Sticky Image */}
-        <div className="lg:w-1/2 sticky top-20 h-[calc(100vh-10rem)] flex items-center">
+        <div className="lg:w-1/2 sticky top-20   h-[calc(100vh-10rem)] flex items-center">
           <img
             src={post.image}
             alt={post.title}
@@ -37,7 +37,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Right Side: Scrollable Details */}
-        <div className="lg:w-1/2 bg-white rounded-lg shadow-2xl p-8">
+        <div className="lg:w-1/2 bg-white rounded-lg shadow-2xl z-50 p-8">
           {/* Title */}
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {post.title}
