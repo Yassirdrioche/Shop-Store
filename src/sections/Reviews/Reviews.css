@@ -1,0 +1,39 @@
+.modern-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  /* grid-auto-rows: minmax(200px, auto); Auto rows with a minimum height */
+  gap: 10px; /*Gap between grid items*/
+}
+
+.modern-grid-item {
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Make the second and fifth items span two rows */
+.modern-grid-item:nth-child(2),
+.modern-grid-item:nth-child(5) {
+  grid-row: span 2;
+}
+
+/* Review Card Hover Animation */
+.review-card {
+  transition: all 0.5s ease;
+}
+
+.review-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modern-grid-container {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  .modern-grid-item:nth-child(2),
+  .modern-grid-item:nth-child(5) {
+    grid-row: span 1; /* Reset row span on smaller screens */
+  }
+}

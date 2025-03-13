@@ -1,0 +1,25 @@
+.background-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.tilt-background {
+  width: 80%;
+  height: 80%;
+  background: url('https://via.placeholder.com/800x600') center/cover no-repeat;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.tilt-background h1 {
+  transform: translateZ(50px); /* Add depth to the text */
+}

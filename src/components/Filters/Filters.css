@@ -1,0 +1,16 @@
+.filters {
+  margin: 10px;
+}
+.custom-slider .ant-slider-track {
+  background-color: #050505 !important; /* Change the slider track color */
+}
+
+.custom-slider .ant-slider-handle {
+  border-color: #000000 !important; /* Change handle border color */
+  background-color: #0a0a0a !important; /* Change handle fill color */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Add glow effect */
+}
+
+.custom-slider .ant-slider-rail {
+  background-color: #d1d5db !important; /* Change the background rail color */
+}

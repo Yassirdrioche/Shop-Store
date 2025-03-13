@@ -1,0 +1,63 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: "Exo", sans-serif;
+  overflow-x: hidden;
+}
+.custom-shadow {
+  filter: drop-shadow(3px 3px 20px rgba(177, 179, 177, 0.342));
+}
+.bounce {
+  animation: bounce 2.5s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.line_prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  background-color: #000000;
+  animation: progress linear;
+  z-index: 999999;
+  animation-timeline: scroll();
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.custom-cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(5, 5, 5, 0.945);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  pointer-events: none; /* Ensure the cursor doesn't interfere with clicks */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Center the cursor on the mouse position */
+  z-index: 9999; /* Ensure the cursor is above other elements */
+  transition: transform 0.1s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+}

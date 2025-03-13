@@ -1,0 +1,19 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference; /* Creates a cool blending effect */
+  transition: transform 100ms ease-out;
+  z-index: 999999;
+}
