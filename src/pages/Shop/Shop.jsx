@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Suspense, lazy } from "react";
 import { AppContext } from "../../context/AppContext"; // Import AppContext for wishlist functionality
-
-import ProductCard from "../../components/ProductCard/ProductCard";
-import Filters from "../../components/Filters/Filters";
 import { Icon } from "@iconify/react";
+import { ThreeCircles, Grid } from "react-loader-spinner";
+// Lazy load components
+const ProductCard = lazy(() =>
+  import("../../components/ProductCard/ProductCard")
+);
+const Filters = lazy(() => import("../../components/Filters/Filters"));
 
 const Shop = () => {
   const {
@@ -64,7 +67,23 @@ const Shop = () => {
             <Icon icon="clarity:filter-line" />
             Filters
           </h2>
-          <Filters />
+          <Suspense
+            fallback={
+              <div className="flex justify-center">
+                <Grid
+                  visible={true}
+                  height="50"
+                  width="50"
+                  color="#171717"
+                  ariaLabel="three-circles-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>
+            }
+          >
+            <Filters />
+          </Suspense>
         </div>
       </div>
 
@@ -96,7 +115,7 @@ const Shop = () => {
             </button>
             <button
               onClick={() => handleColumnChange(2)}
-              className={`p-2 hidden rounded-lg ${
+              className={`p-2 hidden lg:block rounded-lg ${
                 gridColumns === 2
                   ? "bg-black text-white"
                   : "bg-gray-200 text-neutral-700"
@@ -123,7 +142,7 @@ const Shop = () => {
           </p>
         ) : (
           <div
-            className={`grid gap-6 ${
+            className={`grid gap-6 relative ${
               gridColumns === 1
                 ? "md:grid-cols-1 "
                 : gridColumns === 2
@@ -131,20 +150,37 @@ const Shop = () => {
                 : " md:grid-cols-2 lg:grid-cols-3  grid-cols-1 "
             }`}
           >
-            {filteredProducts.map((product) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  addToWishlist={addToWishlist}
-                  className={
-                    gridColumns === 2
-                      ? "w-full max-w-[300px] mx-auto"
-                      : "w-full" // Adjust card width for grid-cols-2
-                  }
-                />
-              );
-            })}
+            <Suspense
+              fallback={
+                <div className="flex relative md:absolute left-1/2 top-1/2 -translate-y-1/2 md:mt-10 -translate-x-1/2 justify-center items-center">
+                  <Grid
+                    visible={true}
+                    height="50"
+                    width="50"
+                    color="#171717"
+                    ariaLabel="grid-loading"
+                    radius="12.5"
+                    wrapperStyle={{}}
+                    wrapperClass="grid-wrapper"
+                  />
+                </div>
+              }
+            >
+              {filteredProducts.map((product) => {
+                return (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    addToWishlist={addToWishlist}
+                    className={
+                      gridColumns === 2
+                        ? "w-full max-w-[300px] mx-auto"
+                        : "w-full" // Adjust card width for grid-cols-2
+                    }
+                  />
+                );
+              })}
+            </Suspense>
           </div>
         )}
       </div>

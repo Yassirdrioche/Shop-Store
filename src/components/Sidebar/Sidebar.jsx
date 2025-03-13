@@ -2,15 +2,16 @@ import React, { useContext, useState, useRef } from "react";
 import { AppContext } from "../../context/AppContext";
 import { AuthContext } from "../../context/AuthContext";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoWhite from "../../assets/picture/logo_white.png";
 
 const Sidebar = () => {
   const { isToggled, toggleSidebar } = useContext(AppContext);
   const { user, logout } = useContext(AuthContext);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false); // State for profile dropdown
+  const [isLoggingOut, setIsLoggingOut] = useState(false); // State for lazy logout
   const dropdownRef = useRef(null);
-
+  const navigate = useNavigate();
   // Handle click outside dropdown to close it
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -23,6 +24,17 @@ const Sidebar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Lazy logout with delay
+  const handleLogout = () => {
+    setIsLoggingOut(true); // Start lazy logout
+    setTimeout(() => {
+      logout(); // Perform logout after delay
+      setIsProfileDropdownOpen(false); // Close dropdown
+      setIsLoggingOut(false); // Reset lazy logout state
+      navigate("/login"); // Redirect to login page
+    }, 1500); // 1.5-second delay
+  };
 
   return (
     <>
@@ -38,8 +50,8 @@ const Sidebar = () => {
       <div
         className={`fixed top-0 left-0 w-64 h-full bg-black bg-opacity-60 backdrop-blur-2xl shadow-2xl
          transition-transform duration-300 z-[999] ${
-          isToggled ? "translate-x-0" : "-translate-x-full"
-        }`}
+           isToggled ? "translate-x-0" : "-translate-x-full"
+         }`}
       >
         {/* Close Button */}
         <button
@@ -118,14 +130,27 @@ const Sidebar = () => {
 
                     {/* Logout Button */}
                     <button
-                      onClick={() => {
-                        logout();
-                        setIsProfileDropdownOpen(false);
-                      }}
+                      onClick={handleLogout}
                       className="w-full px-4 py-3 flex items-center space-x-3 text-sm text-white hover:bg-neutral-700 transition-colors duration-200"
+                      disabled={isLoggingOut} // Disable button while logging out
                     >
-                      <Icon icon="mdi:logout" className="w-5 h-5 text-white" />
-                      <span>Logout</span>
+                      {isLoggingOut ? (
+                        <div className="flex items-center space-x-3">
+                          <span>Logging out</span>
+                          <Icon
+                            icon="eos-icons:three-dots-loading"
+                            className="w-5 h-5 "
+                          />
+                        </div>
+                      ) : (
+                        <>
+                          <Icon
+                            icon="mdi:logout"
+                            className="w-5 h-5 text-white"
+                          />
+                          <span>Logout</span>
+                        </>
+                      )}
                     </button>
                   </>
                 ) : (

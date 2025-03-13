@@ -3,14 +3,77 @@ import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
 import { toast } from "react-toastify"; // For notifications
 import { Icon } from "@iconify/react"; // For icons
 import "./Login.css";
+
 const Login = () => {
   const { login } = useContext(AuthContext); // Access login function from AuthContext
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [errors, setErrors] = useState({}); // State for validation errors
+  const [passwordStrength, setPasswordStrength] = useState(0); // State for password strength
+
+  // Validate username
+  const validateUsername = (username) => {
+    if (!username.trim()) {
+      return "Username is required.";
+    }
+    if (username.length < 3) {
+      return "Username must be at least 3 characters long.";
+    }
+    if (/\d/.test(username)) {
+      return "Username should not contain numbers.";
+    }
+    return null;
+  };
+
+  // Validate password and calculate strength
+  const validatePassword = (password) => {
+    let strength = 0;
+
+    if (password.length >= 8) strength += 1; // Minimum length
+    if (/[A-Z]/.test(password)) strength += 1; // Uppercase letter
+    if (/[a-z]/.test(password)) strength += 1; // Lowercase letter
+    if (/[0-9]/.test(password)) strength += 1; // Number
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1; // Special character
+
+    setPasswordStrength((strength / 5) * 100); // Convert to percentage
+
+    if (!password.trim()) {
+      return "Password is required.";
+    }
+    if (password.length < 8) {
+      return "Password must be at least 8 characters long.";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password must contain at least one uppercase letter.";
+    }
+    if (!/[a-z]/.test(password)) {
+      return "Password must contain at least one lowercase letter.";
+    }
+    if (!/[0-9]/.test(password)) {
+      return "Password must contain at least one number.";
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      return "Password must contain at least one special character.";
+    }
+    return null;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate inputs
+    const usernameError = validateUsername(username);
+    const passwordError = validatePassword(password);
+
+    if (usernameError || passwordError) {
+      setErrors({
+        username: usernameError,
+        password: passwordError,
+      });
+      return;
+    }
+
     setIsLoading(true); // Start loading
 
     // Simulate login (replace with actual authentication logic)
@@ -30,7 +93,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen  bg-neutral-900 border-b border-neutral-200 login">
+    <div className="flex min-h-screen bg-neutral-900 border-b border-neutral-200 login">
       {/* Left Side: Image */}
       <div
         className="hidden lg:block w-1/2 bg-cover bg-center"
@@ -76,10 +139,21 @@ const Login = () => {
                   id="username"
                   placeholder="Enter your username"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-neutral-100 transition-all text-white"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setErrors({
+                      ...errors,
+                      username: validateUsername(e.target.value),
+                    });
+                  }}
+                  className={`w-full px-4 py-2 bg-neutral-800 border ${
+                    errors.username ? "border-red-500" : "border-neutral-700"
+                  } rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-neutral-100 transition-all text-white`}
                   required
                 />
+                {errors.username && (
+                  <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+                )}
               </div>
             </div>
 
@@ -97,10 +171,36 @@ const Login = () => {
                   id="password"
                   placeholder="Enter your password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-blue-500 transition-all text-white"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setErrors({
+                      ...errors,
+                      password: validatePassword(e.target.value),
+                    });
+                  }}
+                  className={`w-full px-4 py-2 bg-neutral-800 border ${
+                    errors.password ? "border-red-500" : "border-neutral-700"
+                  } rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-blue-500 transition-all text-white`}
                   required
                 />
+                {/* Password Strength Progress Bar */}
+                <div className="w-full bg-neutral-700 rounded-full h-1 mt-2">
+                  <div
+                    className="h-1 rounded-full transition-all duration-300"
+                    style={{
+                      width: `${passwordStrength}%`,
+                      backgroundColor:
+                        passwordStrength < 40
+                          ? "red"
+                          : passwordStrength < 70
+                          ? "orange"
+                          : "green",
+                    }}
+                  ></div>
+                </div>
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                )}
               </div>
             </div>
 
@@ -108,15 +208,15 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading} // Disable button while loading
-              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-900 text-white py-3 px-4 rounded-lg font-semibold  transition-all duration-300 focus:ring-2 focus:ring-neutral-100 focus:ring-offset-2"
+              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-900 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 focus:ring-2 focus:ring-neutral-100 focus:ring-offset"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center">
+                  <span className="ml-2">Logging in</span>
                   <Icon
-                    icon="eos-icons:loading"
-                    className="w-6 h-6 animate-spin"
+                    icon="eos-icons:three-dots-loading"
+                    className="w-5 h-5"
                   />
-                  <span className="ml-2">Logging in...</span>
                 </div>
               ) : (
                 "Login"
