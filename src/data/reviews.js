@@ -9,14 +9,14 @@ const reviews = [
   {
     id: 2,
     text: "I love the quality and design of the products.",
-    author: "Jane Smith",
+    author: "Lucy Rue",
     rating: 4.5,
     avatar: "https://randomuser.me/api/portraits/women/2.jpg",
   },
   {
     id: 3,
     text: "Fast shipping and great packaging. Highly recommended!",
-    author: "Alice Johnson",
+    author: " Emma Sloane",
     rating: 5,
     avatar: "https://randomuser.me/api/portraits/women/3.jpg",
   },

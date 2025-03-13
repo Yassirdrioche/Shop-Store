@@ -46,7 +46,7 @@ const ProductDetails = () => {
           {/* Product Image */}
 
           {/* Product Information */}
-          <div className="space-y-6 sticky top-0 bg-white md:bg-transparent">
+          <div className="space-y-6 sticky top-0 p-4 bg-white md:bg-transparent">
             <h1 className="text-4xl text-left font-bold text-neutral-900">
               {product.name}
             </h1>
@@ -73,7 +73,7 @@ const ProductDetails = () => {
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-center space-x-2">
                     <Icon
-                      icon="mdi:check-circle"
+                      icon="lets-icons:check-fill"
                       className="w-5 h-5 text-neutral-900"
                     />
                     <span>{feature}</span>
@@ -87,11 +87,11 @@ const ProductDetails = () => {
               <h2 className="text-2xl font-bold text-neutral-900 mb-4">
                 Specifications
               </h2>
-              <div className="grid grid-cols-2 gap-4 text-neutral-900">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-neutral-900">
                 {Object.entries(product.specifications).map(([key, value]) => (
-                  <div key={key} className="flex items-center space-x-2">
+                  <div key={key} className="flex items-center gap-2">
                     <Icon
-                      icon="mdi:information"
+                      icon="tabler:info-circle-filled"
                       className="w-5 h-5 text-neutral-900"
                     />
                     <div>

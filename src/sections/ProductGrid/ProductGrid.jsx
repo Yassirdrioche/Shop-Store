@@ -32,22 +32,22 @@ const ProductGrid = () => {
               <p className="text-white text-lg">20% OFF</p>
             </div>
           </div>
+
           <div
-            className="text-center flex-col flex items-center h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center "
+            className="text-center flex-col flex gap-6 items-center h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
             data-aos="fade-left"
             data-aos-duration="500"
           >
-            <h2 className="text-3xl font-bold mb-4">Premium Headphones</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-3xl font-bold">Premium Headphones</h2>
+            <p className="text-neutral-600">
               Experience crystal-clear sound with our latest headphones. Perfect
               for music lovers and professionals alike.
             </p>
             <Link
               to="/shop" // Add your route here
-              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12"
+              className="bg-black text-lg text-white px-6 py-2 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12"
             >
-              <Icon icon="mdi:cart-outline" className="text-2xl" />{" "}
-              {/* Outline icon */}
+              <Icon icon="mdi:cart-outline" /> {/* Outline icon */}
               Shop Now
             </Link>
           </div>
@@ -60,8 +60,8 @@ const ProductGrid = () => {
             data-aos="fade-right"
             data-aos-duration="500"
           >
-            <h2 className="text-3xl font-bold mb-4">Stylish Clothes</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-3xl font-bold ">Stylish Clothes</h2>
+            <p className="text-neutral-600 ">
               Upgrade your wardrobe with our trendy and comfortable clothing
               collection. Designed for every occasion.
             </p>
@@ -111,12 +111,12 @@ const ProductGrid = () => {
             </div>
           </div>
           <div
-            className="text-center flex-col  flex  items-center  h-full w-full z-50 bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
+            className="text-center flex-col flex gap-6 items-center h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
             data-aos="fade-left"
             data-aos-duration="500"
           >
-            <h2 className="text-3xl font-bold mb-4">Comfortable Shoes</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-3xl font-bold ">Comfortable Shoes</h2>
+            <p className="text-neutral-600 ">
               Step into style and comfort with our premium shoe collection.
               Perfect for everyday wear or special occasions.
             </p>
@@ -134,13 +134,13 @@ const ProductGrid = () => {
         {/* Row 4: Image on the Right */}
         <div className="grid grid-cols-1 md:grid-cols-2  items-center md:gap-0  md:sticky top-0 z-50">
           <div
-            className="text-center flex-col  flex  items-center order-2 md:order-1 h-full w-full
+            className="text-center flex-col gap-6 flex  items-center order-2 md:order-1 h-full w-full
              bg-neutral-100 bg-opacity-85 backdrop-blur justify-center"
             data-aos="fade-right"
             data-aos-duration="500"
           >
-            <h2 className="text-3xl font-bold mb-4">Classic Watch</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-3xl font-bold ">Classic Watch</h2>
+            <p className="text-neutral-600 ">
               Timeless elegance meets modern functionality. Our watches are
               designed to complement your style.
             </p>

@@ -1,0 +1,34 @@
+/* Add this to your global CSS file */
+@keyframes divider {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-divider {
+  animation: divider 3s linear infinite;
+}
+
+.custom-shape-divider-top-1741878716 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1741878716 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 101px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1741878716 .shape-fill {
+  fill: #585757;
+}

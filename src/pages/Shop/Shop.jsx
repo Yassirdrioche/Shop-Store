@@ -39,7 +39,7 @@ const Shop = () => {
     <div className="p-6 flex gap-8 mt-20 relative">
       {/* Sidebar Toggle Button for Mobile */}
       <button
-        className="lg:hidden fixed top-24 left-4 bg-white p-2 rounded-lg shadow-md z-50"
+        className="md:hidden fixed top-24 left-4 bg-white p-2 rounded-lg shadow-md z-50"
         onClick={() => setIsFilterSideBarOpen(!isFilterSideBarOpen)}
       >
         <Icon
@@ -54,9 +54,9 @@ const Shop = () => {
 
       {/* Sidebar */}
       <div
-        className={`md:w-1/4 w-10/12 fixed left-0 lg:block md:sticky md:top-0 h-full  transition-transform duration-300 ease-in-out transform ${
+        className={`w-10/12 md:w-1/3 lg:w-1/4 fixed left-0 md:block md:sticky md:top-0 h-full transition-transform duration-300 ease-in-out transform ${
           isFilterSideBarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0`}
+        } md:translate-x-0`}
         style={{ zIndex: 40 }}
       >
         <div className="bg-white shadow-md rounded-lg p-6">
@@ -86,7 +86,7 @@ const Shop = () => {
             />
             <button
               onClick={() => handleColumnChange(1)}
-              className={`p-2 rounded-lg md:hidden ${
+              className={`p-2 rounded-lg hidden lg:hidden ${
                 gridColumns === 1
                   ? "bg-black text-white"
                   : "bg-gray-200 text-neutral-700"
@@ -96,7 +96,7 @@ const Shop = () => {
             </button>
             <button
               onClick={() => handleColumnChange(2)}
-              className={`p-2 rounded-lg ${
+              className={`p-2 hidden rounded-lg ${
                 gridColumns === 2
                   ? "bg-black text-white"
                   : "bg-gray-200 text-neutral-700"
@@ -106,7 +106,7 @@ const Shop = () => {
             </button>
             <button
               onClick={() => handleColumnChange(3)}
-              className={`p-2 rounded-lg hidden md:block ${
+              className={`p-2 rounded-lg hidden lg:block ${
                 gridColumns === 3
                   ? "bg-black text-white"
                   : "bg-gray-200 text-neutral-700"
@@ -127,8 +127,8 @@ const Shop = () => {
               gridColumns === 1
                 ? "md:grid-cols-1 "
                 : gridColumns === 2
-                ? "md:grid-cols-2 grid-cols-1  max-w-2xl mx-auto" // Add max-width and center the grid
-                : "md:grid-cols-3 grid-cols-1 "
+                ? "md:grid-cols-2 grid-cols-1  lg:px-16  max-w-3xl mx-auto" // Add max-width and center the grid
+                : " md:grid-cols-2 lg:grid-cols-3  grid-cols-1 "
             }`}
           >
             {filteredProducts.map((product) => {
