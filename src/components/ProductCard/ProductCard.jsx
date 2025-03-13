@@ -125,7 +125,7 @@ const ProductCard = ({ product }) => {
                 }}
               >
                 <Icon icon="la:cart-plus" className="h-6 w-6" />
-                <span className="hidden md:hidden lg:block">Add To Cart</span>
+                <span className="hidden md:hidden xl:block">Add To Cart</span>
               </button>
               <button
                 className="flex lg:hidden text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative "
