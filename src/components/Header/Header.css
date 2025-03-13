@@ -19,3 +19,8 @@ a:hover ~ .custom-cursor {
   background-color: rgba(59, 130, 246, 0.2); /* More transparent on hover */
   border-width: 3px; /* Thicker border on hover */
 }
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
