@@ -23,4 +23,8 @@ a:hover ~ .custom-cursor {
   .custom-cursor {
     display: none;
   }
+}@media (max-width: 1024px) {
+  .custom-cursor {
+    display: none;
+  }
 }
