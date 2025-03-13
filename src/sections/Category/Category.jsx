@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { AppContext } from "../../context/AppContext"; // Import context
 
 const Category = () => {
   const { products, updateFilters } = useContext(AppContext); // Access products and updateFilters from context
-
+  const navigate = useNavigate("");
   // Extract unique categories from products
   const uniqueCategories = [
     ...new Set(products.map((product) => product.category)),
@@ -72,13 +72,19 @@ const Category = () => {
 
                   {/* Shop Now Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Link
-                      to={`/shop`} // Link to the Shop page
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        handleCategoryClick(category); // Set category filter on click
+                        navigate(`shop`);
+                      }}
+                      // Link to the Shop page
                       className="flex items-center justify-center bg-white text-neutral-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-neutral-900 hover:text-white transition-all duration-300"
                     >
                       <span>Shop Now</span>
                       <Icon icon="mdi:arrow-right" className="w-5 h-5 ml-2" />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               );
