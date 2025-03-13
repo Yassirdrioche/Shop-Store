@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
-
+import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const { cart, calculateTotal, removeFromCart } = useContext(AppContext);
+  const navigate = useNavigate();
 
   // State for form inputs
   const [shippingInfo, setShippingInfo] = useState({
@@ -63,7 +64,7 @@ const Checkout = () => {
     // Process the order (simulate API call)
     toast.success("Order placed successfully!", {
       position: "bottom-right",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -72,6 +73,7 @@ const Checkout = () => {
 
     // Clear the cart after successful order
     cart.forEach((item) => removeFromCart(item.id));
+    navigate("/");
   };
 
   return (

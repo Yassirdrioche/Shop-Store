@@ -24,7 +24,7 @@ const Cart = () => {
       {/* Cart Header */}
       <div className="container mx-auto mt-16">
         <div className="flex items-center space-x-3 mb-8">
-          <Icon icon="mdi:cart" className="w-8 h-8" /> {/* Cart Icon */}
+          <Icon icon="mdi:cart-outline" className="w-8 h-8" /> {/* Cart Icon */}
           <h1 className="text-3xl font-bold ">Your Cart</h1>
         </div>
 
@@ -33,9 +33,9 @@ const Cart = () => {
           <div className="text-center py-12">
             <Icon
               icon="mdi:cart-remove"
-              className="w-16 h-16 text-gray-400 mx-auto"
+              className="w-16 h-16 text-neutral-700 mx-auto"
             />
-            <p className="mt-4 text-xl text-gray-200">Your cart is empty.</p>
+            <p className="mt-4 text-xl text-neutral-700">Your cart is empty.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
