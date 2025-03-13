@@ -68,7 +68,7 @@ const HeroSection = () => {
         </section>
       </div>
       {/* Button with higher z-index */}
-      <div className="absolute -top-52 sm:-top-56 md:-top-20 lg:-72 w-10/12  md:w-full left-10 ">
+      <div className="absolute -top-52 sm:-top-56 md:-top-20 lg:-top-72 w-10/12  md:w-full left-10 ">
         <Link to={"shop"}>
           <button className="bg-gradient-to-r from-neutral-700 to-black hover:from-neutral-500 hover:to-black  p-3 gap-2 rounded-lg md:w-1/4 w-full justify-center flex items-center transition-colors duration-300 shadow-lg hover:shadow-xl">
             <Icon
