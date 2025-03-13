@@ -64,11 +64,11 @@ const BlogDetails = () => {
           <div className="prose prose-lg text-gray-700">{post.content}</div>
 
           {/* Buttons */}
-          <div className="mt-8 flex  lg:flex-row flex-col gap-4">
+          <div className="mt-8 flex flex-col lg:flex-row gap-4">
             {/* Back Button */}
-            <Link to="/">
-              <button className="flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white justify-center text-2xl  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500 gap-2 w-full md:w-1/2">
-                <Icon icon="mdi:arrow-left" className=" text-xl" />
+            <Link to="/" className="w-full lg:w-auto">
+              <button className="flex items-center justify-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white text-xl  transform hover:scale-95 transition-all hover:shadow-2xl duration-500 gap-2 w-full">
+                <Icon icon="mdi:arrow-left" className="text-xl" />
                 Back to Home
               </button>
             </Link>
@@ -76,10 +76,12 @@ const BlogDetails = () => {
             {/* Shop Button */}
             <Link
               to="/shop" // Replace with your actual shop route
-              className="flex items-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white justify-center text-2xl  rounded-lg transform hover:scale-95 transition-all  hover:shadow-2xl hover  duration-500 gap-2 w-full md:w-1/2"
+              className="w-full lg:w-auto"
             >
-              <Icon icon="weui:shop-outlined" className="text-xl" />
-              <span className=" leading-7">Shop Now</span>
+              <button className="flex items-center justify-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white text-xl transform hover:scale-95 transition-all hover:shadow-2xl duration-500 gap-2 w-full">
+                <Icon icon="weui:shop-outlined" className="text-xl" />
+                <span className="leading-7">Shop Now</span>
+              </button>
             </Link>
           </div>
         </div>
