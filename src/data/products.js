@@ -135,7 +135,7 @@ const prods = [
     id: 7,
     name: "Bluetooth Speaker",
     price: 79.99,
-    category: "yassir",
+    category: "Speaker",
     description:
       "A stylish and powerful Bluetooth speaker designed for music lovers. Perfect for home, office, or outdoor use.",
     image:

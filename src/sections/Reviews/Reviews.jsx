@@ -43,6 +43,8 @@ const Reviews = () => {
       <div className="modern-grid-container px-8">
         {firstFiveReviews.map((review, index) => (
           <div
+            data-aos="fade-up"
+            data-aos-delay={index * 200}
             key={review.id}
             className={`modern-grid-item ${
               index === 1 || index === 4 ? "row-span-2" : "row-span-1"
