@@ -15,15 +15,17 @@ const ProductCard = ({ product }) => {
   const animationFrameRef = useRef(null);
 
   useEffect(() => {
-    // Apply VanillaTilt effect
-    if (prodCardRef.current) {
+    // Check screen width
+    const isSmallScreen = window.innerWidth <= 768; // Adjust breakpoint as needed
+
+    // Apply VanillaTilt effect only on larger screens
+    if (!isSmallScreen && prodCardRef.current) {
       VanillaTilt.init(prodCardRef.current, {
         max: 10, // Maximum tilt rotation (degrees)
         speed: 300, // Transition speed
         glare: true, // Adds a glare effect
         "max-glare": 0.3, // Maximum glare opacity
         perspective: 1000, // Perspective depth effect
-        // scale: 1, // Slight scaling effect
       });
     }
 
@@ -69,7 +71,6 @@ const ProductCard = ({ product }) => {
       ref={prodCardRef}
     >
       {/* Add to Wishlist Button */}
-
       <button
         onClick={() => toggleWishlist(product)}
         className="flex items-center absolute top-2  group-hover:right-2 group-hover:translate-x-0 right-0   translate-x-full bg-black bg-opacity-10 backdrop-blur-lg justify-center space-x-2 p-2 rounded-lg transition-all duration-300 z-50  text-neutral-700"
@@ -114,18 +115,34 @@ const ProductCard = ({ product }) => {
               ${product.price}
             </p>
             {/* Add to Cart Button */}
-
-            <button
-              className="flex text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                addToCart(product);
-              }}
-            >
-              <Icon icon="la:cart-plus" className="h-6 w-6" />
-              <span className="hidden md:block">Add To Cart</span>
-            </button>
+            <section className="flex gap-4 z-50">
+              <button
+                className="flex text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  addToCart(product);
+                }}
+              >
+                <Icon icon="la:cart-plus" className="h-6 w-6" />
+                <span className="hidden md:hidden lg:block">Add To Cart</span>
+              </button>
+              <button
+                className="flex lg:hidden text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative "
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleWishlist(product);
+                }}
+              >
+                <Icon
+                  icon={isInWishlist ? "mdi:heart" : "mdi:heart-outline"}
+                  className={`text-2xl ${
+                    isInWishlist ? "text-white" : "text-white"
+                  }`}
+                />
+              </button>
+            </section>
           </div>
         </div>
       </Link>

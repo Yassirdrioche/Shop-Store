@@ -17,3 +17,12 @@
   z-index: 9999; /* Ensure the cursor is above other elements */
   transition: transform 0.1s ease-out, width 0.2s ease-out, height 0.2s ease-out;
 }
+@media (max-width: 768px) {
+  .custom-cursor-prod {
+    display: none;
+  }
+}@media (max-width: 1024) {
+  .custom-cursor-prod {
+    display: none;
+  }
+}
