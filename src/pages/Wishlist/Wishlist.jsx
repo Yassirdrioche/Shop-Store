@@ -3,7 +3,7 @@ import { AppContext } from "../../context/AppContext"; // Import AppContext for 
 import ProductCard from "../../components/ProductCard/ProductCard"; // Import ProductCard to display wishlist items
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { Icon } from "@iconify/react"; // Import Iconify for icons
-
+import illustrationWishlist from "../../assets/picture/illustrationWishlist.png";
 const Wishlist = () => {
   const { wishlist } = useContext(AppContext); // Access the wishlist from context
 
@@ -26,19 +26,21 @@ const Wishlist = () => {
       <div className="max-w-7xl mx-auto">
         {wishlist.length === 0 ? (
           <div className="text-center">
-            <div className="inline-block p-6 bg-white rounded-lg shadow-lg">
-              <Icon
-                icon="mdi:heart-outline"
-                className="w-16 h-16 text-neutral-400 mx-auto mb-4"
-              />
+            <div className=" p-6 bg-white rounded-lg shadow-lg">
+              <img src={illustrationWishlist} alt="" className="w-72 h-auto " />
+
               <p className="text-neutral-600 text-lg mb-6">
                 No items in your wishlist yet.
               </p>
               <Link
                 to="/shop" // Replace with your shop route
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-neutral-500 to-neutral-600 hover:from-neutral-600 hover:to-neutral-700 transition-all duration-300"
+                className="bg-gradient-to-r from-neutral-500 via-neutral-600 to-neutral-900 text-lg group text-white px-6 py-3 mt-7 rounded-lg flex items-center gap-2 hover:bg-neutral-700  hover:shadow-lg transition-all duration-300 justify-center"
               >
                 Explore Products
+                <Icon
+                  icon="mdi:arrow-right"
+                  className="w-6 h-6 group-hover:translate-x-4 transition-all duration-300"
+                />
               </Link>
             </div>
           </div>

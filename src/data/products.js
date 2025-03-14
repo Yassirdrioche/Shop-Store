@@ -133,24 +133,26 @@ const prods = [
   },
   {
     id: 7,
-    name: "Bluetooth Speaker",
-    price: 79.99,
-    category: "Speaker",
+    name: "AirPods Pro",
+    price: 249.99,
+    category: "Headphones",
     description:
-      "A stylish and powerful Bluetooth speaker designed for music lovers. Perfect for home, office, or outdoor use.",
+      "Experience the ultimate in wireless audio with AirPods Pro. Featuring active noise cancellation, immersive sound, and a customizable fit, these earbuds are perfect for music, calls, and more.",
     image:
-      "https://i.pinimg.com/736x/62/62/6b/62626b98cad88db302ad6a6724422a6b.jpg",
+      "https://i.pinimg.com/736x/60/f0/d3/60f0d327829d14634ebc08854eb28587.jpg", // Replace with an AirPods image URL
     features: [
-      "360-degree sound for immersive audio",
-      "Built-in microphone for hands-free calls",
-      "Rechargeable battery with 15-hour playtime",
-      "Sleek and modern design",
+      "Active Noise Cancellation for immersive sound",
+      "Transparency mode to hear your surroundings",
+      "Customizable fit with three sizes of silicone tips",
+      "Sweat and water resistance for active lifestyles",
+      "Up to 4.5 hours of listening time on a single charge",
+      "Wireless charging case for over 24 hours of total listening time",
     ],
     specifications: {
       connectivity: "Bluetooth 5.0",
-      battery: "3000mAh",
-      weight: "700g",
-      colors: ["Black", "Silver"],
+      battery: "Up to 4.5 hours (earbuds), 24+ hours (with case)",
+      weight: "45.6g (earbuds), 45.6g (case)",
+      colors: ["White", "Black"],
     },
   },
   {

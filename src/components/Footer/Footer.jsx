@@ -13,7 +13,10 @@ const Footer = () => {
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
         >
-          <path d="M1200 0L0 0 892.25 114.72 1200 0z" className="shape-fill"></path>
+          <path
+            d="M1200 0L0 0 892.25 114.72 1200 0z"
+            className="shape-fill"
+          ></path>
         </svg>
       </div>
       {/* Wave Effect */}
@@ -55,19 +58,26 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-2">
+              <li>
+                <a
+                  href="#about-us"
+                  className="text-gray-400 hover:text-white transition duration-300 hover:pl-2"
+                >
+                  About Us
+                </a>
+              </li>
               {[
-                { to: "/about", text: "About Us" },
                 { to: "/contact", text: "Contact" },
                 { to: "/privacy", text: "Privacy Policy" },
                 { to: "/terms", text: "Terms of Service" },
               ].map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.to}
+                  <a
+                    href={link.to}
                     className="text-gray-400 hover:text-white transition duration-300 hover:pl-2"
                   >
                     {link.text}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -125,7 +135,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-white hover:underline"
             >
-              My Self
+              <span> My Self</span>
             </a>
           </p>
         </div>

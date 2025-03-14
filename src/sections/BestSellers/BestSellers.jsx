@@ -4,7 +4,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { Icon } from "@iconify/react";
 const BestSellers = () => {
   const { products } = useContext(AppContext);
-  const bestSellers = products.slice(3, 6); // Example: Use the next 3 products as best sellers
+  const bestSellers = products.slice(5, 8); // Example: Use the next 3 products as best sellers
 
   return (
     <div className="container mx-auto px-4 max-w-6xl  bg-neutral-100 z-[998]  py-10">

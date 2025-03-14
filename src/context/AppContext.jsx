@@ -78,14 +78,14 @@ export const AppProvider = ({ children }) => {
   const removeFromCart = (productId) => {
     const product = cart.find((item) => item.id === productId);
     setCart(cart.filter((item) => item.id !== productId));
-    toast.error(`${product.name} removed from cart!`, {
-      position: "bottom-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
+    // toast.error(`${product.name} removed from cart!`, {
+    //   position: "bottom-right",
+    //   autoClose: 3000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    // });
   };
 
   // Update the quantity of a product in the cart

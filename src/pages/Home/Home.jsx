@@ -10,6 +10,7 @@ import "aos/dist/aos.css"; // Import AOS CSS
 import ProductGrid from "../../sections/ProductGrid/ProductGrid";
 import Blog from "../../sections/Blog/Blog";
 import OfferSection from "../../sections/OfferSection/OfferSection";
+import About from "../../sections/About/About";
 
 const Home = () => {
   // Initialize AOS
@@ -28,10 +29,10 @@ const Home = () => {
       <section id="hero">
         <Hero />
       </section>
-
       <section>
         <ProductGrid />
       </section>
+      <About />
       {/* Featured Products Section */}
       <section id="featured-products">
         <FeaturedProducts />

@@ -99,7 +99,7 @@ const Login = () => {
         className="hidden lg:block w-1/2 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')",
+            "url('https://i.pinimg.com/736x/91/16/9b/91169b15543600d72fad0dbf05d8b0d4.jpg')",
         }}
       >
         {/* Optional: Add overlay or text on the image */}
@@ -184,7 +184,7 @@ const Login = () => {
                   required
                 />
                 {/* Password Strength Progress Bar */}
-                <div className="w-full bg-neutral-700 rounded-full h-1 mt-2">
+                <div className="w-full bg-neutral-700 rounded-full h-1 mt-2 overflow-hidden">
                   <div
                     className="h-1 rounded-full transition-all duration-300"
                     style={{

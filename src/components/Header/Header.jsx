@@ -8,7 +8,7 @@ import logoBlack from "../../assets/picture/logo.png";
 import logoWhite from "../../assets/picture/logo_white.png";
 
 const Header = () => {
-  const { cart, toggleSidebar, isToggled, isFilterSideBarOpen } =
+  const { cart, toggleSidebar, isToggled, isFilterSideBarOpen, wishlist } =
     useContext(AppContext); // Access cart state
   const { user, logout } = useContext(AuthContext);
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
@@ -122,31 +122,36 @@ const Header = () => {
 
             {/* Navigation Links */}
             <nav className="md:flex hidden gap-10 text-lg font-semibold ">
-              <Link to="/" className=" hover:text-blue-600 flex items-center ">
+              <Link to="/" className=" hover:text-zinc-600 flex items-center ">
                 Home
               </Link>
               <Link
                 to="/shop"
-                className=" hover:text-blue-600 flex items-center "
+                className=" hover:text-zinc-600 flex items-center "
               >
                 Shop
               </Link>
               <Link
                 to="/cart"
-                className=" hover:text-blue-600 flex items-center  relative"
+                className=" hover:text-zinc-600 flex items-center  relative"
               >
                 Cart
                 {cart.length > 0 && (
-                  <span className=" bg-red-500 text-white text-xs rounded-full  p-0.5 w-4 flex justify-center items-center h-4 absolute -top-3 left-[0.5rem] ">
+                  <span className=" bg-neutral-700 text-white text-xs rounded-full  p-0.5 w-4 flex justify-center items-center h-4 absolute -top-3 left-[0.5rem] ">
                     {cart.length}
                   </span>
                 )}
               </Link>
               <Link
                 to="/wishlist"
-                className=" hover:text-blue-600 flex items-center  relative"
+                className=" hover:text-zinc-600 flex items-center  relative"
               >
                 Wishlist
+                {wishlist.length > 0 && (
+                  <span className=" bg-neutral-700 text-white text-xs rounded-full  p-0.5 w-4 flex justify-center items-center h-4 absolute -top-3 left-[0.5rem] ">
+                    {wishlist.length}
+                  </span>
+                )}
               </Link>
             </nav>
 
@@ -164,7 +169,7 @@ const Header = () => {
                   icon="ep:user"
                   className={`w-7 h-7 ${
                     isScrolled ? "  " : ""
-                  } hover:text-blue-600 `}
+                  } hover:text-zinc-600 `}
                 />
               </button>
 
