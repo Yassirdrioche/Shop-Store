@@ -20,16 +20,17 @@ body {
   .bounce {
     animation: bounce 2.5s infinite;
   }
-}
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
-  50% {
-    transform: translateY(-20px);
-  }
 }
+
 .line_prog {
   position: fixed;
   top: 0;

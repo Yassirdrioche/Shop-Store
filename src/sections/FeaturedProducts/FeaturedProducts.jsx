@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   return (
     <div className="container mx-auto max-w-6xl  bg-neutral-800 bg-opacity-80 backdrop-blur-lg py-10  z-[99999]">
       <h2
-        className="text-4xl text-white font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
+        className="text-2xl md:text-4xl text-white font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
         data-aos="fade-up"
       >
         <Icon icon="uit:star" />

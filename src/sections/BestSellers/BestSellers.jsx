@@ -9,7 +9,7 @@ const BestSellers = () => {
   return (
     <div className="container mx-auto px-4 max-w-6xl  bg-neutral-100 z-[998]  py-10">
       <h2
-        className="text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"
+        className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"
         data-aos="fade-up"
       >
         <Icon icon="streamline:money-graph-arrow-increase-ascend-growth-up-arrow-stats-graph-right-grow" />

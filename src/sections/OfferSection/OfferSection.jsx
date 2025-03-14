@@ -44,8 +44,8 @@ const OfferSection = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 min-h-screen max-w-6xl mx-auto flex flex-col justify-center items-center overflow-hidden">
-      <h2 className="text-4xl md:text-5xl font-bold text-center uppercase flex items-center gap-3 text-neutral-900 mb-12">
-        <Icon icon="ic:outline-local-offer" className="text-5xl" />
+      <h2 className="text-2xl md:text-4xl font-bold text-center uppercase flex items-center gap-3 text-neutral-900 mb-12">
+        <Icon icon="ic:outline-local-offer" />
         <span>Exclusive Offers</span>
       </h2>
 
