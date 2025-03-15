@@ -37,7 +37,7 @@ const About = () => {
 
   return (
     <div
-      className="bg-neutral-100 bg-opacity-80 backdrop-blur-2xl py-10 max-w-6xl mx-auto"
+      className="bg-neutral-100 py-10 relative z-50   mx-auto"
       id="about-us"
     >
       <div className="container mx-auto px-4">

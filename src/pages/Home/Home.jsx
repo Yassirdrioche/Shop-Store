@@ -11,6 +11,7 @@ import ProductGrid from "../../sections/ProductGrid/ProductGrid";
 import Blog from "../../sections/Blog/Blog";
 import OfferSection from "../../sections/OfferSection/OfferSection";
 import About from "../../sections/About/About";
+// import GradientBackground from "../../GradientBackground";
 
 const Home = () => {
   // Initialize AOS
@@ -26,32 +27,29 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section id="hero">
-        <Hero />
-      </section>
-      <section>
-        <ProductGrid />
-      </section>
+
+      <Hero />
+
+      {/* <ProductGrid /> */}
+
       <About />
       {/* Featured Products Section */}
-      <section id="featured-products">
-        <FeaturedProducts />
-      </section>
+
+      <FeaturedProducts />
 
       {/* Best Sellers Section */}
-      <section id="best-sellers">
-        <BestSellers />
-      </section>
+
+      <BestSellers />
+
       <OfferSection />
       {/* Category Section */}
-      <section id="category">
-        <Category />
-      </section>
+
+      <Category />
+      <div></div>
       <Blog />
       {/* Reviews Section */}
-      <section id="reviews">
-        <Reviews />
-      </section>
+
+      <Reviews />
     </div>
   );
 };

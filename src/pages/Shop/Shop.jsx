@@ -39,7 +39,7 @@ const Shop = () => {
   }, []); // Empty dependency array ensures this runs only on mount and unmount
 
   return (
-    <div className="p-6 flex gap-8 mt-20 relative">
+    <div className=" flex gap-8 px-8 py-28 bg-neutral-100 relative z-50">
       {/* Sidebar Toggle Button for Mobile */}
       <button
         className="md:hidden fixed top-24 left-4 bg-white p-2 rounded-lg shadow-md z-50"
@@ -88,7 +88,7 @@ const Shop = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="w-full lg:w-3/4">
+      <div className="w-full lg:w-3/4 relative ">
         <div className="flex md:justify-between justify-end items-center mb-6">
           <h1 className="text-4xl hidden font-bold uppercase text-neutral-900 md:flex items-center gap-2">
             <Icon icon="stash:shop" className="h-12 w-12" />

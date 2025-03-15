@@ -10,7 +10,7 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-neutral-50 to-neutral-100">
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b relative z-50  bg-neutral-100">
         <div className="text-center bg-white p-8 rounded-lg shadow-lg">
           <Icon
             icon="mdi:alert-circle-outline"
@@ -28,7 +28,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b  py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b  py-20 px-4 sm:px-6 lg:px-8 relative z-50 bg-neutral-100">
       <section className="flex justify-center gap-14 min-h-screen mt-14 flex-wrap md:flex-nowrap ">
         <div className="sticky top-0 h-auto overflow-hidden rounded-lg shadow-2xl transform">
           <img

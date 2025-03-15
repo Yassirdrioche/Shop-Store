@@ -90,7 +90,7 @@ const Header = () => {
           className={`fixed md:w-[70%] w-[90%] z-[9999] top-3 rounded-l-full rounded-r-full transition-all duration-300  px-4 ${
             isScrolled
               ? "shadow-lg bg-black bg-opacity-20 text-white backdrop-blur-lg"
-              : "bg-neutral-100 "
+              : "bg-neutral-200 "
           }
           ${
             isToggled || isFilterSideBarOpen

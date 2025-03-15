@@ -35,12 +35,12 @@ const Reviews = () => {
   const firstFiveReviews = reviews.slice(0, 5);
 
   return (
-    <div className="z-50 bg-neutral-100 py-10 max-w-6xl mx-auto">
+    <div className=" bg-neutral-100 py-10  relative z-50">
       <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900">
         <Icon icon="icon-park-outline:people-speak" className="h-10 w-10" />
         <span> Customers Reviews</span>
       </h2>
-      <div className="modern-grid-container px-8">
+      <div className="modern-grid-container   px-8">
         {firstFiveReviews.map((review, index) => (
           <div
             data-aos="fade-up"

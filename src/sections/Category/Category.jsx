@@ -16,7 +16,7 @@ const Category = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 max-w-6xl bg-neutral-800 bg-opacity-80 backdrop-blur-lg py-16">
+    <div className="mx-auto  relative z-50  px-4 bg-neutral-800 py-16">
       <div className="px-4">
         <Link to={`/shop`}>
           {/* Heading */}

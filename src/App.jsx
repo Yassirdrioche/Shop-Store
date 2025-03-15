@@ -53,7 +53,7 @@ const App = () => {
             />
             <Suspense
               fallback={
-                <div className="py-10 min-h-screen  bg-neutral-200 grid place-content-center">
+                <div className="py-10 min-h-screen relative z-50  bg-neutral-200 grid place-content-center">
                   <Circles
                     height="80"
                     width="80"

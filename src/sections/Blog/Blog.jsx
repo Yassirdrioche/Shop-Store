@@ -45,16 +45,17 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8   relative z-50">
+      <div className=" ">
         {/* Page Title */}
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          BLOG POSTS
+        <h2 className="text-4xl font-bold text-center text-neutral-900 mb-12 flex justify-center items-center gap-4 z-50">
+          <Icon icon="iconoir:post" />
+          <span>BLOG POSTS</span>
         </h2>
 
         {/* Embla Carousel Container */}
-        <div className="embla relative overflow-hidden" ref={emblaRef}>
-          <div className="embla__container">
+        <div className="embla relative overflow-hidden z-50" ref={emblaRef}>
+          <div className="embla__container z-50">
             {blogPosts.map((post, index) => (
               <div
                 key={post.id}

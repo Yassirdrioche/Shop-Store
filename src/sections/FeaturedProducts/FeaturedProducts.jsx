@@ -9,7 +9,7 @@ const FeaturedProducts = () => {
   const featuredProducts = products.slice(0, 3);
 
   return (
-    <div className="container mx-auto max-w-6xl  bg-neutral-800 bg-opacity-80 backdrop-blur-lg py-10  z-[99999]">
+    <div className=" mx-auto  bg-neutral-800   py-10  relative z-50">
       <h2
         className="text-2xl md:text-4xl text-white font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
         data-aos="fade-up"
@@ -17,10 +17,11 @@ const FeaturedProducts = () => {
         <Icon icon="uit:star" />
         <span className="mt-1">Featured Products</span>
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 container p-4 max-w-5xl mx-auto gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 container p-4 max-w-5xl mx-auto gap-6 z-50">
         {featuredProducts.map((product, index) => (
           <div
             key={product.id}
+            className="z-50"
             data-aos="fade-up"
             data-aos-delay={index * 200} // Delay each product's animation
           >

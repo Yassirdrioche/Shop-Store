@@ -3,11 +3,13 @@
   grid-template-columns: repeat(3, 1fr); /* Three columns */
   /* grid-auto-rows: minmax(200px, auto); Auto rows with a minimum height */
   gap: 10px; /*Gap between grid items*/
+ 
 }
 
 .modern-grid-item {
   background: transparent;
   overflow: hidden;
+
 }
 
 /* Make the second and fifth items span two rows */
