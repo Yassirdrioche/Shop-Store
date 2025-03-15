@@ -164,6 +164,7 @@ export const AppProvider = ({ children }) => {
         toggleSidebar, // Provide the function to toggle sidebar
         isFilterSideBarOpen,
         setIsFilterSideBarOpen,
+        setCart,
       }}
     >
       {children}

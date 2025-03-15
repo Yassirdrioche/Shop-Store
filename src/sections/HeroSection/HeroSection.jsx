@@ -23,22 +23,23 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative z-50">
-      <div className="sticky top-0 hero">
+    <div className="relative   z-50">
+      <div className="hero   sticky top-0">
         <section
           style={{
             backgroundAttachment: "fixed",
+
             backgroundImage: `url(${headphone}), linear-gradient(to top ,rgba(10, 10, 10), rgb(20, 20, 20))`,
             backgroundSize: "contain",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          className="hero w-full h-dvh flex items-center justify-between text-white overflow-hidden px-10"
+          className="hero  w-full h-dvh flex items-center justify-between text-white overflow-hidden px-10"
         >
           {/* Background Overlay */}
 
           {/* Content */}
-          <div className="relative z-10 text-left max-w-2xl ">
+          <div className="relative pt-[120px] z-10 text-left max-w-2xl ">
             {/* Word-by-Word Fade-Up Effect with Proper Spacing */}
             <h1 className="md:text-6xl text-5xl flex flex-wrap font-bold mb-6 text-white">
               {words.map((word, index) => (

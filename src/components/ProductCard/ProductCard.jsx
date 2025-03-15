@@ -67,13 +67,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="bg-white rounded-xl relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border border-gray-100 group"
+      className="bg-white  relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border border-gray-100 group"
       ref={prodCardRef}
     >
       {/* Add to Wishlist Button */}
       <button
         onClick={() => toggleWishlist(product)}
-        className="flex items-center absolute top-2  group-hover:right-2 group-hover:translate-x-0 right-0   translate-x-full bg-black bg-opacity-10 backdrop-blur-lg justify-center space-x-2 p-2 rounded-lg transition-all duration-300 z-50  text-neutral-700"
+        className="flex items-center absolute top-2  group-hover:right-2 group-hover:translate-x-0 right-0   translate-x-full bg-black bg-opacity-10 backdrop-blur-lg justify-center space-x-2 p-2  transition-all duration-300 z-50  text-neutral-700"
       >
         <Icon
           icon={isInWishlist ? "mdi:heart" : "mdi:heart-outline"}
@@ -117,7 +117,7 @@ const ProductCard = ({ product }) => {
             {/* Add to Cart Button */}
             <section className="flex gap-4 z-50">
               <button
-                className="flex text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative"
+                className="flex text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4  transition-all duration-300  bg-black  relative"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -128,7 +128,7 @@ const ProductCard = ({ product }) => {
                 <span className="hidden md:hidden xl:block">Add To Cart</span>
               </button>
               <button
-                className="flex lg:hidden text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 rounded-lg transition-all duration-300  bg-black  relative "
+                className="flex lg:hidden text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4  transition-all duration-300  bg-black  relative "
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

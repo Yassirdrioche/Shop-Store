@@ -6,6 +6,8 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page
+    // Ensure smooth scrolling behavior
+
   }, [pathname]); // Trigger the effect whenever the pathname changes
 };
 

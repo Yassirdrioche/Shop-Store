@@ -8,6 +8,8 @@ const SmoothScroll = () => {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing
       smoothWheel: true, // Smooth scroll with mouse wheel
       smoothTouch: true, // Smooth scroll on mobile
+      // Ensure initial scroll position is set to top
+
     });
 
     const raf = (time) => {
