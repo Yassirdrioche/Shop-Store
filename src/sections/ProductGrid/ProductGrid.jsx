@@ -60,7 +60,7 @@ const ProductGrid = () => {
             </p>
             <Link
               to="/shop"
-              className="bg-black text-lg text-white px-6 py-2 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12 relative z-10"
+              className="bg-black text-lg text-white px-6 py-2 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-full lg:w-6/12 relative z-10"
             >
               <Icon icon="mdi:cart-outline" />
               Shop Now
@@ -97,7 +97,7 @@ const ProductGrid = () => {
             </p>
             <Link
               to="/shop"
-              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12 relative z-10"
+              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-full lg:w-6/12 relative z-10"
             >
               <Icon icon="mdi:cart-outline" className="text-2xl" />
               Shop Now
@@ -167,7 +167,7 @@ const ProductGrid = () => {
             </p>
             <Link
               to="/shop"
-              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12 relative z-10"
+              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-full lg:w-6/12 relative z-10"
             >
               <Icon icon="mdi:cart-outline" className="text-2xl" />
               Shop Now
@@ -203,7 +203,7 @@ const ProductGrid = () => {
             </p>
             <Link
               to="/shop"
-              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-6/12 relative z-10"
+              className="bg-black text-lg text-white px-6 py-3 rounded-lg hover:bg-opacity-75 hover:backdrop-blur-lg transition-colors duration-300 flex justify-center items-center gap-2 w-full lg:w-6/12 relative z-10"
             >
               <Icon icon="mdi:cart-outline" className="text-2xl" />
               Shop Now

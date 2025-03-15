@@ -28,7 +28,7 @@ const BtnScrollTop = () => {
     <>
       {isVisible && (
         <div
-          className="bg-black text-neutral-100 flex justify-center items-center text-4xl rounded-full p-2 w-12 h-12 fixed bottom-5 right-8 z-[9999] cursor-pointer hover:bg-neutral-800 transition-colors duration-300"
+          className="bg-neutral-800 text-neutral-100 flex justify-center items-center text-4xl rounded-full p-2 w-12 h-12 fixed bottom-5 right-8 z-[9999] cursor-pointer hover:bg-neutral-800 transition-colors duration-300"
           onClick={handleScrollTop}
         >
           <Icon icon="fluent:arrow-up-24-regular" />

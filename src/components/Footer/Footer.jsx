@@ -28,7 +28,7 @@ const Footer = () => {
         <div className="absolute top-0 left-0 w-full h-20 bg-wave-pattern bg-cover bg-center opacity-20"></div>
         <div className="container mx-auto px-6 relative z-10">
           {/* Footer Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid p-8 py-28 lg:p-3 lg:py-10 grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* About Section */}
             <div className="space-y-4">
               <img src={logoWhite} className="w-20" alt="Logo" />
@@ -100,28 +100,7 @@ const Footer = () => {
             </div>
 
             {/* Newsletter Section */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-white font-poppins">
-                Join Our Newsletter
-              </h4>
-              <p className="text-gray-400">
-                Subscribe to get the latest updates and exclusive offers.
-              </p>
-              <form className="flex space-x-2">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="w-full px-4 py-2 rounded-lg bg-neutral-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white hover:bg-neutral-700 transition duration-300"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-white text-neutral-900 rounded-lg hover:bg-gray-200 transition duration-300 hover:scale-105"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
+                     </div>
 
           {/* Divider with Animation */}
           <div className="border-t border-gray-800 my-6 relative">
