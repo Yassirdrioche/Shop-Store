@@ -16,11 +16,11 @@ const BlogDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-28 px-4 sm:px-6 lg:px-8 ">
+    <div className="min-h-screen bg-neutral-100 relative z-50 py-28 px-4 sm:px-6 lg:px-8 ">
       {/* Page Title */}
       <div className="max-w-7xl mx-auto text-center ">
         <h1 className="text-5xl font-bold text-neutral-900">Blog Details</h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-neutral-600">
           Dive deeper into our latest blog posts.
         </p>
       </div>
@@ -39,12 +39,12 @@ const BlogDetails = () => {
         {/* Right Side: Scrollable Details */}
         <div className="lg:w-1/2 bg-white rounded-lg shadow-2xl z-50 p-8">
           {/* Title */}
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-neutral-900 mb-4">
             {post.title}
           </h1>
 
           {/* Author and Date */}
-          <div className="flex items-center text-gray-600 mb-6">
+          <div className="flex items-center text-neutral-600 mb-6">
             {/* Avatar */}
             <img
               src={post.avatar}
@@ -53,15 +53,15 @@ const BlogDetails = () => {
             />
             <div>
               <span className="block font-medium">{post.author}</span>
-              <span className="block text-sm text-gray-500">{post.date}</span>
+              <span className="block text-sm text-neutral-500">{post.date}</span>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-lg text-gray-700 mb-8">{post.description}</p>
+          <p className="text-lg text-neutral-700 mb-8">{post.description}</p>
 
           {/* Content */}
-          <div className="prose prose-lg text-gray-700">{post.content}</div>
+          <div className="prose prose-lg text-neutral-700">{post.content}</div>
 
           {/* Buttons */}
           <div className="mt-8 flex flex-col lg:flex-row gap-4">

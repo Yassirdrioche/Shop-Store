@@ -45,17 +45,16 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8   relative z-50">
-      <div className=" ">
+    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Page Title */}
-        <h2 className="text-4xl font-bold text-center text-neutral-900 mb-12 flex justify-center items-center gap-4 z-50">
-          <Icon icon="iconoir:post" />
-          <span>BLOG POSTS</span>
+        <h2 className="text-4xl font-bold text-center text-neutral-900 mb-12">
+          BLOG POSTS
         </h2>
 
         {/* Embla Carousel Container */}
-        <div className="embla relative overflow-hidden z-50" ref={emblaRef}>
-          <div className="embla__container z-50">
+        <div className="embla relative overflow-hidden" ref={emblaRef}>
+          <div className="embla__container">
             {blogPosts.map((post, index) => (
               <div
                 key={post.id}
@@ -76,15 +75,15 @@ const Blog = () => {
                   {/* Blog Content */}
                   <div className="p-6">
                     {/* Title */}
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-2xl font-bold text-neutral-900 mb-3">
                       {post.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-700 mb-4">{post.description}</p>
+                    <p className="text-neutral-700 mb-4">{post.description}</p>
 
                     {/* Author and Date */}
-                    <div className="flex items-center text-gray-600 mb-4">
+                    <div className="flex items-center text-neutral-600 mb-4">
                       <img
                         src={post.avatar}
                         alt={post.author}
@@ -92,7 +91,7 @@ const Blog = () => {
                       />
                       <div>
                         <span className="block font-medium">{post.author}</span>
-                        <span className="block text-sm text-gray-500">
+                        <span className="block text-sm text-neutral-500">
                           {post.date}
                         </span>
                       </div>
@@ -113,7 +112,7 @@ const Blog = () => {
 
           {/* Previous Button */}
           <button
-            className={`embla__prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-2xl text-gray-800 p-3 rounded-full shadow-lg hover:bg-gray-100 transition ${
+            className={`embla__prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-2xl text-neutral-800 p-3 rounded-full shadow-lg hover:bg-neutral-100 transition ${
               !prevBtnEnabled ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={scrollPrev}
@@ -124,7 +123,7 @@ const Blog = () => {
 
           {/* Next Button */}
           <button
-            className={`embla__next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-2xl text-gray-800 p-3 rounded-full shadow-lg hover:bg-gray-100 transition ${
+            className={`embla__next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-2xl text-neutral-800 p-3 rounded-full shadow-lg hover:bg-neutral-100 transition ${
               !nextBtnEnabled ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={scrollNext}
