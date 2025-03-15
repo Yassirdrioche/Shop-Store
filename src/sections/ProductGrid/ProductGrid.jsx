@@ -5,9 +5,9 @@ import "./ProductGrid.css";
 import watch from "../../assets/gridprod/watch.jpg";
 import clothes from "../../assets/gridprod/clothes1.jpg";
 import shoes from "../../assets/gridprod/shoes.jpg";
-import headphones from "../../assets/gridprod/headphones.jpg";
+// import headphones from "../../assets/gridprod/headphones.jpg";
 import headphones2 from "../../assets/gridprod/headphones2.jpg";
-import book from "../../assets/gridprod/book.jpg";
+// import book from "../../assets/gridprod/book.jpg";
 
 const ProductGrid = () => {
   return (
@@ -72,7 +72,7 @@ const ProductGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
+            className="relative text-center flex-col flex gap-6 items-start lg:items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
             data-aos="fade-right"
             data-aos-duration="500"
           >
@@ -179,7 +179,7 @@ const ProductGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
+            className="relative text-center flex-col flex gap-6 items-start lg:items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
             data-aos="fade-right"
             data-aos-duration="500"
           >
