@@ -1,30 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react"; // Import Iconify
+import { Icon } from "@iconify/react";
 import logoWhite from "../../assets/picture/logo_white.png";
-import "./Footer.css";
+import GradientBackground from "../../utils/GradientBackground"; // Import the working component
+
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-neutral-900 to-neutral-800 text-white py-12 relative overflow-hidden">
-      <div className="custom-shape-divider-top-1741878716">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M1200 0L0 0 892.25 114.72 1200 0z"
-            className="shape-fill"
-          ></path>
-        </svg>
+    <footer className="relative h-[100vdh] text-white overflow-hidden">
+      {/* Neat Gradient Background */}
+      <div className="absolute inset-0 -z-10">
+        <GradientBackground />
       </div>
-      {/* Wave Effect */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-wave-pattern bg-cover bg-center opacity-20"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      {/* Footer Content */}
+      <div className="relative z-10 bg-neutral-900 bg-opacity-80 py-12 px-6">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="space-y-4">
             <img src={logoWhite} className="w-20" alt="Logo" />
@@ -52,21 +41,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links Section */}
+          {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white font-poppins">
-              Quick Links
-            </h4>
+            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="#about-us"
-                  className="text-gray-400 hover:text-white transition duration-300 hover:pl-2"
-                >
-                  About Us
-                </a>
-              </li>
               {[
+                { to: "/about", text: "About Us" },
                 { to: "/contact", text: "Contact" },
                 { to: "/privacy", text: "Privacy Policy" },
                 { to: "/terms", text: "Terms of Service" },
@@ -83,11 +63,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info Section */}
+          {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white font-poppins">
-              Contact Us
-            </h4>
+            <h4 className="text-lg font-semibold text-white">Contact Us</h4>
             <ul className="text-gray-400 space-y-2">
               <li>Email: support@yourStore.com</li>
               <li>Phone: +212 6-41420859</li>
@@ -95,9 +73,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter Section */}
+          {/* Newsletter */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white font-poppins">
+            <h4 className="text-lg font-semibold text-white">
               Join Our Newsletter
             </h4>
             <p className="text-gray-400">
@@ -119,13 +97,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider with Animation */}
-        <div className="border-t border-gray-800 my-6 relative">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent animate-divider"></div>
-        </div>
-
-        {/* Copyright Section */}
-        <div className="text-center text-gray-400">
+        {/* Copyright */}
+        <div className="text-center text-gray-400 mt-6">
           <p>&copy; {new Date().getFullYear()} MyStore. All rights reserved.</p>
           <p className="text-sm mt-2">
             Designed with ❤️ by Yasser -
