@@ -20,7 +20,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className=" min-h-screen relative z-50 py-8 px-4  bg-neutral-100  sm:px-6 lg:px-8">
       {/* Cart Header */}
       <div className="flex items-center space-x-3 my-20 ">
         <Icon icon="mdi:cart-outline" className="w-10 h-10" /> {/* Cart Icon */}
@@ -29,7 +29,7 @@ const Cart = () => {
       <div className="container mx-auto">
         {/* Cart Content */}
         {cart.length === 0 ? (
-          <div className="text-center  flex justify-center flex-wrap items-center ">
+          <div className="text-center  flex justify-center flex-wrap items-center gap-3 ">
             <img src={illustrationCart} alt="" className="w-72 h-72" />
 
             <article>

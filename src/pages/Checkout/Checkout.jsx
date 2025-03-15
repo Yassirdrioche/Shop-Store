@@ -77,7 +77,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 lg:py-16 bg-gray-50 ">
+    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 lg:py-16 bg-neutral-100 relative z-50 ">
       <div className="container mx-auto mt-16">
         {/* Checkout Header */}
         <div className="flex items-center space-x-3 mb-8">
