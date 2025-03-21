@@ -34,7 +34,7 @@ const HeroSection = () => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          className="hero  w-full h-dvh flex items-center justify-between text-white overflow-hidden px-10"
+          className="hero w-full h-dvh flex items-center justify-between text-white overflow-hidden px-10"
         >
           {/* Background Overlay */}
 

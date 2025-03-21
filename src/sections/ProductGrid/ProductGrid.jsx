@@ -87,7 +87,7 @@ const ProductGrid = () => {
             <h2 className="text-3xl font-bold text-right relative z-10 text-white">
               Stylish Clothes
             </h2>
-            <p className="text-neutral-100 text-right relative z-10">
+            <p className="text-neutral-100 md:text-left lg:text-right relative z-10">
               Elevate your style with our exclusive collection of trendy and
               comfortable clothing. From casual wear to formal attire, our
               designs are crafted to suit every occasion. Made with high-quality
@@ -191,10 +191,10 @@ const ProductGrid = () => {
             {/* Square Shape */}
             <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-zinc-200 opacity-50 rotate-45"></div>
 
-            <h2 className="text-3xl font-bold text-right relative z-10 text-white">
+            <h2 className="text-3xl font-bold  relative z-10 text-white">
               Classic Watch
             </h2>
-            <p className="text-neutral-100 text-right relative z-10">
+            <p className="text-neutral-100 md:text-left lg:text-right relative z-10">
               Discover the perfect accessory for every occasion with our classic
               watches. Combining timeless elegance with modern functionality,
               our watches are designed to complement your style. Whether you're
