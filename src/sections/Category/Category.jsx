@@ -1,73 +1,106 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import { AppContext } from "../../context/AppContext"; // Import context
+import { AppContext } from "../../context/AppContext";
+import SwiperCore from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+
+SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 const Category = () => {
-  const { products, updateFilters } = useContext(AppContext); // Access products and updateFilters from context
-  const navigate = useNavigate("");
+  const { products, updateFilters } = useContext(AppContext);
+  const navigate = useNavigate();
+
   // Extract unique categories from products
   const uniqueCategories = [
     ...new Set(products.map((product) => product.category)),
   ];
 
   const handleCategoryClick = (category) => {
-    updateFilters({ category: category }); // Update the category filter
+    updateFilters({ category });
+    navigate("/shop");
   };
 
   return (
-    <div className="mx-auto  relative z-50  px-4 bg-neutral-800 py-16">
-      <div className="px-4">
-        <Link to={`/shop`}>
-          {/* Heading */}
-          <h2
-            className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center gap-4 mb-12 uppercase text-neutral-100"
-            data-aos="fade-up"
-            data-aos-duration="500"
-          >
-            <Icon icon="iconamoon:category-light" className="w-10 h-10" />
-            <span>Shop by Category</span>
-          </h2>
+    <section className="relative bg-neutral-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50">
+      <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <h2
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center flex justify-center items-center gap-3 sm:gap-4 mb-10 sm:mb-12 lg:mb-16 uppercase text-neutral-800"
+          data-aos="fade-up"
+          data-aos-duration="500"
+        >
+          <Icon
+            icon="iconamoon:category-light"
+            className="w-8 h-8 sm:w-10 sm:h-10"
+          />
+          <span>Shop by Category</span>
+        </h2>
 
-          {/* Creative and Unique Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {uniqueCategories.map((category, index) => {
-              const categoryProduct = products.find(
-                (prod) => prod.category === category
-              );
-              return (
+        {/* Swiper Carousel */}
+        <Swiper
+          effect="coverflow"
+          grabCursor
+          centeredSlides
+          slidesPerView={1}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={{ clickable: true }}
+          navigation
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              coverflowEffect: { depth: 150, rotate: 40 },
+            },
+            1024: {
+              slidesPerView: 3,
+              coverflowEffect: { depth: 200, rotate: 30 },
+            },
+          }}
+          className="swiper-container"
+        >
+          {uniqueCategories.map((category, index) => {
+            const categoryProduct = products.find(
+              (prod) => prod.category === category
+            );
+            const categoryProducts = products.filter(
+              (prod) => prod.category === category
+            );
+            return (
+              <SwiperSlide key={index}>
                 <div
-                  key={index}
-                  className={`group overflow-hidden rounded-lg shadow-lg hover:shadow-xl sticky top-0 transition-all duration-300 ${
-                    index === 0
-                      ? "sm:col-span-2 lg:col-span-2 h-64" // Large card for the first category
-                      : index === 1
-                      ? "sm:col-span-1 lg:col-span-1 h-64" // Medium card for the second category
-                      : index === 2
-                      ? "sm:col-span-1 lg:col-span-1 h-64" // Small card for the third category
-                      : index === 3
-                      ? "sm:col-span-2 lg:col-span-2 h-64" // Medium card for the fourth category
-                      : index === 4
-                      ? "sm:col-span-1 lg:col-span-2 h-64"
-                      : "sm:col-span-1 lg:col-span-1 h-64" // Small cards for the rest
-                  }`}
-                  data-aos="fade-up"
-                  data-aos-delay={index * 200}
-                  onClick={() => handleCategoryClick(category)} // Set category filter on click
+                  className="group overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[16rem] sm:min-h-[20rem] lg:min-h-[24rem] aspect-[4/3] cursor-pointer bg-neutral-100"
+                  onClick={() => handleCategoryClick(category)}
                 >
                   {/* Category Image */}
                   <div className="relative h-full w-full overflow-hidden">
                     <img
-                      src={categoryProduct.image} // Use the first product's image for the category
+                      src={categoryProduct?.image || "/fallback-image.jpg"}
                       alt={category}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
-                    {/* Category Name */}
-                    <h3 className="absolute bottom-4 left-4 text-white text-2xl font-bold capitalize">
-                      {category}
-                    </h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
+                    {/* Category Info */}
+                    <div className="absolute bottom-4 left-4 flex flex-col">
+                      <h3 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold capitalize">
+                        {category}
+                      </h3>
+                      <p className="text-neutral-200 text-sm sm:text-base">
+                        {categoryProducts.length} items
+                      </p>
+                    </div>
                   </div>
 
                   {/* Shop Now Button */}
@@ -75,24 +108,35 @@ const Category = () => {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        e.preventDefault();
-                        handleCategoryClick(category); // Set category filter on click
-                        navigate(`shop`);
+                        handleCategoryClick(category);
                       }}
-                      // Link to the Shop page
-                      className="flex items-center justify-center bg-white text-neutral-900 font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-neutral-900 hover:text-white transition-all duration-300"
+                      className="flex items-center justify-center bg-white text-neutral-900 font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-3xl shadow-lg hover:bg-neutral-900 hover:text-white transition-all duration-300 text-sm sm:text-base"
                     >
                       <span>Shop Now</span>
-                      <Icon icon="mdi:arrow-right" className="w-5 h-5 ml-2" />
+                      <Icon
+                        icon="mdi:arrow-right"
+                        className="w-4 h-4 sm:w-5 sm:h-5 ml-2"
+                      />
                     </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </Link>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+
+        {/* Browse All Button */}
+        <div className="text-center mt-10 sm:mt-12 lg:mt-16">
+          <button
+            onClick={() => navigate("/shop")}
+            className="inline-flex items-center px-6 py-3 border border-white/10 text-white bg-black/50 hover:bg-white hover:text-black transition-all duration-300 rounded-full"
+          >
+            Browse All Categories
+            <Icon icon="mdi:arrow-right" className="w-5 h-5 ml-2" />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,10 +7,10 @@ import GradientBackground from "../../utils/GradientBackground";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-r footer   text-white  relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 ">
         <GradientBackground />
       </div>
-      <div className="fixed bottom-0  grid ftr  footer w-full place-items-center ">
+      <div className="fixed bottom-0  grid   footer w-full place-items-center ">
         <div className="custom-shape-divider-top-1741878716">
           <svg
             data-name="Layer 1"
@@ -100,7 +100,7 @@ const Footer = () => {
             </div>
 
             {/* Newsletter Section */}
-                     </div>
+          </div>
 
           {/* Divider with Animation */}
           <div className="border-t border-gray-800 my-6 relative">
@@ -108,19 +108,25 @@ const Footer = () => {
           </div>
 
           {/* Copyright Section */}
-          <div className="text-center text-gray-400">
-            <p>
-              &copy; {new Date().getFullYear()} MyStore. All rights reserved.
-            </p>
-            <p className="text-sm mt-2">
-              Designed with ❤️ by Yasser -
+          <div className="text-center text-gray-400 py-6">
+            <p>© {new Date().getFullYear()} MyStore. All rights reserved.</p>
+            <p className="mt-2">
+              <span>Designed with </span>
+              <span>
+                <Icon
+                  icon="iconamoon:heart-fill"
+                  className="inline-block w-5 h-5"
+                  aria-hidden="true"
+                />
+              </span>{" "}
+              by Yasser -{" "}
               <a
                 href="https://yourwebsite.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:underline"
               >
-                <span> My Self</span>
+                My Self
               </a>
             </p>
           </div>

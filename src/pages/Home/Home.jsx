@@ -25,30 +25,18 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {/* Hero Section */}
-
       <Hero />
-
-      {/* <ProductGrid /> */}
-
-      <About />
       {/* Featured Products Section */}
-
+      <About />
       <FeaturedProducts />
-
       {/* Best Sellers Section */}
-
       <BestSellers />
-
-      <OfferSection />
       {/* Category Section */}
-
       <Category />
-      <div></div>
       <Blog />
       {/* Reviews Section */}
-
       <Reviews />
     </div>
   );

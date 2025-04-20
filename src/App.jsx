@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { AuthProvider } from "./context/AuthContext"; // Import AuthProvider
+import React, { Suspense, useEffect } from "react";
+import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header";
@@ -25,20 +25,26 @@ const BlogDetails = React.lazy(() => import("./pages/Blog/BlogDetails"));
 const Login = React.lazy(() => import("./pages/Login/Login"));
 
 const App = () => {
-  return (
-    <>
-      <div className="line_prog"></div>
+  // Ensure scroll to top on initial load/refresh
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // Prevent browser scroll restoration
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
 
+  return (
+    <div className="min-h-screen flex flex-col">
+      <div className="line_prog"></div>
       <BtnScrollTop />
       <CustomCursor />
       <SmoothScroll />
       <Router>
         <ScrollToTop />
         <AuthProvider>
-          {" "}
-          {/* Wrap the application in AuthProvider */}
           <SideBar />
-          <div>
+          <div className="flex-1">
             <Header />
             <ToastContainer
               position="bottom-right"
@@ -53,11 +59,11 @@ const App = () => {
             />
             <Suspense
               fallback={
-                <div className="py-10 min-h-screen relative z-50  bg-neutral-200 grid place-content-center">
+                <div className="min-h-screen z-50 relative bg-neutral-200 grid place-content-center">
                   <Circles
                     height="80"
                     width="80"
-                    color="#00000"
+                    color="#000000"
                     ariaLabel="circles-loading"
                     wrapperStyle={{}}
                     wrapperClass=""
@@ -72,20 +78,17 @@ const App = () => {
                 <Route path="/blog/:id" element={<BlogDetails />} />
                 <Route path="/product/:id" element={<ProductDetails />} />
                 <Route path="/cart" element={<Cart />} />
-                <Route path="/login" element={<Login />} />{" "}
-                {/* Add route for Login */}
-                <Route path="/checkout" element={<Checkout />} />{" "}
-                {/* Add route for Checkout */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="/wishlist" element={<Wishlist />} />
-                <Route path="*" element={<NotFound />} /> {/* 404 Page */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
-            <Footer />
           </div>
-        </AuthProvider>{" "}
-        {/* Close AuthProvider */}
+          <Footer />
+        </AuthProvider>
       </Router>
-    </>
+    </div>
   );
 };
 

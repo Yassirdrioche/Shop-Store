@@ -1,78 +1,125 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NeatGradient } from "@firecms/neat";
+import { useInView } from "react-intersection-observer";
+import { useMediaQuery } from "react-responsive";
 
 const GradientBackground = () => {
   const canvasRef = useRef(null);
   const gradientRef = useRef(null);
+  const [ref, inView] = useInView({ threshold: 0.1 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!inView || isMobile || !canvasRef.current) return;
 
-    // Define the gradient configuration
     const config = {
       colors: [
-        {
-          color: "#0A0A0A",
-          enabled: true,
-        },
-        {
-          color: "#141414",
-          enabled: true,
-        },
-        {
-          color: "#202020",
-          enabled: true,
-        },
-        {
-          color: "#393838",
-          enabled: true,
-        },
-        {
-          color: "#545454",
-          enabled: true,
-        },
+        { color: "#8E8D8B", enabled: true },
+        { color: "#565656", enabled: true },
+        { color: "#383939", enabled: true },
+        { color: "#262627", enabled: true },
+        { color: "#101010", enabled: true },
       ],
-      speed: 4,
-      horizontalPressure: 4,
-      verticalPressure: 3,
-      waveFrequencyX: 0,
-      waveFrequencyY: 0,
-      waveAmplitude: 0,
-      shadows: 2,
-      highlights: 7,
+      speed: 2,
+      horizontalPressure: 3,
+      verticalPressure: 5,
+      waveFrequencyX: 1,
+      waveFrequencyY: 3,
+      waveAmplitude: 8,
+      shadows: 0,
+      highlights: 2,
       colorBrightness: 1,
-      colorSaturation: 8,
+      colorSaturation: 6,
       wireframe: false,
-      colorBlending: 5,
-      backgroundColor: "#161616",
+      colorBlending: 7,
+      backgroundColor: "#003FFF",
       backgroundAlpha: 1,
-      grainScale: 0,
+      grainScale: 2,
       grainSparsity: 0,
-      grainIntensity: 0,
-      grainSpeed: 0,
-      resolution: 0.5,
+      grainIntensity: 0.175,
+      grainSpeed: 1,
+      resolution: 0.7,
     };
 
-    // Initialize the NeatGradient
+    let animationFrame;
+    let lastUpdate = 0;
+    const updateInterval = 1000 / 30; // 30fps
+
+    const update = (timestamp) => {
+      if (!gradientRef.current) return;
+
+      if (timestamp - lastUpdate >= updateInterval) {
+        gradientRef.current.update();
+        lastUpdate = timestamp;
+      }
+      animationFrame = requestAnimationFrame(update);
+    };
+
     gradientRef.current = new NeatGradient({
       ref: canvasRef.current,
-      ...config, // Apply the configuration settings
+      ...config,
     });
 
-    // Cleanup function to destroy the gradient when component unmounts
-    return () => gradientRef.current.destroy();
-  }, []);
+    const initTimeout = setTimeout(() => {
+      animationFrame = requestAnimationFrame(update);
+      setIsLoaded(true);
+    }, 100);
+
+    return () => {
+      clearTimeout(initTimeout);
+      cancelAnimationFrame(animationFrame);
+      gradientRef.current?.destroy();
+    };
+  }, [inView, isMobile]);
+
+  if (isMobile) {
+    return (
+      <div
+        ref={ref}
+        style={{
+          position: "absolute", // Changed from fixed to absolute
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "linear-gradient(135deg, #554226 0%, #02152A 100%)",
+          opacity: 0.8,
+        }}
+      />
+    );
+  }
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        isolation: "isolate",
-        height: "100vh", // Full viewport height
-        width: "100%", // Full viewport width
-        display: "block", // Prevent canvas from overflowing or resizing
-      }}
-    />
+    <div style={{ position: "absolute", width: "100%", height: "100%" }}>
+      <canvas
+        ref={(node) => {
+          canvasRef.current = node;
+          ref(node);
+        }}
+        style={{
+          isolation: "isolate",
+          height: "100%",
+          width: "100%",
+          display: "block",
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 0.5s ease-in-out",
+        }}
+      />
+      {!isLoaded && (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            // background: "linear-gradient(135deg, #554226 0%, #02152A 100%)",
+            opacity: 0.8,
+          }}
+        />
+      )}
+    </div>
   );
 };
 

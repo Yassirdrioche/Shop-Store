@@ -14,6 +14,7 @@
 body {
   font-family: "Exo", sans-serif;
   overflow-x: hidden;
+
 }
 .custom-shadow {
   filter: drop-shadow(3px 3px 20px rgba(177, 179, 177, 0.342));
@@ -73,4 +74,55 @@ body {
   ); /* Center the cursor on the mouse position */
   z-index: 9999; /* Ensure the cursor is above other elements */
   transition: transform 0.1s ease-out, width 0.2s ease-out, height 0.2s ease-out;
+}
+
+/* Category.css */
+.swiper-container {
+  padding: 1rem 0;
+  margin: 0 -1rem;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ffffff;
+  opacity: 1;
 }

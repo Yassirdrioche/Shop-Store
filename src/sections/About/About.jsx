@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import CountUp from "react-countup";
+import React, { useEffect } from "react";
 import { Icon } from "@iconify/react";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 import office1 from "../../assets/picture/office.jpg";
 import office2 from "../../assets/picture/office2.jpg";
 import team from "../../assets/picture/team.jpg";
@@ -8,215 +9,276 @@ import road from "../../assets/picture/road.jpg";
 import ball from "../../assets/picture/ball.jpg";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const counterRef = useRef(null);
-
+  // Preload images
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(counterRef.current);
-        }
-      },
-      {
-        threshold: 0.5,
-        rootMargin: "0px 0px -100px 0px",
-      }
-    );
-
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
-
-    return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
-    };
+    [office1, office2, team, road, ball].forEach((img) => {
+      new Image().src = img;
+    });
   }, []);
 
+  // Static values for stats
+  const happyCustomers = 10000;
+  const productsSold = 250000;
+  const yearsExperience = 8;
+
+  // Debug log to confirm CountUp is loaded
+  useEffect(() => {
+    console.log("CountUp component:", CountUp);
+  }, []);
+
+  // Use intersection observer to trigger animation when section is in view
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animate only once
+    threshold: 0.3, // Trigger when 30% of the section is visible
+  });
+
   return (
-    <div
-      className="relative overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200 py-24 z-50"
-      id="about-us"
-    >
-      {/* Custom Shape Background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-r from-neutral-400 to-neutral-700 rounded-full opacity-20 blur-3xl animate-float"></div>
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-r from-neutral-400 to-neutral-700 rounded-full opacity-20 blur-3xl animate-float-reverse"></div>
-      </div>
+    <section className="bg-neutral-100 py-16 lg:py-24 z-50 relative" id="about">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4">
+            Our Story
+          </h2>
+          <p className="text-neutral-600 max-w-2xl mx-auto">
+            From humble beginnings to becoming your trusted destination
+          </p>
+        </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Heading with Gradient Text */}
-        <h2
-          className="text-6xl font-bold text-center mb-16 flex items-center justify-center"
-          data-aos="fade-up"
-        >
-          <Icon
-            icon="mdi:about-variant"
-            className="mr-4 text-7xl text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-blue-600"
-          />
-          <span className="uppercase bg-clip-text text-transparent bg-gradient-to-r from-black to-neutral-700">
-            About Us
-          </span>
-        </h2>
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          {/* Text Content */}
+          <div>
+            <h3 className="text-2xl md:text-3xl font-semibold text-neutral-800 mb-6">
+              More Than Just Products
+            </h3>
+            <p className="text-neutral-600 mb-6 leading-relaxed">
+              Founded in {new Date().getFullYear() - yearsExperience}, we began
+              as a small team working from our first office, passionate about
+              bringing quality goods to our community.
+            </p>
+            <p className="text-neutral-600 mb-8 leading-relaxed">
+              Today, we operate from modern headquarters while maintaining the
+              same personal touch that made us successful.
+            </p>
 
-        {/* Asymmetrical Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side: Text Content */}
-          <div className="space-y-8" data-aos="fade-up">
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              We are a company dedicated to providing high-quality products and
-              exceptional customer service. Our mission is to make your life
-              better with our innovative solutions.
-            </p>
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              With a passion for excellence, we strive to deliver products that
-              combine cutting-edge technology, sleek design, and unmatched
-              functionality.
-            </p>
-            <button
-              className="bg-gradient-to-r from-neutral-600 to-black/50 text-white px-8 py-4 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-              data-aos="fade-up"
-            >
-              Learn More
-            </button>
+            <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex items-center bg-neutral-200 px-4 py-2 rounded-lg border border-neutral-300">
+                <Icon
+                  icon="mdi:shield-check"
+                  className="text-neutral-600 text-xl mr-2"
+                />
+                <span className="text-neutral-800">Quality Assurance</span>
+              </div>
+              <div className="flex items-center bg-neutral-200 px-4 py-2 rounded-lg border border-neutral-300">
+                <Icon
+                  icon="mdi:truck-fast"
+                  className="text-neutral-600 text-xl mr-2"
+                />
+                <span className="text-neutral-800">Fast Shipping</span>
+              </div>
+              <div className="flex items-center bg-neutral-200 px-4 py-2 rounded-lg border border-neutral-300">
+                <Icon
+                  icon="mdi:account-group"
+                  className="text-neutral-600 text-xl mr-2"
+                />
+                <span className="text-neutral-800">Team of Experts</span>
+              </div>
+            </div>
           </div>
 
-          {/* Right Side: Image with Parallax Effect */}
-          <div className="relative" data-aos="fade-up">
-            <div className="absolute -top-8 -right-8 w-full h-full bg-gradient-to-r from-neutral-400 to-neutral-800 rounded-lg shadow-2xl transform rotate-6"></div>
-            <img
-              src={office1}
-              alt="About Us"
-              className="w-full h-auto rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-300 relative z-10"
-            />
-            <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-lg shadow-lg w-1/2 z-20">
-              <h3 className="text-xl font-bold mb-2">Our Vision</h3>
-              <p className="text-neutral-700">
-                To be the global leader in innovative solutions that transform
-                lives.
-              </p>
+          {/* Image Collage */}
+          <div className="grid grid-cols-2 gap-4 h-96">
+            <div className="relative rounded-xl overflow-hidden border border-neutral-300">
+              <img
+                src={office1}
+                alt="Interior of our first office from 2017"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-neutral-300">
+              <img
+                src={team}
+                alt="Our dedicated team collaborating in a meeting"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-neutral-300 col-span-2">
+              <img
+                src={road}
+                alt="Our delivery network vehicles on the road"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-800/60 via-transparent to-transparent flex items-end p-4">
+                <span className="text-neutral-100 font-medium">
+                  Our Delivery Network
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Additional Features Section */}
+        {/* Stats Section with Counter Animation */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24"
-          ref={counterRef}
+          ref={ref}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 my-16 bg-neutral-200 p-8 rounded-xl border border-neutral-300"
         >
-          {/* Feature 1 */}
-          <div
-            className="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-all duration-300"
-            data-aos="fade-up"
-          >
-            <div className="text-5xl font-bold text-black mb-4">
-              {isVisible ? (
-                <CountUp start={0} end={10} duration={2} suffix="+" />
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-neutral-800 mb-2">
+              {inView ? (
+                <CountUp
+                  end={happyCustomers}
+                  duration={2.5}
+                  separator=","
+                  suffix="+"
+                  onEnd={() => console.log("Happy Customers CountUp finished")}
+                />
               ) : (
                 "0+"
               )}
             </div>
-            <h3 className="text-2xl font-semibold mb-2">Years of Experience</h3>
-            <p className="text-neutral-700">
-              We have been serving customers for over a decade.
-            </p>
+            <h4 className="text-lg font-medium text-neutral-600">
+              Satisfied Customers
+            </h4>
           </div>
-
-          {/* Feature 2 */}
-          <div
-            className="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-all duration-300"
-            data-aos="fade-up"
-          >
-            <div className="text-5xl font-bold text-black mb-4">
-              {isVisible ? (
-                <CountUp start={0} end={500} duration={2} suffix="+" />
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-neutral-800 mb-2">
+              {inView ? (
+                <CountUp
+                  end={productsSold}
+                  duration={2.5}
+                  separator=","
+                  suffix="+"
+                  onEnd={() => console.log("Products Sold CountUp finished")}
+                />
               ) : (
                 "0+"
               )}
             </div>
-            <h3 className="text-2xl font-semibold mb-2">Happy Clients</h3>
-            <p className="text-neutral-700">
-              Our customers trust us for quality and reliability.
-            </p>
+            <h4 className="text-lg font-medium text-neutral-600">
+              Products Delivered
+            </h4>
           </div>
-
-          {/* Feature 3 */}
-          <div
-            className="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-all duration-300"
-            data-aos="fade-up"
-          >
-            <div className="text-5xl font-bold text-black mb-4">
-              {isVisible ? (
-                <CountUp start={0} end={100} duration={2} suffix="%" />
+          <div className="text-center">
+            <div className="text-4xl md:text-5xl font-bold text-neutral-800 mb-2">
+              {inView ? (
+                <CountUp
+                  end={yearsExperience}
+                  duration={2.5}
+                  suffix="+"
+                  onEnd={() => console.log("Years Experience CountUp finished")}
+                />
               ) : (
-                "0%"
+                "0+"
               )}
             </div>
-            <h3 className="text-2xl font-semibold mb-2">Satisfaction</h3>
-            <p className="text-neutral-700">
-              We guarantee satisfaction with every purchase.
-            </p>
+            <h4 className="text-lg font-medium text-neutral-600">
+              Years Experience
+            </h4>
           </div>
         </div>
 
-        {/* Additional Content Section */}
-        <div className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Side: Creative Image Grid */}
-          <div className="grid grid-cols-2 gap-6 relative">
-            <div className="absolute -top-8 -left-8 w-full h-full bg-gradient-to-r from-neutral-800 to-neutral-400 rounded-lg shadow-2xl transform rotate-6"></div>
-            <img
-              src={road}
-              alt="history"
-              className="w-full h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 relative z-10"
-              data-aos="fade-up"
-            />
-            <img
-              src={ball}
-              alt="technologie"
-              className="w-full h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 relative z-10"
-              data-aos="fade-up"
-            />
-            <img
-              src={team}
-              alt="team"
-              className="w-full h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 relative z-10"
-              data-aos="fade-up"
-            />
-            <img
-              src={office2}
-              alt="office"
-              className="w-full h-auto rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 relative z-10"
-              data-aos="fade-up"
-            />
+        {/* Our Approach Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-20">
+          {/* Image Grid */}
+          <div className="grid grid-cols-2 gap-4 h-96">
+            <div className="relative rounded-xl overflow-hidden border border-neutral-300">
+              <img
+                src={office2}
+                alt="Modern headquarters office exterior"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-neutral-300">
+              <img
+                src={ball}
+                alt="Product testing in our quality control lab"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="bg-neutral-200 rounded-xl p-6 col-span-2 flex items-center border border-neutral-300">
+              <Icon
+                icon="mdi:lightbulb-on"
+                className="text-neutral-600 text-3xl mr-4"
+              />
+              <div>
+                <h4 className="text-lg font-semibold text-neutral-800 mb-1">
+                  Innovation Driven
+                </h4>
+                <p className="text-neutral-600 text-sm">
+                  Constantly improving our products and services
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Side: Text Content */}
-          <div className="space-y-8" data-aos="fade-up">
-            <h3 className="text-4xl font-bold text-neutral-900">Our Story</h3>
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              Founded in 2010, we started as a small team with a big dream: to
-              revolutionize the way people experience technology. Over the
-              years, we've grown into a global brand, but our commitment to
-              quality and innovation remains unchanged.
-            </p>
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              Our team of experts works tirelessly to bring you the best
-              products and services. From design to delivery, we ensure every
-              detail is perfect.
-            </p>
-            <button
-              className="bg-gradient-to-r from-neutral-800 to-neutral-400  text-white px-8 py-4 rounded-lg hover:bg-black transition-all duration-300 transform hover:scale-95 shadow-lg"
-              data-aos="fade-up"
-            >
-              Meet the Team
-            </button>
+          {/* Text Content */}
+          <div>
+            <h3 className="text-2xl md:text-3xl font-semibold text-neutral-800 mb-6">
+              Our Approach
+            </h3>
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="bg-neutral-200 p-2 rounded-full mr-4 flex-shrink-0 border border-neutral-300">
+                  <Icon
+                    icon="mdi:magnify"
+                    className="text-neutral-600 text-xl"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium text-neutral-800 mb-2">
+                    Careful Curation
+                  </h4>
+                  <p className="text-neutral-600">
+                    Each product is personally tested by our team before being
+                    offered to you.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="bg-neutral-200 p-2 rounded-full mr-4 flex-shrink-0 border border-neutral-300">
+                  <Icon
+                    icon="mdi:factory"
+                    className="text-neutral-600 text-xl"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium text-neutral-800 mb-2">
+                    Direct Partnerships
+                  </h4>
+                  <p className="text-neutral-600">
+                    We work directly with manufacturers to ensure quality and
+                    fair pricing.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="bg-neutral-200 p-2 rounded-full mr-4 flex-shrink-0 border border-neutral-300">
+                  <Icon
+                    icon="mdi:recycle"
+                    className="text-neutral-600 text-xl"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium text-neutral-800 mb-2">
+                    Sustainable Growth
+                  </h4>
+                  <p className="text-neutral-600">
+                    Committed to ethical business practices that benefit
+                    everyone.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
