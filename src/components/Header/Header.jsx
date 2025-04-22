@@ -115,7 +115,7 @@ const Header = () => {
             <Link to="/" className="text-2xl font-bold  flex items-center">
               <img
                 src={isScrolled ? logoWhite : logoBlack}
-                className="w-20"
+                className="h-auto w-20"
                 alt=""
               />
             </Link>

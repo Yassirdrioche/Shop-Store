@@ -35,7 +35,7 @@ const ProductGrid = () => {
 
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
+            className="relative  flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
             data-aos="fade-left"
             data-aos-duration="500"
           >
@@ -72,7 +72,7 @@ const ProductGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-start lg:items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
+            className="relative  flex-col flex gap-6 items-start  h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
             data-aos="fade-right"
             data-aos-duration="500"
           >
@@ -84,10 +84,10 @@ const ProductGrid = () => {
             {/* Square Shape */}
             <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-neutral-200 opacity-50 rotate-45"></div>
 
-            <h2 className="text-3xl font-bold text-right relative z-10 text-white">
+            <h2 className="text-3xl font-bold text-left relative z-10 text-white">
               Stylish Clothes
             </h2>
-            <p className="text-neutral-100 md:text-left lg:text-right relative z-10">
+            <p className="text-neutral-100 md:text-left  relative z-10">
               Elevate your style with our exclusive collection of trendy and
               comfortable clothing. From casual wear to formal attire, our
               designs are crafted to suit every occasion. Made with high-quality
@@ -143,7 +143,7 @@ const ProductGrid = () => {
 
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
+            className="relative  flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
             data-aos="fade-left"
             data-aos-duration="500"
           >
@@ -179,7 +179,7 @@ const ProductGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
-            className="relative text-center flex-col flex gap-6 items-start lg:items-end h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
+            className="relative  flex-col flex gap-6 items-start  h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
             data-aos="fade-right"
             data-aos-duration="500"
           >
@@ -194,7 +194,7 @@ const ProductGrid = () => {
             <h2 className="text-3xl font-bold  relative z-10 text-white">
               Classic Watch
             </h2>
-            <p className="text-neutral-100 md:text-left lg:text-right relative z-10">
+            <p className="text-neutral-100 text-left  relative z-10">
               Discover the perfect accessory for every occasion with our classic
               watches. Combining timeless elegance with modern functionality,
               our watches are designed to complement your style. Whether you're

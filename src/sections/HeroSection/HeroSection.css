@@ -43,13 +43,14 @@
 }
 .hero-grd {
   position: absolute;
-  inset: 0px;
   background-image: radial-gradient(
     150% 105% at -6% -6%,
     rgb(255, 255, 255) 80%,
     rgba(73, 73, 72, 0.43)
   );
   transform: translateY(0%) translateZ(0px);
+  inset: 0;
+
 }
 @keyframes shine {
   100% {

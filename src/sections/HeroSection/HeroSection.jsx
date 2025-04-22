@@ -22,19 +22,20 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative z-50">
-      <div className="hero sticky top-0">
+    <div className="relative z-50 ">
+      <div className="hero-grd"></div>
+      <div className="hero sticky top-0 ">
         <section
           style={{
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          className="w-full hero flex hero-grd items-center justify-center text-black overflow-hidden px-10"
+          className="w-full hero flex hero-grd  items-center justify-center text-black overflow-hidden px-10"
         >
           {/* Content */}
-          <div className="relative  z-10 text-left ">
+          <div className="relative text-left ">
             {/* Word-by-Word Fade-Up Effect with Proper Spacing */}
-            <h1 className="md:text-8xl text-5xl flex font-bold mb-6 ">
+            <h1 className="md:text-8xl text-5xl flex md:flex-nowrap flex-wrap font-bold mb-6 ">
               {words.map((word, index) => (
                 <span
                   key={index}
@@ -98,8 +99,6 @@ const HeroSection = () => {
                     Shop Now
                   </span>
                 </div>
-
-             
               </button>
             </Link>
           </div>

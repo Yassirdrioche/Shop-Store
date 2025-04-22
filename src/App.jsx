@@ -1,34 +1,54 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, lazy } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SideBar from "./components/Sidebar/Sidebar";
-import SmoothScroll from "./utils/LenisProvider";
-import CustomCursor from "./utils/customCursor/CustomCursor";
 import ScrollToTop from "./utils/ScrollToTop";
 import BtnScrollTop from "./utils/BtnScrollTop";
-import { Circles } from "react-loader-spinner";
-import Checkout from "./pages/Checkout/Checkout";
+import { Bars } from "react-loader-spinner";
 
-// Lazy-loaded components
-const Home = React.lazy(() => import("./pages/Home/Home"));
-const Shop = React.lazy(() => import("./pages/Shop/Shop"));
-const ProductDetails = React.lazy(() =>
-  import("./pages/ProductDetails/ProductDetails")
+// Lazy-loaded components with prefetch
+const Home = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Home/Home")
 );
-const Cart = React.lazy(() => import("./pages/Cart/Cart"));
-const NotFound = React.lazy(() => import("./pages/NotFound/NotFound"));
-const Wishlist = React.lazy(() => import("./pages/Wishlist/Wishlist"));
-const BlogDetails = React.lazy(() => import("./pages/Blog/BlogDetails"));
-const Login = React.lazy(() => import("./pages/Login/Login"));
+const Shop = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Shop/Shop")
+);
+const ProductDetails = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/ProductDetails/ProductDetails")
+);
+const Cart = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Cart/Cart")
+);
+const NotFound = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/NotFound/NotFound")
+);
+const Wishlist = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Wishlist/Wishlist")
+);
+const BlogDetails = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Blog/BlogDetails")
+);
+const Login = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Login/Login")
+);
+const Checkout = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Checkout/Checkout")
+);
+const CustomCursor = lazy(() => import("./utils/customCursor/CustomCursor"));
+const SmoothScroll = lazy(() => import("./utils/LenisProvider"));
+
+const LoadingSpinner = () => (
+  <div className="min-h-screen z-50 relative bg-neutral-200 grid place-content-center">
+    <Bars height="80" width="80" color="#00000" visible={true} />
+  </div>
+);
 
 const App = () => {
-  // Ensure scroll to top on initial load/refresh
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Prevent browser scroll restoration
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
@@ -38,8 +58,11 @@ const App = () => {
     <div className="min-h-screen flex flex-col">
       <div className="line_prog"></div>
       <BtnScrollTop />
-      <CustomCursor />
-      <SmoothScroll />
+      <Suspense fallback={null}>
+        <CustomCursor />
+        <SmoothScroll />
+      </Suspense>
+
       <Router>
         <ScrollToTop />
         <AuthProvider>
@@ -48,7 +71,7 @@ const App = () => {
             <Header />
             <ToastContainer
               position="bottom-right"
-              autoClose={1000}
+              autoClose={500}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick
@@ -57,21 +80,7 @@ const App = () => {
               draggable
               pauseOnHover
             />
-            <Suspense
-              fallback={
-                <div className="min-h-screen z-50 relative bg-neutral-200 grid place-content-center">
-                  <Circles
-                    height="80"
-                    width="80"
-                    color="#000000"
-                    ariaLabel="circles-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    visible={true}
-                  />
-                </div>
-              }
-            >
+            <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 <Route index element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
