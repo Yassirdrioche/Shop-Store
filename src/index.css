@@ -14,7 +14,6 @@
 body {
   font-family: "Exo", sans-serif;
   overflow-x: hidden;
-
 }
 .custom-shadow {
   filter: drop-shadow(3px 3px 20px rgba(177, 179, 177, 0.342));
@@ -77,6 +76,7 @@ body {
 }
 
 /* Category.css */
+/* Category.css */
 .swiper-container {
   padding: 1rem 0;
   margin: 0 -1rem;
@@ -100,29 +100,44 @@ body {
   object-fit: cover;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px;
+.swiper-button-prev-custom button,
+.swiper-button-next-custom button {
+  transition: all 0.3s ease;
+  margin: 0 3rem;
+}
+@media screen and (max-width: 768px) {
+  .swiper-button-prev-custom button,
+  .swiper-button-next-custom button {
+    margin: 0 1rem;
+  }
+}
+.swiper-button-prev-custom button:hover,
+.swiper-button-next-custom button:hover {
+  transform: scale(1.1);
 }
 
 .swiper-pagination-bullet {
   background: #ffffff;
   opacity: 0.5;
+  width: 8px;
+  height: 8px;
 }
 
 .swiper-pagination-bullet-active {
   background: #ffffff;
   opacity: 1;
+}
+
+/* Hide default Swiper buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
 }

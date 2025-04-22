@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
+
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 const Category = () => {
@@ -56,7 +57,10 @@ const Category = () => {
             slideShadows: true,
           }}
           pagination={{ clickable: true }}
-          navigation
+          navigation={{
+            nextEl: ".swiper-button-next-custom",
+            prevEl: ".swiper-button-prev-custom",
+          }}
           breakpoints={{
             640: {
               slidesPerView: 2,
@@ -123,6 +127,24 @@ const Category = () => {
               </SwiperSlide>
             );
           })}
+
+          {/* Custom Navigation Buttons */}
+          <div className="swiper-button-prev-custom absolute top-1/2 -left-4 sm:-left-6 lg:-left-12 transform -translate-y-1/2 z-10">
+            <button
+              className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/50 text-white rounded-full shadow-lg hover:bg-white hover:text-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-neutral-800"
+              aria-label="Previous slide"
+            >
+              <Icon icon="mdi:arrow-left" className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
+          <div className="swiper-button-next-custom absolute top-1/2 -right-4 sm:-right-6 lg:-right-12 transform -translate-y-1/2 z-10">
+            <button
+              className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/50 text-white rounded-full shadow-lg hover:bg-white hover:text-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-neutral-800"
+              aria-label="Next slide"
+            >
+              <Icon icon="mdi:arrow-right" className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
         </Swiper>
 
         {/* Browse All Button */}

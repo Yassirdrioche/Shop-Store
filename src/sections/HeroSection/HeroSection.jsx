@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
-import headphone from "../../assets/picture/jbl.webp";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -23,29 +22,23 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative   z-50">
-      <div className="hero   sticky top-0">
+    <div className="relative z-50">
+      <div className="hero sticky top-0">
         <section
           style={{
-            backgroundAttachment: "fixed",
-
-            backgroundImage: `url(${headphone}), linear-gradient(to top ,rgba(10, 10, 10), rgb(20, 20, 20))`,
-            backgroundSize: "contain",
+            backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
           }}
-          className="hero w-full h-dvh flex items-center justify-between text-white overflow-hidden px-10"
+          className="w-full hero flex hero-grd items-center justify-center text-black overflow-hidden px-10"
         >
-          {/* Background Overlay */}
-
           {/* Content */}
-          <div className="relative pt-[120px] z-10 text-left max-w-2xl ">
+          <div className="relative  z-10 text-left ">
             {/* Word-by-Word Fade-Up Effect with Proper Spacing */}
-            <h1 className="md:text-6xl text-5xl flex flex-wrap font-bold mb-6 text-white">
+            <h1 className="md:text-8xl text-5xl flex font-bold mb-6 ">
               {words.map((word, index) => (
                 <span
                   key={index}
-                  className="opacity-0 fade-word"
+                  className="fade-up words"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {word}&nbsp;
@@ -54,7 +47,7 @@ const HeroSection = () => {
             </h1>
 
             <p
-              className="text-xl mb-8 text-gray-200 animate-fade-in-up"
+              className="text-xl mb-8 text-black animate-fade-in-up"
               data-aos="fade-up"
               data-aos-duration="800"
             >
@@ -62,16 +55,51 @@ const HeroSection = () => {
               shopping with fast delivery.
             </p>
             <Link to={"shop"}>
-              <button className="bg-gradient-to-r from-neutral-700 to-black hover:from-neutral-500 hover:to-black  p-3 gap-2 rounded-lg  w-full md:w-3/5 justify-center flex items-center transition-colors duration-300 shadow-lg hover:shadow-xl">
-                <Icon
-                  icon="weui:shop-outlined"
-                  className="h-7 w-7 text-white"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                />
-                <span className="text-xl font-semibold text-white">
-                  Shop Now
-                </span>
+              <button
+                className="
+  relative
+  bg-gradient-to-r from-neutral-700 to-black
+  hover:bg-gradient-to-r hover:from-neutral-500 hover:to-black
+  px-8 py-2 gap-2 rounded-lg md:w-80
+  justify-center flex items-center
+  transition-all duration-500 ease-in-out
+  shadow-lg hover:shadow-xl
+  overflow-hidden
+  group
+"
+              >
+                {/* Gradient animation layer */}
+                <span
+                  className="
+    absolute inset-0
+    bg-gradient-to-r from-neutral-500 to-black
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-500
+  "
+                ></span>
+
+                {/* Shine effect on hover */}
+                <span
+                  className="
+    absolute top-0 left-0 w-1/2 h-full
+    bg-gradient-to-r from-white/10 to-transparent
+    transform -skew-x-12 -translate-x-full
+    group-hover:animate-shine
+    pointer-events-none
+  "
+                ></span>
+
+                <div className="relative z-10 flex items-center">
+                  <Icon
+                    icon="weui:shop-outlined"
+                    className="h-7 w-7 text-white transition-transform group-hover:scale-110 duration-300"
+                  />
+                  <span className="text-xl font-semibold text-white ml-2 group-hover:tracking-wider transition-all duration-300">
+                    Shop Now
+                  </span>
+                </div>
+
+             
               </button>
             </Link>
           </div>

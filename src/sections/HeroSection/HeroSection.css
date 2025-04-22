@@ -17,3 +17,45 @@
 .hero {
   height: 100dvh;
 }
+.words {
+  background-image: linear-gradient(
+    to right,
+    #222222,
+    #acacac,
+    #222222,
+    #acacac,
+    #222222
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 300% 100%;
+  color: transparent;
+  animation: gradientAnimation 3s linear infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.hero-grd {
+  position: absolute;
+  inset: 0px;
+  background-image: radial-gradient(
+    150% 105% at -6% -6%,
+    rgb(255, 255, 255) 80%,
+    rgba(73, 73, 72, 0.43)
+  );
+  transform: translateY(0%) translateZ(0px);
+}
+@keyframes shine {
+  100% {
+    transform: skewX(-12deg) translateX(200%);
+  }
+}
+.animate-shine {
+  animation: shine 1.5s ease-in-out infinite;
+}
