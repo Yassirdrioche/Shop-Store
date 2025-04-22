@@ -35,7 +35,7 @@ const HeroSection = () => {
           {/* Content */}
           <div className="relative text-left ">
             {/* Word-by-Word Fade-Up Effect with Proper Spacing */}
-            <h1 className="md:text-8xl text-6xl flex  flex-wrap font-bold mb-6 ">
+            <h1 className="md:text-8xl text-6xl flex  flex-wrap font-bold mb-6 selection:bg-transparent selection:text-neutral-400 ">
               {words.map((word, index) => (
                 <span
                   key={index}

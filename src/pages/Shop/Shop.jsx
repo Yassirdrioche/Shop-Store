@@ -69,7 +69,7 @@ const Shop = () => {
           </h2>
           <Suspense
             fallback={
-              <div className="flex justify-center">
+              <div className="flex justify-center h-screen bg-neutral-100">
                 <Grid
                   visible={true}
                   height="50"
