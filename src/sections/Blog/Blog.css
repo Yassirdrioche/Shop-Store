@@ -30,7 +30,7 @@
 /* Extra-large screens (1200px and up) */
 @media (min-width: 1200px) {
   .embla__slide {
-    flex: 0 0 50%; /* Show 4 slides at a time */
+    flex: 0 0 38%; /* Show 4 slides at a time */
   }
 }
 

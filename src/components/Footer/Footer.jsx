@@ -31,7 +31,9 @@ const Footer = () => {
           <div className="grid p-8 py-28 lg:p-3 lg:py-10 grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* About Section */}
             <div className="space-y-4">
-              <img src={logoWhite} className="w-20" alt="Logo" />
+              <Link to="/" className="text-2xl font-bold  flex items-center">
+                <div className="logo">Shopeino</div>
+              </Link>
               <p className="text-gray-400">
                 We are dedicated to providing the best products and services to
                 our customers. Join us on our journey!

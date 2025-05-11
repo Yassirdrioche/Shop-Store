@@ -36,7 +36,7 @@ const ProductGrid = () => {
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
             className="relative  flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
-            data-aos="fade-left"
+            data-aos="fade-up"
             data-aos-duration="500"
           >
             {/* Gradient Overlay */}
@@ -73,7 +73,7 @@ const ProductGrid = () => {
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
             className="relative  flex-col flex gap-6 items-start  h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
-            data-aos="fade-right"
+            data-aos="fade-up"
             data-aos-duration="500"
           >
             {/* Gradient Overlay */}
@@ -144,7 +144,7 @@ const ProductGrid = () => {
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
             className="relative  flex-col flex gap-6 items-start h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8"
-            data-aos="fade-left"
+            data-aos="fade-up"
             data-aos-duration="500"
           >
             {/* Gradient Overlay */}
@@ -180,7 +180,7 @@ const ProductGrid = () => {
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div
             className="relative  flex-col flex gap-6 items-start  h-full w-full bg-neutral-100 bg-opacity-85 backdrop-blur justify-center p-8 order-2 md:order-1"
-            data-aos="fade-right"
+            data-aos="fade-up"
             data-aos-duration="500"
           >
             {/* Gradient Overlay */}

@@ -8,7 +8,12 @@ const Wishlist = () => {
   const { wishlist } = useContext(AppContext); // Access the wishlist from context
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-700 relative z-50 flex flex-col gap-5 to-neutral-100 py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-neutral-50 relative z-50 flex flex-col gap-5 to-neutral-100 py-12  overflow-hidden px-4 sm:px-6 lg:px-8">
+      <div
+        className="absolute inset-0
+  [background-image:radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
+  bg-[length:20px_20px] opacity-30"
+      ></div>
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto text-center mt-10">
         <h1 className="text-3xl md:text-5xl font-bold text-neutral-50 flex items-center justify-center gap-4">
@@ -26,8 +31,8 @@ const Wishlist = () => {
       <div className="max-w-7xl mx-auto">
         {wishlist.length === 0 ? (
           <div className="text-center">
-            <div className=" p-6 bg-white  rounded-lg shadow-lg">
-              <img src={illustrationWishlist} alt="" className="w-72 h-auto " />
+            <div className=" p-6 bg-white absolute top-0 left-1/2 -translate-x-1/2 rounded-lg shadow-lg">
+              <img src={illustrationWishlist} alt="" className="w-full h-auto " />
 
               <p className="text-neutral-600 text-lg mb-6">
                 No items in your wishlist yet.
