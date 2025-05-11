@@ -9,7 +9,7 @@ const FeaturedProducts = () => {
   const featuredProducts = products.slice(0, 3);
 
   return (
-    <div className=" mx-auto  bg-neutral-100   py-10  relative z-50">
+    <div className=" mx-auto  bg-white   py-10  relative z-50">
       <h2
         className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
         data-aos="fade-up"

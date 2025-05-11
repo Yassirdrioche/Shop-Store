@@ -45,7 +45,7 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto">
+    <div className="bg-neutral-200 py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto">
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
         <h2 className="text-4xl font-bold text-center text-neutral-900 mb-12">

@@ -10,7 +10,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
-
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 const Category = () => {
@@ -28,7 +27,7 @@ const Category = () => {
   };
 
   return (
-    <section className="relative bg-neutral-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50">
+    <section className="relative bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2

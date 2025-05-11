@@ -33,7 +33,7 @@ const About = () => {
   });
 
   return (
-    <section className="bg-neutral-100 py-16 lg:py-24 z-50 relative" id="about">
+    <section className="bg-neutral-200 py-16 lg:py-24 z-50 relative" id="about">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">

@@ -7,7 +7,7 @@ const BestSellers = () => {
   const bestSellers = products.slice(5, 8); // Example: Use the next 3 products as best sellers
 
   return (
-    <div className=" px-4 bg-neutral-100 py-10 relative z-50">
+    <div className=" px-4 bg-neutral-200 py-10 relative z-50">
       <h2
         className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"
         data-aos="fade-up"
