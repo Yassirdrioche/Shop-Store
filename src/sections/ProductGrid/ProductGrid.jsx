@@ -15,7 +15,7 @@ const ProductGrid = () => {
       {/* Zigzag Layout */}
       <div className="bg-neutral-100 p-4 relative  space-y-6 md:space-y-0">
         {/* Row 1: Image on the Left */}
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Background Image Div */}
           <div
             className="relative h-[400px] overflow-hidden"
