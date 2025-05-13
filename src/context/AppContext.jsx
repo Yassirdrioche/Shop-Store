@@ -1,20 +1,20 @@
-import React, { createContext, useState, useEffect } from "react";
-import { toast } from "react-toastify"; // Import toast for notifications
-import prods from "../data/products"; // Adjust the import path
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
+import { toast } from "react-toastify";
+import prods from "../data/products";
 
-// Create the context
 export const AppContext = createContext();
 
-// Create the context provider
 export const AppProvider = ({ children }) => {
-  const [isToggled, setIsToggled] = useState(false); // Sidebar toggle state
-  const [isFilterSideBarOpen, setIsFilterSideBarOpen] = useState(false); // Sidebar toggle state
+  const [isToggled, setIsToggled] = useState(false);
+  const [isFilterSideBarOpen, setIsFilterSideBarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsToggled(!isToggled); // Function to toggle sidebar
-  };
-
-  // Load cart, wishlist, and filters from localStorage or initialize as empty/default
+  // State initialization with localStorage
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -32,142 +32,153 @@ export const AppProvider = ({ children }) => {
       : { category: "all", minPrice: 0, maxPrice: 1000 };
   });
 
-  const [products, setProducts] = useState(prods); // Original products
+  const [products] = useState(prods); // Original products (no need to setProducts if they never change)
 
-  // Save cart to localStorage whenever it changes
+  // Save states to localStorage on changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Save wishlist to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  // Save filters to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("filters", JSON.stringify(filters));
   }, [filters]);
 
-  // Add a product to the cart
-  const addToCart = (product) => {
-    const isProductInCart = cart.some((item) => item.id === product.id);
-    if (!isProductInCart) {
-      setCart([...cart, { ...product, quantity: 1 }]); // Add product with quantity 1
-      toast.success(`${product.name} added to cart!`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    } else {
-      toast.warning(`${product.name} is already in the cart!`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    }
-  };
+  // Memoized filtered products
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesCategory =
+        filters.category === "all" || product.category === filters.category;
+      const matchesPrice =
+        product.price >= filters.minPrice && product.price <= filters.maxPrice;
+      return matchesCategory && matchesPrice;
+    });
+  }, [products, filters]);
 
-  // Remove a product from the cart
-  const removeFromCart = (productId) => {
-    const product = cart.find((item) => item.id === productId);
-    setCart(cart.filter((item) => item.id !== productId));
-    // toast.error(`${product.name} removed from cart!`, {
-    //   position: "bottom-right",
-    //   autoClose: 3000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    // });
-  };
+  // Memoized total calculation
+  const calculateTotal = useMemo(() => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  }, [cart]);
 
-  // Update the quantity of a product in the cart
-  const updateQuantity = (productId, newQuantity) => {
+  // Callbacks for stable function references
+  const toggleSidebar = useCallback(() => {
+    setIsToggled((prev) => !prev);
+  }, []);
+
+  const addToCart = useCallback((product) => {
+    setCart((prevCart) => {
+      const isProductInCart = prevCart.some((item) => item.id === product.id);
+      if (!isProductInCart) {
+        toast.success(`${product.name} added to cart!`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        return [...prevCart, { ...product, quantity: 1 }];
+      } else {
+        toast.warning(`${product.name} is already in the cart!`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        return prevCart;
+      }
+    });
+  }, []);
+
+  const removeFromCart = useCallback((productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  }, []);
+
+  const updateQuantity = useCallback((productId, newQuantity) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
         item.id === productId ? { ...item, quantity: newQuantity } : item
       )
     );
-  };
+  }, []);
 
-  // Calculate the total price of the cart
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  // Update filters
-  const updateFilters = (newFilters) => {
+  const updateFilters = useCallback((newFilters) => {
     setFilters((prevFilters) => ({ ...prevFilters, ...newFilters }));
-  };
+  }, []);
 
-  // Filter products based on current filters
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory =
-      filters.category === "all" || product.category === filters.category;
-    const matchesPrice =
-      product.price >= filters.minPrice && product.price <= filters.maxPrice;
-    return matchesCategory && matchesPrice;
-  });
-
-  // Add or remove a product from the wishlist
-  const toggleWishlist = (product) => {
-    const isProductInWishlist = wishlist.some((item) => item.id === product.id);
-    if (isProductInWishlist) {
-      // Remove from wishlist
-      setWishlist((prevWishlist) =>
-        prevWishlist.filter((item) => item.id !== product.id)
+  const toggleWishlist = useCallback((product) => {
+    setWishlist((prevWishlist) => {
+      const isProductInWishlist = prevWishlist.some(
+        (item) => item.id === product.id
       );
-      toast.error(`${product.name} removed from wishlist!`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    } else {
-      // Add to wishlist
-      setWishlist([...wishlist, product]);
-      toast.success(`${product.name} added to wishlist!`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    }
-  };
+      if (isProductInWishlist) {
+        toast.error(`${product.name} removed from wishlist!`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        return prevWishlist.filter((item) => item.id !== product.id);
+      } else {
+        toast.success(`${product.name} added to wishlist!`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        return [...prevWishlist, product];
+      }
+    });
+  }, []);
+
+  // Memoized context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      cart,
+      wishlist,
+      products,
+      filteredProducts,
+      filters,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      calculateTotal,
+      updateFilters,
+      toggleWishlist,
+      isToggled,
+      toggleSidebar,
+      isFilterSideBarOpen,
+      setIsFilterSideBarOpen,
+      setCart,
+    }),
+    [
+      cart,
+      wishlist,
+      products,
+      filteredProducts,
+      filters,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      calculateTotal,
+      updateFilters,
+      toggleWishlist,
+      isToggled,
+      toggleSidebar,
+      isFilterSideBarOpen,
+    ]
+  );
 
   return (
-    <AppContext.Provider
-      value={{
-        cart,
-        wishlist, // Provide wishlist state
-        products, // Provide original products
-        filteredProducts, // Provide filtered products
-        filters,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        calculateTotal,
-        updateFilters,
-        toggleWishlist, // Provide the toggleWishlist function
-        isToggled, // Provide the sidebar toggle state
-        toggleSidebar, // Provide the function to toggle sidebar
-        isFilterSideBarOpen,
-        setIsFilterSideBarOpen,
-        setCart,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };

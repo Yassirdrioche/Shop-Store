@@ -42,7 +42,7 @@ const SmoothScroll = lazy(() => import("./utils/LenisProvider"));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen z-50 relative bg-neutral-200 grid place-content-center">
-    <Bars height="80" width="80" color="#00000" visible={true} />
+    <Bars height="50" width="50" color="#00000" visible={true} />
   </div>
 );
 

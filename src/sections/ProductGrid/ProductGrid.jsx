@@ -13,11 +13,11 @@ const ProductGrid = () => {
   return (
     <div className="">
       {/* Zigzag Layout */}
-      <div className="bg-neutral-100 p-4 relative  space-y-6 md:space-y-0">
+      <div className="bg-neutral-100 p-4 relative  z-50 space-y-6 md:space-y-0">
         {/* Row 1: Image on the Left */}
         <div className="grid grid-cols-1 md:grid-cols-2 items-center md:gap-0 md:sticky top-0 z-50">
           {/* Background Image Div */}
-          <div
+          {/* <div
             className="relative h-[400px] overflow-hidden"
             style={{
               backgroundImage: `url(${headphones2})`,
@@ -26,12 +26,18 @@ const ProductGrid = () => {
             }}
             data-aos="fade-up"
             data-aos-duration="500"
-          >
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-6">
+          > */}
+          <div className="group overflow-hidden ">
+            <img
+              src={headphones2}
+              className="h-[400px]  object-cover w-full"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-end p-6 ">
               <h2 className="text-white text-4xl font-bold mb-2">Headphones</h2>
               <p className="text-white text-lg">20% OFF</p>
             </div>
           </div>
+          {/* </div> */}
 
           {/* Description Div - Asymmetrical Design with Gradient Overlay */}
           <div

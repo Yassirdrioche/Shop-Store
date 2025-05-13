@@ -1,38 +1,77 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "./AppContext";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // User state
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const { cart, setCart } = useContext(AppContext);
+  const { setCart } = useContext(AppContext);
 
-  // Check localStorage for user data on initial load
+  // Initialize user from localStorage
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser)); // Set user data from localStorage
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error("Failed to parse user data", error);
+        localStorage.removeItem("user");
+      }
     }
   }, []);
 
-  const login = (userData) => {
-    setUser(userData); // Set user data on login
-    localStorage.setItem("user", JSON.stringify(userData)); // Save user data to localStorage
-    navigate("/"); // Navigate to home page after login
-  };
+  // Memoized login function with error handling
+  const login = useCallback(
+    (userData) => {
+      try {
+        const serializedUser = JSON.stringify(userData);
+        localStorage.setItem("user", serializedUser);
+        setUser(userData);
+        navigate("/", { replace: true });
+      } catch (error) {
+        console.error("Failed to save user data", error);
+      }
+    },
+    [navigate]
+  );
 
-  const logout = () => {
-    setUser(null); // Clear user data on logout
-    localStorage.removeItem("user"); // Remove user data from localStorage
+  // Memoized logout function with cleanup
+  const logout = useCallback(() => {
+    localStorage.removeItem("user");
+    setUser(null);
     setCart([]);
-    navigate("/login"); // Navigate to home page after logout
-  };
+    navigate("/login", { replace: true });
+  }, [navigate, setCart]);
+
+  // Memoized context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      user,
+      login,
+      logout,
+      isAuthenticated: !!user,
+    }),
+    [user, login, logout]
+  );
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
