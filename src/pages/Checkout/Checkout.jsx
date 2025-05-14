@@ -91,9 +91,11 @@ const Checkout = () => {
           <div className="text-center py-12">
             <Icon
               icon="mdi:cart-remove"
-              className="w-16 h-16 text-gray-400 mx-auto"
+              className="w-16 h-16 text-  neutral-400 mx-auto"
             />
-            <p className="mt-4 text-xl text-gray-600">Your cart is empty.</p>
+            <p className="mt-4 text-xl text-  neutral-600">
+              Your cart is empty.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -112,7 +114,7 @@ const Checkout = () => {
                       placeholder="Full Name"
                       value={shippingInfo.name}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -121,7 +123,7 @@ const Checkout = () => {
                       placeholder="Address"
                       value={shippingInfo.address}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -130,7 +132,7 @@ const Checkout = () => {
                       placeholder="City"
                       value={shippingInfo.city}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -139,7 +141,7 @@ const Checkout = () => {
                       placeholder="State"
                       value={shippingInfo.state}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -148,7 +150,7 @@ const Checkout = () => {
                       placeholder="ZIP Code"
                       value={shippingInfo.zip}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -157,7 +159,7 @@ const Checkout = () => {
                       placeholder="Country"
                       value={shippingInfo.country}
                       onChange={handleShippingChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                   </div>
@@ -175,7 +177,7 @@ const Checkout = () => {
                       placeholder="Card Number"
                       value={paymentInfo.cardNumber}
                       onChange={handlePaymentChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -184,7 +186,7 @@ const Checkout = () => {
                       placeholder="Expiry Date (MM/YY)"
                       value={paymentInfo.expiryDate}
                       onChange={handlePaymentChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                     <input
@@ -193,7 +195,7 @@ const Checkout = () => {
                       placeholder="CVV"
                       value={paymentInfo.cvv}
                       onChange={handlePaymentChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      className="w-full p-3 border border-  neutral-300 rounded-lg"
                       required
                     />
                   </div>
@@ -217,22 +219,22 @@ const Checkout = () => {
                   {/* Cart Items */}
                   {cart.map((item) => (
                     <div key={item.id} className="flex justify-between">
-                      <p className="text-gray-600">
+                      <p className="text-  neutral-600">
                         {item.name} (x{item.quantity})
                       </p>
-                      <p className="text-gray-900">
+                      <p className="text-  neutral-900">
                         ${(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   ))}
 
                   {/* Total */}
-                  <div className="border-t border-gray-200 pt-4">
+                  <div className="border-t border-  neutral-200 pt-4">
                     <div className="flex justify-between">
-                      <p className="text-lg font-semibold text-gray-900">
+                      <p className="text-lg font-semibold text-  neutral-900">
                         Total
                       </p>
-                      <p className="text-lg font-semibold text-gray-900">
+                      <p className="text-lg font-semibold text-  neutral-900">
                         ${calculateTotal().toFixed(2)}
                       </p>
                     </div>

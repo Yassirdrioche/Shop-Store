@@ -1,49 +1,24 @@
-.embla {
-  overflow: hidden;
-  position: relative;
+/* Blog.css */
+.swiper {
+  padding-bottom: 3rem; /* Space for pagination */
 }
 
-.embla__container {
-  display: flex;
+.swiper-pagination-bullet {
+  background: #18181859; /* Indigo color for pagination dots */
+  opacity: 0.5;
 }
 
-.embla__slide {
-  flex: 0 0 100%; /* Default to full width on small screens */
-  min-width: 0;
-  transition: transform 0.7s ease-in-out;
+.swiper-pagination-bullet-active {
+  opacity: 1;
 }
 
-/* Medium screens (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .embla__slide {
-    flex: 0 0 50%; /* Show 2 slides at a time */
-  }
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-size: 1.5rem; /* Smaller arrow size */
+  transition: background-color 0.3s;
 }
 
-/* Large screens (desktops, 1024px and up) */
-@media (min-width: 1024px) {
-  .embla__slide {
-    flex: 0 0 33.33%; /* Show 3 slides at a time */
-  }
-}
-
-/* Extra-large screens (1200px and up) */
-@media (min-width: 1200px) {
-  .embla__slide {
-    flex: 0 0 38%; /* Show 4 slides at a time */
-  }
-}
-
-.bounce {
-  animation: bounce 4s infinite;
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(10px);
-  }
-  50% {
-    transform: translateY(0);
-  }
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: #181818 !important; /* Darker indigo on hover */
 }

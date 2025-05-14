@@ -42,13 +42,13 @@ const Filters = () => {
               className="w-6 h-6 border-2 rounded-md flex items-center justify-center
                          transition-all duration-300
                         data-[state=checked]:bg-black data-[state=checked]:border-neutral-800
-                         border-gray-300"
+                         border-  neutral-300"
             >
               <Checkbox.Indicator>
                 <CheckIcon className="text-white w-5 h-5" />
               </Checkbox.Indicator>
             </Checkbox.Root>
-            <span className="text-gray-700">All Categories</span>
+            <span className="text-  neutral-700">All Categories</span>
           </label>
 
           {categories.map((category) => (
@@ -62,13 +62,13 @@ const Filters = () => {
                 className="w-6 h-6 border-2 rounded-md flex items-center justify-center
                            transition-all duration-300
                            data-[state=checked]:bg-black data-[state=checked]:border-neutral-800
-                           border-gray-300"
+                           border-  neutral-300"
               >
                 <Checkbox.Indicator>
                   <CheckIcon className="text-white w-5 h-5" />
                 </Checkbox.Indicator>
               </Checkbox.Root>
-              <span className="text-gray-700 capitalize">{category}</span>
+              <span className="text-  neutral-700 capitalize">{category}</span>
             </label>
           ))}
         </div>
@@ -87,7 +87,7 @@ const Filters = () => {
           onChange={handlePriceChange}
           className="custom-slider"
         />
-        <div className="text-center text-gray-700 mt-2 font-medium">
+        <div className="text-center text-  neutral-700 mt-2 font-medium">
           ${filters.minPrice} - ${filters.maxPrice}
         </div>
       </div>

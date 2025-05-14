@@ -51,7 +51,7 @@ const OfferSection = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br relative z-50 from-gray-50 to-gray-100 py-16 mx-auto flex flex-col justify-center items-center overflow-hidden">
+    <div className="bg-gradient-to-br relative z-50 from-  neutral-50 to-  neutral-100 py-16 mx-auto flex flex-col justify-center items-center overflow-hidden">
       {/* Floating Shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="absolute w-64 h-64 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full opacity-20 -top-32 -left-32 animate-float"></div>
@@ -127,7 +127,7 @@ const OfferSection = () => {
 
           {/* Button */}
           <Link to="/shop">
-            <button className="bg-white text-neutral-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <button className="bg-white text-neutral-800 px-6 py-3 rounded-full font-semibold hover:bg-  neutral-100 transition-all duration-300 shadow-lg hover:shadow-xl">
               Shop Now
             </button>
           </Link>

@@ -1,148 +1,111 @@
-import React, { useCallback, useEffect, useState } from "react";
-import blogPosts from "../../data/blogdata";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useEmblaCarousel from "embla-carousel-react";
-import { Icon } from "@iconify/react"; // Import Iconify
-import "./Blog.css";
+import blogPosts from "../../data/blogdata"; // Your blog data
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./Blog.css"; // Optional: For custom styles
 import GridBg from "../../components/GridBg";
 
 const Blog = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "center", // Center the active slide
-  });
-
-  const [selectedIndex, setSelectedIndex] = useState(0); // Track active slide
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false); // Enable/disable prev button
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false); // Enable/disable next button
-
-  // Calculate the center index
-  const centerIndex = Math.floor(blogPosts.length / 2);
-
-  // Update the selected index and button states when the slide changes
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev()); // Enable/disable prev button
-    setNextBtnEnabled(emblaApi.canScrollNext()); // Enable/disable next button
-  }, [emblaApi]);
-
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-
-    // Set the default selected index to the center index
-    emblaApi.scrollTo(centerIndex); // Scroll to the center slide
-  }, [emblaApi, onSelect, centerIndex]);
-
-  // Scroll to the previous slide
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  // Scroll to the next slide
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    // Ensure Swiper styles are loaded
+    import("swiper/css");
+    import("swiper/css/navigation");
+    import("swiper/css/pagination");
+  }, []);
 
   return (
-    <div className="bg-white bg-fixed py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto ">
+    <div className=" bg-white bg-fixed py-10 relative z-50">
       <div className="blog__section" />
-
       <GridBg />
-      <div className="max-w-7xl mx-auto">
-        {/* Page Title */}
-        <section className="flex px-4 justify-evenly flex-wrap items-center">
-          <h2
-            className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-12 uppercase gap-4"
-            data-aos="fade-up"
-          >
-            BLOG
-          </h2>
-          <p className="text-lg mb-12" data-aos="fade-up">
-            Insightful articles, tips, and stories to keep you inspired
-          </p>
-        </section>
-        {/* Embla Carousel Container */}
-        <div className="embla relative overflow-hidden" ref={emblaRef}>
-          <div className="embla__container">
-            {blogPosts.map((post, index) => (
-              <div
-                key={post.id}
-                className={`embla__slide flex justify-center px-4 transition-transform duration-300 ${
-                  index === selectedIndex
-                    ? "scale-105 bounce"
-                    : "scale-90 blur-sm"
-                }`}
-              >
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 w-full">
-                  {/* Blog Image */}
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-48 object-cover"
-                  />
 
-                  {/* Blog Content */}
-                  <div className="p-6">
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold text-neutral-900 mb-3">
-                      {post.title}
-                    </h3>
+      <section className="flex px-4 justify-evenly flex-wrap items-center">
+        <h2
+          className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900"
+          data-aos="fade-up"
+        >
+          Our Blog
+        </h2>
+        <p className="text-lg mb-12" data-aos="fade-up">
+          Discover insightful articles, tips, and stories to keep you inspired
+          and informed.
+        </p>
+      </section>
+      {/* Swiper Carousel */}
+      <div className="max-w-7xl mx-auto mt-12">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={1}
+          spaceBetween={20}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+            el: ".swiper-pagination",
+          }}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+          }}
+          className="swiper"
+        >
+          {blogPosts.map((post) => (
+            <SwiperSlide key={post.id}>
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                {/* Blog Image */}
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-36 object-cover"
+                />
+                {/* Blog Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-neutral-900 mb-2 line-clamp-1 text-ellipsis">
+                    {post.title}
+                  </h3>
+                  <p className="text-neutral-800 mb-4 line-clamp-2">
+                    {post.description}
+                  </p>
+                  {/* Author and Date */}
 
-                    {/* Description */}
-                    <p className="text-neutral-700 mb-4">{post.description}</p>
-
-                    {/* Author and Date */}
-                    <div className="flex items-center text-neutral-600 mb-4">
-                      <img
-                        src={post.avatar}
-                        alt={post.author}
-                        className="w-8 h-8 rounded-full mr-3"
-                      />
-                      <div>
-                        <span className="block font-medium">{post.author}</span>
-                        <span className="block text-sm text-neutral-500">
-                          {post.date}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Read More Button */}
-                    <Link
-                      to={`/blog/${post.id}`}
-                      className="inline-block px-6 py-2 text-white font-semibold rounded-lg transition duration-200 bg-black"
-                    >
-                      Read More
-                    </Link>
-                  </div>
+                  {/* Read More Button */}
+                  <Link
+                    to={`/blog/${post.id}`}
+                    className="inline-block px-5 py-2.5 bg-neutral-800/90 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200"
+                  >
+                    Read More
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Previous Button */}
-          <button
-            className={`embla__prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-2xl text-neutral-800 p-3 rounded-full shadow-lg hover:bg-neutral-100 transition ${
-              !prevBtnEnabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            <Icon icon="bi:chevron-left" />
-          </button>
-
-          {/* Next Button */}
-          <button
-            className={`embla__next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-2xl text-neutral-800 p-3 rounded-full shadow-lg hover:bg-neutral-100 transition ${
-              !nextBtnEnabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            <Icon icon="bi:chevron-right" />
-          </button>
-        </div>
+            </SwiperSlide>
+          ))}
+          {/* Pagination */}
+          <div className="swiper-pagination mt-6"></div>
+          {/* Navigation Buttons */}
+          <div className="swiper-button-prev !text-white !bg-neutral-800/80 !rounded-full !p-3 !w-10 !h-10 after:!text-sm"></div>
+          <div className="swiper-button-next !text-white !bg-neutral-800/80 !rounded-full !p-3 !w-10 !h-10 after:!text-sm"></div>
+        </Swiper>
       </div>
     </div>
   );

@@ -7,21 +7,21 @@ const Contact = () => {
       <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
       <form className="max-w-2xl mx-auto">
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Name</label>
+          <label className="block text-  neutral-700 mb-2">Name</label>
           <input
             type="text"
             className="w-full px-4 py-2 rounded-lg focus:outline-none"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Email</label>
+          <label className="block text-  neutral-700 mb-2">Email</label>
           <input
             type="email"
             className="w-full px-4 py-2 rounded-lg focus:outline-none"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Message</label>
+          <label className="block text-  neutral-700 mb-2">Message</label>
           <textarea
             className="w-full px-4 py-2 rounded-lg focus:outline-none"
             rows="4"

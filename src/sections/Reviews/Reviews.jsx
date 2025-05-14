@@ -25,7 +25,7 @@ const renderStars = (rating) => {
       {Array(emptyStars)
         .fill()
         .map((_, i) => (
-          <FaStar key={`empty-${i}`} className="text-gray-300" />
+          <FaStar key={`empty-${i}`} className="text-  neutral-300" />
         ))}
     </div>
   );
@@ -70,7 +70,7 @@ const Reviews = () => {
                   ? "from-zinc-950 to-blue-200" // Green to Teal
                   : index === 3
                   ? "from-zinc-950 to-teal-200" // Orange to Yellow
-                  : "from-zinc-950 to-violet-200" // Gray to Stone
+                  : "from-zinc-950 to-violet-200" //   neutral to Stone
               } p-8  shadow-2xl hover:shadow-3xl transition duration-500 transform hover:scale-105 relative overflow-hidden h-full text-white`}
             >
               {/* Floating Decorative Quotes */}

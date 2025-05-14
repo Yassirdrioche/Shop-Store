@@ -120,7 +120,7 @@ const Login = () => {
               className="w-16 h-16 mx-auto text-white mb-4"
             />
             <h1 className="text-3xl font-bold text-white">Login</h1>
-            <p className="text-gray-300">Sign in to your account</p>
+            <p className="text-  neutral-300">Sign in to your account</p>
           </div>
 
           {/* Login Form */}
@@ -129,7 +129,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="username"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-  neutral-300"
               >
                 Username
               </label>
@@ -161,7 +161,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-300"
+                className="block text-sm font-medium text-  neutral-300"
               >
                 Password
               </label>
@@ -226,7 +226,7 @@ const Login = () => {
 
           {/* Footer */}
           <div className="mt-6 text-center">
-            <p className="text-gray-300">
+            <p className="text-  neutral-300">
               Don't have an account?{" "}
               <a href="/signup" className="text-blue-500 hover:underline">
                 Sign up

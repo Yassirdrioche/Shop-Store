@@ -1,3 +1,4 @@
+// src/data/blogdata.js
 const blogPosts = [
   {
     id: 1,
@@ -7,7 +8,7 @@ const blogPosts = [
     author: "John Doe",
     date: "2024-03-10",
     image:
-      "https://i.pinimg.com/736x/d0/80/68/d08068182333afb0e37da92c44ee43b7.jpg",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&h=400&auto=format&fit=crop",
     description:
       "Looking for a smartwatch to help you stay on top of your fitness goals? Check out our top 5 picks for 2024!",
     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
@@ -20,7 +21,7 @@ const blogPosts = [
     author: "Jane Smith",
     date: "2024-03-12",
     image:
-      "https://i.pinimg.com/736x/b8/c1/bc/b8c1bce08cd9cdc0a34011c12e4112a9.jpg",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&h=400&auto=format&fit=crop",
     description:
       "Spring is here! Discover the must-have clothing items and styling tips for the season.",
     avatar: "https://randomuser.me/api/portraits/men/2.jpg",
@@ -33,7 +34,7 @@ const blogPosts = [
     author: "Alice Johnson",
     date: "2024-03-15",
     image:
-      "https://i.pinimg.com/736x/94/9f/12/949f126470a1f8214a7e4f96168300b7.jpg",
+      "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&h=400&auto=format&fit=crop",
     description:
       "Looking for your next great read? Check out our top book recommendations for 2024!",
     avatar: "https://randomuser.me/api/portraits/men/3.jpg",
@@ -46,7 +47,7 @@ const blogPosts = [
     author: "Mike Brown",
     date: "2024-03-18",
     image:
-      "https://i.pinimg.com/736x/77/10/24/77102483f2e1c6fdf0028aa7fc76e05c.jpg",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&h=400&auto=format&fit=crop",
     description:
       "From noise-cancelling to wireless, here are the best headphones for every budget and preference.",
     avatar: "https://randomuser.me/api/portraits/men/4.jpg",
@@ -59,7 +60,7 @@ const blogPosts = [
     author: "Sarah Lee",
     date: "2024-03-20",
     image:
-      "https://i.pinimg.com/474x/94/d6/e9/94d6e949e20b67dab17283084c79f24a.jpg",
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&h=400&auto=format&fit=crop",
     description:
       "Struggling to find the right shoes? Our guide will help you make the best choice for comfort and style.",
     avatar: "https://randomuser.me/api/portraits/men/6.jpg",

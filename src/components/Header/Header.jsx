@@ -175,17 +175,17 @@ const Header = () => {
                   {user ? (
                     <>
                       {/* User Info */}
-                      <div className="px-4 py-3 border-b border-gray-200">
+                      <div className="px-4 py-3 border-b border-  neutral-200">
                         <div className="flex items-center space-x-3">
                           <Icon
                             icon="ep:user"
                             className="w-6 h-6 text-neutral-700"
                           />
                           <div>
-                            <p className="text-sm font-medium text-gray-900">
+                            <p className="text-sm font-medium text-  neutral-900">
                               {user.name}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-  neutral-500">
                               {user.email}
                             </p>
                           </div>
@@ -220,12 +220,12 @@ const Header = () => {
                   ) : (
                     <Link
                       to="/login"
-                      className="w-full px-4 py-3 flex items-center space-x-3 text-sm text-gray-700 hover:bg-gray-100 transition-all duration-200"
+                      className="w-full px-4 py-3 flex items-center space-x-3 text-sm text-  neutral-700 hover:bg-  neutral-100 transition-all duration-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       <Icon
                         icon="mdi:login"
-                        className="w-5 h-5 text-gray-700"
+                        className="w-5 h-5 text-  neutral-700"
                       />
                       <span>Login</span>
                     </Link>

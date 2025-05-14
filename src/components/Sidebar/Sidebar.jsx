@@ -62,7 +62,10 @@ const Sidebar = () => {
         </button>
 
         {/* Sidebar Header */}
-        <Link to="/" className="text-2xl text-white pl-5 font-bold  flex items-center">
+        <Link
+          to="/"
+          className="text-2xl text-white pl-5 font-bold  flex items-center"
+        >
           <div className="logo">Shopeino</div>
         </Link>
 
@@ -123,7 +126,9 @@ const Sidebar = () => {
                           <p className="text-sm font-medium text-white">
                             {user.name}
                           </p>
-                          <p className="text-xs text-gray-400">{user.email}</p>
+                          <p className="text-xs text-  neutral-400">
+                            {user.email}
+                          </p>
                         </div>
                       </div>
                     </div>

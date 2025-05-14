@@ -112,7 +112,7 @@ const Shop = () => {
               className={`p-2 rounded-lg hidden lg:hidden ${
                 gridColumns === 1
                   ? "bg-black text-white"
-                  : "bg-gray-200 text-neutral-700"
+                  : "bg-  neutral-200 text-neutral-700"
               }`}
             >
               <Icon icon="mynaui:square" width="32" height="32" />
@@ -122,7 +122,7 @@ const Shop = () => {
               className={`p-2 hidden lg:block rounded-lg ${
                 gridColumns === 2
                   ? "bg-black text-white"
-                  : "bg-gray-200 text-neutral-700"
+                  : "bg-  neutral-200 text-neutral-700"
               }`}
             >
               <Icon icon="hugeicons:layout-2-column" width="32" height="32" />
@@ -132,7 +132,7 @@ const Shop = () => {
               className={`p-2 rounded-lg hidden lg:block ${
                 gridColumns === 3
                   ? "bg-black text-white"
-                  : "bg-gray-200 text-neutral-700"
+                  : "bg-  neutral-200 text-neutral-700"
               }`}
             >
               <Icon icon="hugeicons:layout-3-column" width="32" height="32" />
