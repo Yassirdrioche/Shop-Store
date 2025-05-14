@@ -4,16 +4,16 @@ import ProductCard from "../../components/ProductCard/ProductCard"; // Import Pr
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { Icon } from "@iconify/react"; // Import Iconify for icons
 import illustrationWishlist from "../../assets/picture/illustrationWishlist.png";
+import GridBg from "../../components/GridBg";
+
 const Wishlist = () => {
   const { wishlist } = useContext(AppContext); // Access the wishlist from context
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-50 relative z-50 flex flex-col gap-5 to-neutral-100 py-12  overflow-hidden px-4 sm:px-6 lg:px-8">
-      <div
-        className="absolute inset-0
-  [background-image:radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
-  bg-[length:20px_20px] opacity-30"
-      ></div>
+    <div className="min-h-screen bg-gradient-to-b bg-white relative z-50 flex flex-col gap-5 py-12  overflow-hidden px-4 sm:px-6 lg:px-8">
+      <div className="wishlist-grd" />
+      <GridBg />
+
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto text-center mt-10">
         <h1 className="text-3xl md:text-5xl font-bold text-neutral-50 flex items-center justify-center gap-4">

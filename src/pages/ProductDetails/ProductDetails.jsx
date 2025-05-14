@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import { Icon } from "@iconify/react";
+import GridBg from "../../components/GridBg";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -10,7 +11,9 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b relative z-50  bg-neutral-100">
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b relative z-50  bg-white">
+        <div className="prod-grd" />
+        <GridBg />
         <div className="text-center bg-white p-8 rounded-lg shadow-lg">
           <Icon
             icon="mdi:alert-circle-outline"

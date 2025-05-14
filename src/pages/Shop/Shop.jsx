@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState, Suspense, lazy } from "react";
 import { AppContext } from "../../context/AppContext"; // Import AppContext for wishlist functionality
 import { Icon } from "@iconify/react";
 import { ThreeCircles, Grid } from "react-loader-spinner";
+import GridBg from "../../components/GridBg";
 // Lazy load components
 const ProductCard = lazy(() =>
   import("../../components/ProductCard/ProductCard")
@@ -39,7 +40,10 @@ const Shop = () => {
   }, []); // Empty dependency array ensures this runs only on mount and unmount
 
   return (
-    <div className=" flex gap-8 px-8 py-28 bg-neutral-100 relative z-50">
+    <div className=" flex gap-8 px-8 py-28 bg-white bg-fixed relative z-50">
+      <div className="shop-grd" />
+      <GridBg />
+      {/* Background Grid */}
       {/* Sidebar Toggle Button for Mobile */}
       <button
         className="md:hidden fixed top-24 left-4 bg-white p-2 rounded-lg shadow-md z-50"

@@ -4,6 +4,7 @@ import CartItem from "../../components/CartItem/CartItem";
 import { Icon } from "@iconify/react";
 import { Link, useNavigate } from "react-router-dom";
 import illustrationCart from "../../assets/picture/illustrationCart.png";
+import GridBg from "../../components/GridBg";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, calculateTotal } =
@@ -19,18 +20,15 @@ const Cart = () => {
   };
 
   return (
-    <div className="min-h-screen z-50 relative bg-neutral-50 py-16 px-4 sm:px-6 lg:px-8">
-      <div
-        className="absolute inset-0 z-[-1]
-  [background-image:radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
-  bg-[length:20px_20px] opacity-30"
-      ></div>
+    <div className="min-h-screen z-50 relative bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="cart-grd" />
+      <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Cart Header */}
 
         {/* Cart Content */}
         {cart.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-9 text-center">
+          <div className="flex flex-col items-center justify-center py-9 text-center z-50 relative">
             <img
               src={illustrationCart}
               alt="Empty cart"

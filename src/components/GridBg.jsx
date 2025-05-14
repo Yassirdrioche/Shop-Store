@@ -1,7 +1,7 @@
 const GridBg = () => {
   return (
     <div
-      className="absolute inset-0 opacity-20"
+      className="absolute inset-0 opacity-10"
       style={{
         backgroundImage: `
             linear-gradient(rgba(0,0,0,0.35) 1px, transparent 1px),
