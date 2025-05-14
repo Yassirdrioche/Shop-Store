@@ -36,16 +36,18 @@ const Reviews = () => {
   const firstFiveReviews = reviews.slice(0, 5);
 
   return (
-    <div className=" bg-white py-10  relative z-50">
+    <div className=" bg-white py-10 relative z-50 ">
+      <div className="reviews__section" />
+
       <GridBg />
-      <section className="flex px-4 justify-evenly flex-wrap">
+      <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2
           className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900"
           data-aos="fade-up"
         >
           Testimonials
         </h2>
-        <p className="text-lg" data-aos="fade-up">
+        <p className="text-lg mb-12" data-aos="fade-up">
           Real feedback from happy customers.
         </p>
       </section>

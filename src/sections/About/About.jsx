@@ -53,10 +53,12 @@ const About = () => {
 
   return (
     <section
-      className="py-20 relative z-50 bg-neutral-50"
+      className="py-20 relative z-50 bg-neutral-50 "
       ref={sectionRef}
       id="about"
     >
+      <div className="about__section" />
+
       <GridBg />
       <div className="container mx-auto px-4 max-w-5xl">
         <h2

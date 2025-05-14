@@ -46,18 +46,20 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto">
+    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto ">
+      <div className="blog__section" />
+
       <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
-        <section className="flex px-4 justify-evenly flex-wrap">
+        <section className="flex px-4 justify-evenly flex-wrap items-center">
           <h2
-            className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"
+            className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-12 uppercase gap-4"
             data-aos="fade-up"
           >
             BLOG
           </h2>
-          <p className="text-lg" data-aos="fade-up">
+          <p className="text-lg mb-12" data-aos="fade-up">
             Insightful articles, tips, and stories to keep you inspired
           </p>
         </section>

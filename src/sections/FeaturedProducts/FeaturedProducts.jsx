@@ -10,16 +10,18 @@ const FeaturedProducts = () => {
   const featuredProducts = products.slice(0, 3);
 
   return (
-    <div className=" mx-auto  bg-white   py-10  relative z-50">
+    <div className=" mx-auto  bg-white   py-10  relative z-50 ">
       <GridBg />
-      <section className="flex px-4 justify-evenly flex-wrap">
+      <div className="featured__section" />
+
+      <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2
-          className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
+          className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-12"
           data-aos="fade-up"
         >
           Featured Products
         </h2>
-        <p className="text-lg" data-aos="fade-up">
+        <p className="text-lg mb-12" data-aos="fade-up">
           Handpicked favorites, top-quality picks you’ll love
         </p>
       </section>
