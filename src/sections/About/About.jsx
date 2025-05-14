@@ -53,7 +53,7 @@ const About = () => {
 
   return (
     <section
-      className="py-20 relative z-50 bg-neutral-50 "
+      className="py-20 relative z-50 bg-white bg-fixed "
       ref={sectionRef}
       id="about"
     >

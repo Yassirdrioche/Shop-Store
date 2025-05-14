@@ -10,9 +10,9 @@ const FeaturedProducts = () => {
   const featuredProducts = products.slice(0, 3);
 
   return (
-    <div className=" mx-auto  bg-white   py-10  relative z-50 ">
-      <GridBg />
+    <div className=" mx-auto  bg-white bg-fixed   py-10  relative z-50 ">
       <div className="featured__section" />
+      <GridBg />
 
       <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2

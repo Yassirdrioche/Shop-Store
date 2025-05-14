@@ -46,7 +46,7 @@ const Blog = () => {
   }, [emblaApi]);
 
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto ">
+    <div className="bg-white bg-fixed py-12 px-4 sm:px-6 lg:px-8 relative z-50  mx-auto ">
       <div className="blog__section" />
 
       <GridBg />

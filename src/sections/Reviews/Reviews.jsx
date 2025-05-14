@@ -36,9 +36,8 @@ const Reviews = () => {
   const firstFiveReviews = reviews.slice(0, 5);
 
   return (
-    <div className=" bg-white py-10 relative z-50 ">
+    <div className=" bg-white bg-fixed py-10 relative z-50 ">
       <div className="reviews__section" />
-
       <GridBg />
       <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2

@@ -162,75 +162,80 @@ h2 {
 /* border-radius: 12px; */
 /* border: 1px solid rgba(255, 255, 255, 0.2); */
 /* } */
+/* Lightest to darkest gradient flow */
+/* Gradient Flow System - Light to Dark Continuum */
 .about__section {
   position: absolute;
   background-image: radial-gradient(
-    200% 200% at 70% 20%,
-    rgba(255, 234, 234, 0.4) 0%,
-    rgba(112, 112, 112, 0.3) 50%,
-    rgba(32, 32, 32, 0.418) 100%
-  );
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
-  inset: 0;
-}
-.blog__section {
-  position: absolute;
-  background-image: radial-gradient(
-      circle at 70% 30%,
-      rgba(75, 75, 75, 0.103) 0%,
-      rgba(240, 240, 240, 0.904) 100%
-    ),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.247) 0%, transparent 100%);
-  inset: 0;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
-}
-.category__section {
-  position: absolute;
-  background-image: radial-gradient(
-    circle at 50% 0%,
-    rgba(41, 46, 46, 0.075) 0%,
-    rgba(0, 50, 100, 0) 70%
+    140% 140% at 80% 10%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(252, 252, 252, 0.9) 60%,
+    rgba(245, 245, 245, 0.8) 100%
   );
   inset: 0;
-  box-shadow: 0 0 35px rgba(88, 88, 88, 0.267);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
 }
+
 .featured__section {
   position: absolute;
+  border: 2px solid transparent;
+  border-top-color: rgba(245, 245, 245, 0.8);
   background-image: radial-gradient(
-    ellipse at 30% 20%,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(200, 200, 200, 0.5) 40%,
-    rgba(48, 48, 48, 0.075) 100%
+    160% 120% at 20% 30%,
+    rgba(248, 248, 248, 0.95) 0%,
+    rgba(242, 242, 242, 0.85) 50%,
+    rgba(235, 235, 235, 0.75) 100%
   );
   inset: 0;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
-}
-.reviews__section {
-  position: absolute;
-  background-image: radial-gradient(
-    circle at 20% 30%,
-    rgba(204, 204, 204, 0.548) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  inset: 0;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
-  pointer-events: none;
 }
 .best__section {
-  background: radial-gradient(
-    120% 120% at -10% -10%,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(240, 240, 240, 0.9) 60%,
-    rgba(230, 230, 230, 0.8) 100%
+  position: absolute;
+  border: 2px solid transparent;
+  border-top-color: rgba(235, 235, 235, 0.75);
+  background-image: radial-gradient(
+    120% 150% at -5% 40%,
+    rgba(242, 242, 242, 0.9) 0%,
+    rgba(238, 238, 238, 0.8) 50%,
+    rgba(230, 230, 230, 0.7) 100%
   );
-  backdrop-filter: blur(3px);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  inset: 0;
+}
+
+.category__section {
+  border: 2px solid transparent;
+  border-top-color: rgba(230, 230, 230, 0.7);
+  position: absolute;
+  background-image: radial-gradient(
+    circle at 30% 70%,
+    rgba(238, 238, 238, 0.9) 0%,
+    rgba(232, 232, 232, 0.8) 50%,
+    rgba(225, 225, 225, 0.7) 100%
+  );
+  inset: 0;
+}
+
+.blog__section {
+  border: 2px solid transparent;
+  position: absolute;
+  border-top-color: rgba(225, 225, 225, 0.7);
+  background-image: radial-gradient(
+    ellipse at 70% 20%,
+    rgba(235, 235, 235, 0.9) 0%,
+    rgba(228, 228, 228, 0.8) 50%,
+    rgba(220, 220, 220, 0.7) 100%
+  );
+  inset: 0;
+}
+
+.reviews__section {
+  position: absolute;
+  border: 2px solid transparent;
+  border-top-color: rgba(220, 220, 220, 0.7);
+  background-image: radial-gradient(
+    150% 100% at 50% 90%,
+    rgba(230, 230, 230, 0.9) 0%,
+    rgba(222, 222, 222, 0.8) 50%,
+    rgba(215, 215, 215, 0.7) 100%
+  );
+  inset: 0;
 }

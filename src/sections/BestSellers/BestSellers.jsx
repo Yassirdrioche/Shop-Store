@@ -8,7 +8,7 @@ const BestSellers = () => {
   const bestSellers = products.slice(5, 8); // Example: Use the next 3 products as best sellers
 
   return (
-    <div className=" px-4 bg-neutral-100 py-10 relative z-50 ">
+    <div className=" px-4 bg-white bg-fixed py-10 relative z-50 ">
       <div className="best__section" />
       <GridBg />
       <section className="flex px-4 justify-evenly flex-wrap items-center">

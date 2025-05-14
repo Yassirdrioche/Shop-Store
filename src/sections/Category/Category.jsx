@@ -28,9 +28,8 @@ const Category = () => {
   };
 
   return (
-    <section className="relative bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50 ">
+    <section className="relative bg-white bg-fixed py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50 ">
       <div className="category__section" />
-
       <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Heading */}{" "}
@@ -150,7 +149,7 @@ const Category = () => {
           </div>
         </Swiper>
         {/* Browse All Button */}
-        <div className="text-center mt-10 sm:mt-12 lg:mt-16">
+        <div className="text-center z-50 relative mt-10 sm:mt-12 lg:mt-16">
           <button
             onClick={() => navigate("/shop")}
             className="inline-flex items-center px-6 py-3 border border-white/10 text-white bg-black/50 hover:bg-white hover:text-black transition-all duration-300 rounded-full"
