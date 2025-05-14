@@ -34,7 +34,7 @@ const Footer = () => {
               <Link to="/" className="text-2xl font-bold  flex items-center">
                 <div className="logo">Shopeino</div>
               </Link>
-              <p className="text-gray-400">
+              <p className="text-gray-200">
                 We are dedicated to providing the best products and services to
                 our customers. Join us on our journey!
               </p>
@@ -67,7 +67,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#about-us"
-                    className="text-gray-400 hover:text-white transition duration-300 hover:pl-2"
+                    className="text-gray-200 hover:text-white transition duration-300 hover:pl-2"
                   >
                     About Us
                   </a>
@@ -80,7 +80,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={link.to}
-                      className="text-gray-400 hover:text-white transition duration-300 hover:pl-2"
+                      className="text-gray-200 hover:text-white transition duration-300 hover:pl-2"
                     >
                       {link.text}
                     </a>
@@ -94,7 +94,7 @@ const Footer = () => {
               <h4 className="text-lg font-semibold text-white font-poppins">
                 Contact Us
               </h4>
-              <ul className="text-gray-400 space-y-2">
+              <ul className="text-gray-200 space-y-2">
                 <li>Email: support@yourStore.com</li>
                 <li>Phone: +212 6-41420859</li>
                 <li>Address: 123 Store St, Agadir, Morocco</li>
@@ -110,8 +110,8 @@ const Footer = () => {
           </div>
 
           {/* Copyright Section */}
-          <div className="text-center text-gray-400 py-6">
-            <p>© {new Date().getFullYear()} MyStore. All rights reserved.</p>
+          <div className="text-center text-gray-200 py-6">
+            <p>© {new Date().getFullYear()} Shopeino. All rights reserved.</p>
             <p className="mt-2">
               <span>Designed with </span>
               <span>
@@ -121,14 +121,13 @@ const Footer = () => {
                   aria-hidden="true"
                 />
               </span>{" "}
-              by Yasser -{" "}
               <a
-                href="https://yourwebsite.com"
+                href="https://momkina.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:underline"
               >
-                My Self
+                Momkina
               </a>
             </p>
           </div>

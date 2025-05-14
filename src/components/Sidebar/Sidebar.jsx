@@ -62,9 +62,9 @@ const Sidebar = () => {
         </button>
 
         {/* Sidebar Header */}
-        <div className="flex items-center justify-start p-4">
-          <img src={logoWhite} className="w-20" alt="Logo" />
-        </div>
+        <Link to="/" className="text-2xl text-white pl-5 font-bold  flex items-center">
+          <div className="logo">Shopeino</div>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="flex flex-col p-4 space-y-2">
@@ -171,7 +171,7 @@ const Sidebar = () => {
         {/* Sidebar Footer */}
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-center text-sm text-white">
-            &copy; 2023 MyStore. All rights reserved.
+            &copy;{new Date().getFullYear()} Shopeino. All rights reserved.
           </p>
         </div>
       </div>
