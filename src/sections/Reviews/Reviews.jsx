@@ -56,21 +56,21 @@ const Reviews = () => {
             data-aos="fade-up"
             data-aos-delay={index * 200}
             key={review.id}
-            className={`modern-grid-item ${
+            className={`modern-grid-item rounded-lg shadow-lg ${
               index === 1 || index === 4 ? "row-span-2" : "row-span-1"
             }`}
           >
             <div
-              className={`review-card bg-gradient-to-tl ${
+              className={`review-card   ${
                 index === 0
-                  ? "from-zinc-950 to-cyan-200" // Blue to Cyan
+                  ? "from-neutral-600 to-neutral-200 bg-gradient-to-b"
                   : index === 1
-                  ? "from-zinc-950 to-green-200" // Purple to Pink
+                  ? "from-neutral-200 to-neutral-600 bg-gradient-to-tl"
                   : index === 2
-                  ? "from-zinc-950 to-blue-200" // Green to Teal
+                  ? "from-neutral-600 to-neutral-200 bg-gradient-to-b"
                   : index === 3
-                  ? "from-zinc-950 to-teal-200" // Orange to Yellow
-                  : "from-zinc-950 to-violet-200" //   neutral to Stone
+                  ? "from-neutral-200 to-neutral-600 bg-gradient-to-b"
+                  : "from-neutral-600 to-neutral-200 bg-gradient-to-t"
               } p-8  shadow-2xl hover:shadow-3xl transition duration-500 transform hover:scale-105 relative overflow-hidden h-full text-white`}
             >
               {/* Floating Decorative Quotes */}
