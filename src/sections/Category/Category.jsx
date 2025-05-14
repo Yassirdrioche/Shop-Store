@@ -1,17 +1,23 @@
+// src/components/Category.js
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { AppContext } from "../../context/AppContext";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  EffectCoverflow,
+  Autoplay,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import GridBg from "../../components/GridBg";
 
-SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
+SwiperCore.use([Navigation, Pagination, EffectCoverflow, Autoplay]);
 
 const Category = () => {
   const { products, updateFilters } = useContext(AppContext);
@@ -31,8 +37,8 @@ const Category = () => {
     <section className="relative bg-white bg-fixed py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50 ">
       <div className="category__section" />
       <GridBg />
-      <div className="max-w-7xl mx-auto">
-        {/* Heading */}{" "}
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
         <section className="flex px-4 justify-evenly flex-wrap items-center">
           <h2
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center flex justify-center items-center gap-3 sm:gap-4 lg:mb-12 uppercase text-neutral-800"
@@ -52,9 +58,8 @@ const Category = () => {
           centeredSlides
           slidesPerView={1}
           coverflowEffect={{
-            rotate: 50,
+            rotate: 20,
             stretch: 0,
-            depth: 100,
             modifier: 1,
             slideShadows: true,
           }}
@@ -63,14 +68,18 @@ const Category = () => {
             nextEl: ".swiper-button-next-custom",
             prevEl: ".swiper-button-prev-custom",
           }}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           breakpoints={{
             640: {
               slidesPerView: 2,
-              coverflowEffect: { depth: 150, rotate: 40 },
+              coverflowEffect: { depth: 150, rotate: 20 },
             },
             1024: {
               slidesPerView: 3,
-              coverflowEffect: { depth: 200, rotate: 30 },
+              coverflowEffect: { depth: 150, rotate: 20 },
             },
           }}
           className="swiper-container"
