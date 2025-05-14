@@ -48,7 +48,7 @@ const Cart = () => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-16 z-50 relative">
             {" "}
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-6">
@@ -81,7 +81,7 @@ const Cart = () => {
                   <div className="flex justify-between">
                     <span className="text-neutral-600">Subtotal</span>
                     <span className="text-neutral-900">
-                      ${calculateTotal().toFixed(2)}
+                      ${calculateTotal.toFixed(2)}
                     </span>
                   </div>
 
@@ -99,7 +99,7 @@ const Cart = () => {
                     <div className="flex justify-between">
                       <span className="font-semibold text-lg">Total</span>
                       <span className="font-semibold text-lg">
-                        ${calculateTotal().toFixed(2)}
+                        ${calculateTotal.toFixed(2)}
                       </span>
                     </div>
                   </div>
