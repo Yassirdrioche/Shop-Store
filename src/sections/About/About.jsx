@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import office from "../../assets/picture/office.jpg";
 import team from "../../assets/picture/team.jpg";
 import delivery from "../../assets/picture/road.jpg";
+import GridBg from "../../components/GridBg";
 
 const About = () => {
   const sectionRef = useRef();
@@ -56,6 +57,7 @@ const About = () => {
       ref={sectionRef}
       id="about"
     >
+      <GridBg />
       <div className="container mx-auto px-4 max-w-5xl">
         <h2
           className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"

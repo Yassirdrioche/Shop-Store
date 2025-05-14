@@ -3,6 +3,7 @@ import { AppContext } from "../../context/AppContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "aos/dist/aos.css"; // Import AOS CSS
 import { Icon } from "@iconify/react";
+import GridBg from "../../components/GridBg";
 
 const FeaturedProducts = () => {
   const { products } = useContext(AppContext); // Access products from context
@@ -10,6 +11,7 @@ const FeaturedProducts = () => {
 
   return (
     <div className=" mx-auto  bg-white   py-10  relative z-50">
+      <GridBg />
       <h2
         className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
         data-aos="fade-up"

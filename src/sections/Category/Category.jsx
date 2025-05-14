@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import GridBg from "../../components/GridBg";
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
@@ -28,6 +29,7 @@ const Category = () => {
 
   return (
     <section className="relative bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50">
+      <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2
