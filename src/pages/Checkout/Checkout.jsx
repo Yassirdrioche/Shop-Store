@@ -235,7 +235,7 @@ const Checkout = () => {
                         Total
                       </p>
                       <p className="text-lg font-semibold text-  neutral-900">
-                        ${calculateTotal().toFixed(2)}
+                        ${calculateTotal.toFixed(2)}
                       </p>
                     </div>
                   </div>
