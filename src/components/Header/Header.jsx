@@ -182,7 +182,7 @@ const Header = () => {
                             className="w-6 h-6 text-neutral-700"
                           />
                           <div>
-                            <p className="text-sm font-medium text-  neutral-900">
+                            <p className="text-sm font-medium text-neutral-700  neutral-900">
                               {user.name}
                             </p>
                             <p className="text-xs text-  neutral-500">

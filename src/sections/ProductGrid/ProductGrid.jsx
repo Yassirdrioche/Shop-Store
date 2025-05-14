@@ -50,7 +50,7 @@ const products = [
 
 const ProductGrid = () => {
   return (
-    <div className="bg-neutral-100 py-12 px-4 sm:px-6 lg:px-8 z-50 relative">
+    <div className="bg-gradient-to-t to-neutral-50 from-neutral-100  py-12 px-4 sm:px-6 lg:px-8 z-50 relative">
       <GridBg />
       <div className="max-w-6xl mx-auto space-y-12">
         {products.map((product, index) => (
