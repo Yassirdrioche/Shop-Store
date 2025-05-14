@@ -33,6 +33,7 @@ const BlogDetails = () => {
             src={post.image}
             alt={post.title}
             className="w-full h-auto max-h-[80vh] object-cover object-center rounded-lg shadow-2xl"
+            loading="lazy"
           />
         </div>
 
@@ -50,10 +51,13 @@ const BlogDetails = () => {
               src={post.avatar}
               alt={post.author}
               className="w-10 h-10 rounded-full mr-3"
+              loading="lazy"
             />
             <div>
               <span className="block font-medium">{post.author}</span>
-              <span className="block text-sm text-neutral-500">{post.date}</span>
+              <span className="block text-sm text-neutral-500">
+                {post.date}
+              </span>
             </div>
           </div>
 

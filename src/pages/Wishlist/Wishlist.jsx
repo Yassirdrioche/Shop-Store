@@ -32,8 +32,12 @@ const Wishlist = () => {
         {wishlist.length === 0 ? (
           <div className="text-center">
             <div className=" p-6 bg-white absolute top-0 left-1/2 -translate-x-1/2 rounded-lg shadow-lg">
-              <img src={illustrationWishlist} alt="" className="w-full h-auto " />
-
+              <img
+                src={illustrationWishlist}
+                alt=""
+                className="w-full h-auto "
+                loading="lazy"
+              />
               <p className="text-neutral-600 text-lg mb-6">
                 No items in your wishlist yet.
               </p>

@@ -35,6 +35,7 @@ const Cart = () => {
               src={illustrationCart}
               alt="Empty cart"
               className="w-full max-w-md mb-8"
+              loading="lazy"
             />
             <p className="text-xl text-neutral-700 mb-6">Your cart is empty.</p>
             <Link
