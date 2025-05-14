@@ -50,10 +50,17 @@ const Blog = () => {
       <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Page Title */}
-        <h2 className="text-4xl font-bold text-center text-neutral-900 mb-12">
-          BLOG POSTS
-        </h2>
-
+        <section className="flex px-4 justify-evenly flex-wrap">
+          <h2
+            className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-8 uppercase gap-4"
+            data-aos="fade-up"
+          >
+            BLOG
+          </h2>
+          <p className="text-lg" data-aos="fade-up">
+            Insightful articles, tips, and stories to keep you inspired
+          </p>
+        </section>
         {/* Embla Carousel Container */}
         <div className="embla relative overflow-hidden" ref={emblaRef}>
           <div className="embla__container">

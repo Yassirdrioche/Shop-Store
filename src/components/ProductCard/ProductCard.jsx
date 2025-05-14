@@ -1,4 +1,10 @@
-import React, { useContext, useRef, useState, useEffect } from "react";
+import React, {
+  useContext,
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { Icon } from "@iconify/react";
 import VanillaTilt from "vanilla-tilt";
 import { AppContext } from "../../context/AppContext";
@@ -13,22 +19,50 @@ const ProductCard = ({ product }) => {
   const prodCardRef = useRef(null);
   const cursorRef = useRef({ x: -100, y: -100 });
   const animationFrameRef = useRef(null);
+  const isSmallScreenRef = useRef(window.innerWidth <= 768);
+
+  // Memoized event handlers
+  const handleWishlistToggle = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleWishlist(product);
+    },
+    [toggleWishlist, product]
+  );
+
+  const handleAddToCart = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      addToCart(product);
+    },
+    [addToCart, product]
+  );
 
   useEffect(() => {
-    // Check screen width
-    const isSmallScreen = window.innerWidth <= 768; // Adjust breakpoint as needed
+    const prodCard = prodCardRef.current;
+    if (!prodCard) return;
 
     // Apply VanillaTilt effect only on larger screens
-    if (!isSmallScreen && prodCardRef.current) {
-      VanillaTilt.init(prodCardRef.current, {
-        max: 10, // Maximum tilt rotation (degrees)
-        speed: 300, // Transition speed
-        glare: true, // Adds a glare effect
-        "max-glare": 0.3, // Maximum glare opacity
-        perspective: 1000, // Perspective depth effect
+    if (!isSmallScreenRef.current) {
+      VanillaTilt.init(prodCard, {
+        max: 10,
+        speed: 300,
+        glare: true,
+        "max-glare": 0.3,
+        perspective: 1000,
       });
-    }
 
+      return () => {
+        if (prodCard.vanillaTilt) {
+          prodCard.vanillaTilt.destroy();
+        }
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     const handleMouseMove = (e) => {
       if (!prodCardRef.current) return;
 
@@ -67,82 +101,84 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="bg-white  relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border border-gray-100 group"
+      className="product-card bg-white w-full md:w-auto relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border border-neutral-100"
       ref={prodCardRef}
     >
-      {/* Add to Wishlist Button */}
+      {/* Wishlist Button - Desktop */}
       <button
-        onClick={() => toggleWishlist(product)}
-        className="flex items-center absolute top-2  group-hover:right-2 group-hover:translate-x-0 right-0   translate-x-full bg-black bg-opacity-10 backdrop-blur-lg justify-center space-x-2 p-2  transition-all duration-300 z-50  text-neutral-700"
+        onClick={handleWishlistToggle}
+        className="wishlist-btn absolute top-2 group-hover:right-2 group-hover:translate-x-0 right-0 translate-x-full bg-black bg-opacity-10 backdrop-blur-lg p-2 transition-all duration-300 z-50 text-neutral-700"
+        aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
       >
         <Icon
           icon={isInWishlist ? "mdi:heart" : "mdi:heart-outline"}
-          className={`text-2xl ${isInWishlist ? "text-white" : "text-white"}`}
+          className="text-2xl text-white"
         />
       </button>
-      <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
+
+      <Link to={`/product/${product.id}`} className="product-link">
         {/* Custom Cursor */}
         {isCursorVisible && (
           <div
             className="custom-cursor-prod text-white"
             style={{
               transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`,
-              transition: "transform 200ms ease-out", // Smooth transition
+              transition: "transform 200ms ease-out",
             }}
           >
             View
           </div>
         )}
+
         {/* Product Image */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="product-image-container relative aspect-square overflow-hidden">
           <img
             alt={product.name}
             src={product.image}
-            className="w-full h-full object-cover transition-transform duration-300 "
+            className="product-image w-full h-full object-cover transition-transform duration-300"
+            loading="lazy"
           />
-          {/* Overlay on Hover */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300"></div>
+          <div className="product-image-overlay absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-all duration-300" />
         </div>
 
         {/* Product Details */}
-        <div className="p-4 flex flex-col flex-grow">
-          <h3 className="text-xl  text-gray-900 mb-2">{product.name}</h3>
-          <p className="text-sm text-gray-600 mb-4 flex-grow line-clamp-1 text-ellipsis">
+        <div className="product-details p-4 flex flex-col flex-grow">
+          <h3 className="product-name text-xl text-neutral-900 mb-2 line-clamp-1 text-ellipsis">
+            {product.name}
+          </h3>
+          <p className="product-description text-sm text-neutral-600 mb-4 flex-grow line-clamp-1 text-ellipsis">
             {product.description}
           </p>
-          <div className="flex items-center justify-between">
-            <p className="text-lg font-medium text-gray-600">
+          <div className="product-actions flex items-center justify-between">
+            <p className="product-price text-lg font-medium text-neutral-600">
               ${product.price}
             </p>
-            {/* Add to Cart Button */}
-            <section className="flex gap-4 z-50">
+
+            {/* Action Buttons */}
+            <div className="action-buttons flex gap-4 z-50">
               <button
-                className="flex text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4  transition-all duration-300  bg-black  relative"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  addToCart(product);
-                }}
+                className="add-to-cart-btn flex text-base items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 transition-all duration-300 bg-black"
+                onClick={handleAddToCart}
+                aria-label="Add to cart"
               >
                 <Icon icon="la:cart-plus" className="h-6 w-6" />
                 <span className="hidden md:hidden xl:block">Add To Cart</span>
               </button>
+
+              {/* Wishlist Button - Mobile */}
               <button
-                className="flex lg:hidden text-base group items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4  transition-all duration-300  bg-black  relative "
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  toggleWishlist(product);
-                }}
+                className="mobile-wishlist-btn flex lg:hidden text-base items-center justify-center text-white space-x-2 p-2 md:py-2 md:px-4 transition-all duration-300 bg-black"
+                onClick={handleWishlistToggle}
+                aria-label={
+                  isInWishlist ? "Remove from wishlist" : "Add to wishlist"
+                }
               >
                 <Icon
                   icon={isInWishlist ? "mdi:heart" : "mdi:heart-outline"}
-                  className={`text-2xl ${
-                    isInWishlist ? "text-white" : "text-white"
-                  }`}
+                  className="text-2xl text-white"
                 />
               </button>
-            </section>
+            </div>
           </div>
         </div>
       </Link>
@@ -150,4 +186,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);

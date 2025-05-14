@@ -3,6 +3,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa"; // Import icons
 import reviews from "../../data/reviews"; // Import the updated reviews data
 import "./Reviews.css"; // Import the CSS file for styles
 import { Icon } from "@iconify/react";
+import GridBg from "../../components/GridBg";
 
 // Helper function to render stars based on rating
 const renderStars = (rating) => {
@@ -36,10 +37,18 @@ const Reviews = () => {
 
   return (
     <div className=" bg-white py-10  relative z-50">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900">
-        <Icon icon="icon-park-outline:people-speak" className="h-10 w-10" />
-        <span> Customers Reviews</span>
-      </h2>
+      <GridBg />
+      <section className="flex px-4 justify-evenly flex-wrap">
+        <h2
+          className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900"
+          data-aos="fade-up"
+        >
+          Testimonials
+        </h2>
+        <p className="text-lg" data-aos="fade-up">
+          Real feedback from happy customers.
+        </p>
+      </section>
       <div className="modern-grid-container   px-8">
         {firstFiveReviews.map((review, index) => (
           <div

@@ -12,13 +12,17 @@ const FeaturedProducts = () => {
   return (
     <div className=" mx-auto  bg-white   py-10  relative z-50">
       <GridBg />
-      <h2
-        className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
-        data-aos="fade-up"
-      >
-        <Icon icon="stash:stars" />
-        <span className="mt-1">Featured Products</span>
-      </h2>
+      <section className="flex px-4 justify-evenly flex-wrap">
+        <h2
+          className="text-2xl md:text-4xl text-neutral-800 font-bold text-center gap-4 flex justify-center items-center uppercase mb-8"
+          data-aos="fade-up"
+        >
+          Featured Products
+        </h2>
+        <p className="text-lg" data-aos="fade-up">
+          Handpicked favorites, top-quality picks you’ll love
+        </p>
+      </section>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 container p-4 max-w-5xl mx-auto gap-6 z-50">
         {featuredProducts.map((product, index) => (
           <div

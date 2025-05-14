@@ -31,19 +31,19 @@ const Category = () => {
     <section className="relative bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50">
       <GridBg />
       <div className="max-w-7xl mx-auto">
-        {/* Heading */}
-        <h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center flex justify-center items-center gap-3 sm:gap-4 mb-10 sm:mb-12 lg:mb-16 uppercase text-neutral-800"
-          data-aos="fade-up"
-          data-aos-duration="500"
-        >
-          <Icon
-            icon="iconamoon:category-light"
-            className="w-8 h-8 sm:w-10 sm:h-10"
-          />
-          <span>Shop by Category</span>
-        </h2>
-
+        {/* Heading */}{" "}
+        <section className="flex px-4 justify-evenly flex-wrap">
+          <h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center flex justify-center items-center gap-3 sm:gap-4 mb-10 sm:mb-12 lg:mb-16 uppercase text-neutral-800"
+            data-aos="fade-up"
+            data-aos-duration="500"
+          >
+            Shop by Category
+          </h2>
+          <p className="text-lg" data-aos="fade-up">
+            Browse our curated collections for every need
+          </p>
+        </section>
         {/* Swiper Carousel */}
         <Swiper
           effect="coverflow"
@@ -147,7 +147,6 @@ const Category = () => {
             </button>
           </div>
         </Swiper>
-
         {/* Browse All Button */}
         <div className="text-center mt-10 sm:mt-12 lg:mt-16">
           <button
