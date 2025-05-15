@@ -59,7 +59,7 @@ const App = () => {
       <div className="line_prog"></div>
       <BtnScrollTop />
       <Suspense fallback={null}>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         <SmoothScroll />
       </Suspense>
 

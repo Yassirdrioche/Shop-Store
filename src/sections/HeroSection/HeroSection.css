@@ -21,24 +21,24 @@
   background-image: linear-gradient(
     to right,
     #222222,
-    #acacac,
+    #3d3d3d,
     #222222,
-    #acacac,
+    #3d3d3d,
     #222222
   );
   background-clip: text;
   -webkit-background-clip: text;
-  background-size: 300% 100%;
+  background-size: 50% 100%;
   color: transparent;
-  animation: gradientAnimation 3s linear infinite;
+  animation: gradientAnimation 7s linear infinite;
 }
 
 @keyframes gradientAnimation {
   0% {
-    background-position: 0% 50%;
+    background-position: 100% 200%;
   }
   100% {
-    background-position: 100% 50%;
+    background-position: 200% 300%;
   }
 }
 .hero-grd {

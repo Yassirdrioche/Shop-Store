@@ -142,8 +142,9 @@ body {
   display: none;
 }
 .logo,
-h2 {
-  font-family: "Eagle Lake", sans-serif;
+h2,
+.hero {
+  font-family: "Baumans", sans-serif;
 }
 /* Gradient Flow System - Light to Dark Continuum */
 .about__section {
