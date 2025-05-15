@@ -21,7 +21,6 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen z-50 relative bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="cart-grd" />
       <GridBg />
       <div className="max-w-7xl mx-auto">
         {/* Cart Header */}

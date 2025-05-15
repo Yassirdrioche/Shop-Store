@@ -157,7 +157,7 @@ const HeroSection = () => {
         <section className="w-full hero flex  items-center max-w-6xl mx-auto flex-wrap text-black min-h-screen px-4 md:px-10 py-20 md:py-0 relative">
           {/* Text Content */}
           <div className="relative w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0 z-20">
-            <h1 className="text-5xl md:text-6xl flex flex-wrap justify-center md:justify-start font-bold mb-6 selection:bg-transparent selection:text-neutral-400">
+            <h1 className="text-5xl  md:text-6xl flex flex-wrap justify-center md:justify-start font-bold mb-6 selection:bg-transparent selection:text-neutral-400">
               {words.map((word, index) => (
                 <span
                   key={index}
