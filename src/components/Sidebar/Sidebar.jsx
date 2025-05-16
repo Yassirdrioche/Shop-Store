@@ -66,7 +66,7 @@ const Sidebar = () => {
           to="/"
           className="text-2xl text-white pl-5 font-bold  flex items-center"
         >
-          <div className="logo">FUTUSHOP</div>
+          <div className="logo">FUTSHOP</div>
         </Link>
 
         {/* Navigation Links */}
@@ -176,7 +176,7 @@ const Sidebar = () => {
         {/* Sidebar Footer */}
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-center text-sm text-white">
-            &copy;{new Date().getFullYear()} FUTUSHOP. All rights reserved.
+            &copy;{new Date().getFullYear()} FUTSHOP. All rights reserved.
           </p>
         </div>
       </div>
