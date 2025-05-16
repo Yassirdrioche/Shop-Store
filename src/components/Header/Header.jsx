@@ -150,7 +150,7 @@ const Header = () => {
         <div className="container mx-auto flex justify-between items-center p-4">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold flex items-center">
-            <div className="logo">Shopeino</div>
+            <div className="logo">FUTUSHOP</div>
           </Link>
 
           {/* Navigation Links */}

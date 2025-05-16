@@ -32,7 +32,7 @@ const Footer = () => {
             {/* About Section */}
             <div className="space-y-4">
               <Link to="/" className="text-2xl font-bold  flex items-center">
-                <div className="logo">Shopeino</div>
+                <div className="logo">FUTUSHOP</div>
               </Link>
               <p className="text-  neutral-200">
                 We are dedicated to providing the best products and services to
@@ -111,7 +111,7 @@ const Footer = () => {
 
           {/* Copyright Section */}
           <div className="text-center text-  neutral-200 py-6">
-            <p>© {new Date().getFullYear()} Shopeino. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} FUTUSHOP. All rights reserved.</p>
             <p className="mt-2">
               <span>Designed with </span>
               <span>
