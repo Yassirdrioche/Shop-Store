@@ -57,16 +57,16 @@ const ReviewCard = ({ review, index }) => {
   return (
     <div
       ref={cardRef}
-      className="flex-shrink-0 w-80 mx-4 bg-black-900/50 border border-gray-700/30 rounded-xl p-6 shadow-lg hover:shadow-neutral-500/20 transition-all duration-300 backdrop-blur-sm h-full flex flex-col"
+      className="flex-shrink-0 h-64 w-80 mx-4 bg-black-900/50 bg-black/50 border border-gray-700/30 rounded-xl p-6 shadow-lg hover:shadow-neutral-500/20 transition-all duration-300 backdrop-blur-sm  flex flex-col"
     >
       <div className="flex justify-between items-center mb-6">
-        <div className="text-sm font-medium text-neutral-400">
+        <div className="text-sm font-medium text-neutral-200">
           Review #{index + 1}
         </div>
         {renderStars(review.rating)}
       </div>
       <div className="flex-1 mb-6">
-        <p className="text-gray-300 italic">"{review.text}"</p>
+        <p className="text-neutral-200 italic">"{review.text}"</p>
       </div>
       <div className="mt-auto pt-4 border-t border-gray-700/50">
         <div className="flex items-center">
@@ -193,7 +193,7 @@ const Reviews = () => {
             </div>
 
             {/* Second marquee going reverse direction */}
-            <div className="relative overflow-hidden py-4">
+            {/*  <div className="relative overflow-hidden py-4">
               <Marquee
                 speed={50}
                 direction="right"
@@ -209,7 +209,7 @@ const Reviews = () => {
                   />
                 ))}
               </Marquee>
-            </div>
+            </div> */}
           </>
         )}
       </div>
