@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "aos/dist/aos.css"; // Import AOS CSS
-import { Icon } from "@iconify/react";
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
 
 const FeaturedProducts = () => {
   const { products } = useContext(AppContext); // Access products from context
@@ -12,7 +11,7 @@ const FeaturedProducts = () => {
   return (
     <div className=" mx-auto  bg-white bg-fixed   py-10  relative z-50 ">
       <div className="featured__section" />
-      <GridBg />
+      <DottedBg />
 
       <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2

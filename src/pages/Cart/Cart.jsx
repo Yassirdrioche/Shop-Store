@@ -4,7 +4,7 @@ import CartItem from "../../components/CartItem/CartItem";
 import { Icon } from "@iconify/react";
 import { Link, useNavigate } from "react-router-dom";
 import illustrationCart from "../../assets/picture/illustrationCart.png";
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, calculateTotal } =
@@ -21,7 +21,7 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen z-50 relative bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <GridBg />
+      <DottedBg />
       <div className="max-w-7xl mx-auto">
         {/* Cart Header */}
 

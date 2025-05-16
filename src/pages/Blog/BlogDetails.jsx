@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom"; // Import Link for navigation
 import blogPosts from "../../data/blogdata";
 import { Icon } from "@iconify/react"; // Import Iconify for icons
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -19,7 +19,7 @@ const BlogDetails = () => {
   return (
     <div className="min-h-screen bg-white relative z-50 py-28 px-4 sm:px-6 lg:px-8 ">
       <div className="shop-grd" />
-      <GridBg />
+      <DottedBg />
       {/* Page Title */}
       <div className="max-w-7xl mx-auto text-center ">
         <h1 className="text-5xl font-bold text-neutral-900">Blog Details</h1>

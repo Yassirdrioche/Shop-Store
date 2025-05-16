@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../context/AppContext"; // Import AppContext for wishlist functionality
-import ProductCard from "../../components/ProductCard/ProductCard"; // Import ProductCard to display wishlist items
-import { Link } from "react-router-dom"; // Import Link for navigation
-import { Icon } from "@iconify/react"; // Import Iconify for icons
+import { AppContext } from "../../context/AppContext";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import illustrationWishlist from "../../assets/picture/illustrationWishlist.png";
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
 
 const Wishlist = () => {
-  const { wishlist } = useContext(AppContext); // Access the wishlist from context
+  const { wishlist } = useContext(AppContext);
 
   return (
     <div className="min-h-screen bg-gradient-to-b bg-white relative z-50 flex flex-col gap-5 py-12  overflow-hidden px-4 sm:px-6 lg:px-8">
       <div className="wishlist-grd" />
-      <GridBg />
-
+      <DottedBg />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto text-center mt-10">
         <h1 className="text-3xl md:text-5xl font-bold text-neutral-50 flex items-center justify-center gap-4">

@@ -4,7 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import { Icon } from "@iconify/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GridBgWhite from "../../components/GridWhiteBg";
+import DottedBgWhite from "../../components/DottedBgWhite";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -218,7 +218,7 @@ const ProductDetails = () => {
       ref={containerRef}
       className="min-h-screen bg-neutral-900 z-50 py-28 relative text-white overflow-hidden"
     >
-      <GridBgWhite />
+      <DottedBgWhite />
       {/* Floating particles */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {renderParticles()}
@@ -327,7 +327,6 @@ const ProductDetails = () => {
                 Product Details
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                
                 <div
                   ref={(el) => addToRefs(el, specsRef)}
                   className="bg-neutral-800/40 backdrop-blur-sm p-3 rounded-lg border border-neutral-700/50"

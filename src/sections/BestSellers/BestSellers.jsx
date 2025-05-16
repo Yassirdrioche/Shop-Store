@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { Icon } from "@iconify/react";
-import GridBg from "../../components/GridBg";
+import DottedBgWhite from "../../components/DottedBgWhite";
 const BestSellers = () => {
   const { products } = useContext(AppContext);
   const bestSellers = products.slice(5, 8); // Example: Use the next 3 products as best sellers
 
   return (
-    <div className=" px-4 bg-white bg-fixed py-10 relative z-50 ">
+    <div className=" px-4 bg-black bg-fixed py-10 relative z-50  text-neutral-100 ">
       <div className="best__section" />
-      <GridBg />
+      <DottedBgWhite />
       <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2
           className="text-2xl md:text-4xl font-bold text-center flex justify-center items-center mb-12 uppercase gap-4"
@@ -18,7 +17,7 @@ const BestSellers = () => {
         >
           <span>Best Sellers</span>
         </h2>
-        <p className="text-lg mb-12" data-aos="fade-up">
+        <p className="text-lg mb-12  text-neutral-100" data-aos="fade-up">
           Top-rated, most popular products everyone loves Shop the hottest
           trends now.
         </p>

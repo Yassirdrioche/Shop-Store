@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./Blog.css"; // Optional: For custom styles
-import GridBg from "../../components/GridBg";
+import DottedBgWhite from "../../components/DottedBgWhite";
 
 const Blog = () => {
   useEffect(() => {
@@ -18,18 +18,18 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className=" bg-white bg-fixed py-10 relative z-50">
+    <div className=" bg-black bg-fixed py-10 relative z-50 text-neutral-100">
       <div className="blog__section" />
-      <GridBg />
+      <DottedBgWhite />
 
       <section className="flex px-4 justify-evenly flex-wrap items-center">
         <h2
-          className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-900"
+          className="text-2xl md:text-4xl font-bold text-center mb-12 uppercase flex justify-center items-center gap-2 text-neutral-100"
           data-aos="fade-up"
         >
           Our Blog
         </h2>
-        <p className="text-lg mb-12" data-aos="fade-up">
+        <p className="text-lg mb-12 text-neutral-100" data-aos="fade-up">
           Discover insightful articles, tips, and stories to keep you inspired
           and informed.
         </p>

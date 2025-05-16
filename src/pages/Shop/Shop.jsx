@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState, Suspense, lazy } from "react";
 import { AppContext } from "../../context/AppContext"; // Import AppContext for wishlist functionality
 import { Icon } from "@iconify/react";
 import { ThreeCircles, Grid } from "react-loader-spinner";
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
+
 // Lazy load components
 const ProductCard = lazy(() =>
   import("../../components/ProductCard/ProductCard")
@@ -42,7 +43,7 @@ const Shop = () => {
   return (
     <div className=" flex gap-8 px-8 py-28 bg-white bg-fixed relative z-50">
       <div className="shop-grd" />
-      <GridBg />
+      <DottedBg />
       {/* Background Grid */}
       {/* Sidebar Toggle Button for Mobile */}
       <button

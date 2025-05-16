@@ -15,7 +15,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import GridBg from "../../components/GridBg";
+import DottedBg from "../../components/DottedBg";
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow, Autoplay]);
 
@@ -36,7 +36,7 @@ const Category = () => {
   return (
     <section className="relative bg-white bg-fixed py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 z-50 ">
       <div className="category__section" />
-      <GridBg />
+      <DottedBg />
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <section className="flex px-4 justify-evenly flex-wrap items-center">

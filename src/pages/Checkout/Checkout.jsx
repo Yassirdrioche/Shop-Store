@@ -3,6 +3,7 @@ import { AppContext } from "../../context/AppContext";
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import DottedBg from "../../components/DottedBg";
 const Checkout = () => {
   const { cart, calculateTotal, removeFromCart } = useContext(AppContext);
   const navigate = useNavigate();
@@ -78,6 +79,7 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 lg:py-16 bg-neutral-100 relative z-50 ">
+      <DottedBg />
       <div className="container mx-auto mt-16">
         {/* Checkout Header */}
         <div className="flex items-center space-x-3 mb-8">
