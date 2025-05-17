@@ -35,7 +35,7 @@ const Blog = () => {
         </p>
       </section>
       {/* Swiper Carousel */}
-      <div className="max-w-7xl mx-auto mt-12">
+      <div className="max-w-7xl mx-auto mt-12" data-aos="fade-up">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           slidesPerView={1}
