@@ -17,28 +17,24 @@ const Wishlist = () => {
       {/* Wishlist Grid */}
       <div className="max-w-7xl mx-auto">
         {wishlist.length === 0 ? (
-          <div className="text-center">
-            <div className=" p-6 bg-white absolute top-0 left-1/2 -translate-x-1/2 rounded-lg shadow-lg">
-              <img
-                src={illustrationWishlist}
-                alt=""
-                className="w-full h-auto "
-                loading="lazy"
+          <div className="flex flex-col items-center justify-center py-9 text-center z-50 relative">
+            <img
+              src={illustrationWishlist}
+              alt="Empty cart"
+              className="w-full max-w-md mb-8"
+              loading="lazy"
+            />
+            <p className="text-xl text-neutral-700 mb-6">Your Wishlist is empty.</p>
+            <Link
+              to="/shop"
+              className="bg-gradient-to-r from-neutral-700 to-neutral-900 text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:shadow-lg transition-all duration-300"
+            >
+              Go To Shop
+              <Icon
+                icon="mdi:arrow-right"
+                className="w-6 h-6 group-hover:translate-x-1 transition-all duration-300"
               />
-              <p className="text-neutral-600 text-lg mb-6">
-                No items in your wishlist yet.
-              </p>
-              <Link
-                to="/shop" // Replace with your shop route
-                className="bg-gradient-to-r from-neutral-500 via-neutral-600 to-neutral-900 text-lg group text-white px-6 py-3 mt-7 rounded-lg flex items-center gap-2 hover:bg-neutral-700  hover:shadow-lg transition-all duration-300 justify-center"
-              >
-                Explore Products
-                <Icon
-                  icon="mdi:arrow-right"
-                  className="w-6 h-6 group-hover:translate-x-4 transition-all duration-300"
-                />
-              </Link>
-            </div>
+            </Link>
           </div>
         ) : (
           <section>
