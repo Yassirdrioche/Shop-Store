@@ -174,7 +174,7 @@ const BlogDetails = () => {
             </Link>
             <Link to="/shop" className="w-full sm:w-auto">
               <button className="w-full sm:w-auto px-6 py-3 bg-neutral-800 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-neutral-700 transition-all duration-300 hover:scale-105">
-                <Icon icon="weui:shop-outlined" className="text-lg" />
+                <Icon icon="heroicons:shopping-bag" className="text-xl" />
                 Shop Now
               </button>
             </Link>
