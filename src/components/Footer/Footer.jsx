@@ -96,8 +96,7 @@ const Footer = () => {
               </h4>
               <ul className="text-  neutral-200 space-y-2">
                 <li>Email: support@yourStore.com</li>
-                <li>Phone: +212 6-41420859</li>
-                <li>Address: 123 Store St, Agadir, Morocco</li>
+                <li>Address: 123 Store St</li>
               </ul>
             </div>
 
@@ -111,25 +110,7 @@ const Footer = () => {
 
           {/* Copyright Section */}
           <div className="text-center text-  neutral-200 py-6">
-            <p>© {new Date().getFullYear()} FUTSHOP. All rights reserved.</p>
-            <p className="mt-2">
-              <span>Designed with </span>
-              <span>
-                <Icon
-                  icon="iconamoon:heart-fill"
-                  className="inline-block w-5 h-5"
-                  aria-hidden="true"
-                />
-              </span>{" "}
-              <a
-                href="https://momkina.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:underline"
-              >
-                Momkina
-              </a>
-            </p>
+            <p>© {new Date().getFullYear()} Futshop. All rights reserved.</p>{" "}
           </div>
         </div>
       </div>
