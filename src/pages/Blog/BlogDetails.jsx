@@ -1,93 +1,181 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom"; // Import Link for navigation
+import React, { useEffect, useRef } from "react";
+import { useParams, Link } from "react-router-dom";
+import { gsap } from "gsap";
 import blogPosts from "../../data/blogdata";
-import { Icon } from "@iconify/react"; // Import Iconify for icons
+import { Icon } from "@iconify/react";
 import DottedBg from "../../components/DottedBg";
 
 const BlogDetails = () => {
   const { id } = useParams();
   const post = blogPosts.find((post) => post.id === parseInt(id));
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+  const titleRef = useRef(null);
+  const authorRef = useRef(null);
+  const mainContentRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const float1Ref = useRef(null);
+  const float2Ref = useRef(null);
+
+  useEffect(() => {
+    // Image animation
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.2 }
+    );
+
+    // Content animations
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, x: 50 },
+      { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.4 }
+    );
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.6, ease: "power3.out" }
+    );
+    gsap.fromTo(
+      authorRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" }
+    );
+    gsap.fromTo(
+      mainContentRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 1, ease: "power3.out" }
+    );
+    gsap.fromTo(
+      buttonsRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 1.2, ease: "power3.out" }
+    );
+
+    // Floating elements animation
+    gsap.to(float1Ref.current, {
+      y: -15,
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: "sine.inOut",
+    });
+    gsap.to(float2Ref.current, {
+      y: 15,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.5,
+      ease: "sine.inOut",
+    });
+  }, []);
 
   if (!post) {
     return (
-      <div className="text-center text-red-500 text-2xl mt-10">
-        Post not found
+      <div className="min-h-screen flex items-center justify-center bg-neutral-100">
+        <div className="text-center text-neutral-600 text-xl font-medium">
+          Post not found
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white relative z-50 py-28 px-4 sm:px-6 lg:px-8 ">
-      <div className="shop-grd" />
+    <div className="min-h-screen bg-neutral-100 relative py-28 z-50 px-4 sm:px-8 lg:px-16 overflow-hidden">
       <DottedBg />
-      {/* Page Title */}
-      <div className="max-w-7xl mx-auto text-center ">
-        <h1 className="text-5xl font-bold text-neutral-900">Blog Details</h1>
-        <p className="mt-4 text-lg text-neutral-600">
-          Dive deeper into our latest blog posts.
+
+      {/* Floating Decorative Elements */}
+      <div
+        ref={float1Ref}
+        className="absolute top-16 left-8 w-16 h-16 bg-neutral-200/40 rounded-full shadow-md"
+      />
+      <div
+        ref={float2Ref}
+        className="absolute bottom-32 right-10 w-12 h-12 bg-neutral-300/40 rounded-full shadow-md"
+      />
+
+      {/* Blog Page Heading */}
+      <div className="max-w-6xl mx-auto mb-12 text-center">
+        <h2 className="text-4xl sm:text-5xl font-bold text-neutral-800 ">
+          Blog Insights
+        </h2>
+        <p className="mt-2 text-lg text-neutral-500">
+          Discover stories, ideas, and inspiration
         </p>
       </div>
 
-      {/* Flex Container */}
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 mt-16">
-        {/* Left Side: Sticky Image */}
-        <div className="lg:w-1/2 sticky top-20   h-[calc(100vh-10rem)] flex items-center">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-auto max-h-[80vh] object-cover object-center rounded-lg shadow-2xl"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Right Side: Scrollable Details */}
-        <div className="lg:w-1/2 bg-white rounded-lg shadow-2xl z-50 p-8">
-          {/* Title */}
-          <h1 className="text-4xl font-bold text-neutral-900 mb-4">
-            {post.title}
-          </h1>
-
-          {/* Author and Date */}
-          <div className="flex items-center text-neutral-600 mb-6">
-            {/* Avatar */}
+      {/* Main Layout */}
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+        {/* Left: Image Section */}
+        <div ref={imageRef} className="lg:w-1/2 relative">
+          <div className="relative rounded-2xl shadow-2xl overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/20 to-transparent z-10" />
             <img
-              src={post.avatar}
-              alt={post.author}
-              className="w-10 h-10 rounded-full mr-3"
+              src={post.image}
+              alt={post.title}
+              className="w-full h-[400px] lg:h-[600px] object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />
-            <div>
-              <span className="block font-medium">{post.author}</span>
-              <span className="block text-sm text-neutral-500">
-                {post.date}
-              </span>
+          </div>
+        </div>
+
+        {/* Right: Content Section */}
+        <div ref={contentRef} className="lg:w-1/2 flex flex-col gap-6">
+          {/* Post Title */}
+          <h2
+            ref={titleRef}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-800  leading-tight"
+          >
+            {post.title}
+          </h2>
+
+          {/* Author Card */}
+          <div
+            ref={authorRef}
+            className="bg-neutral-50 rounded-xl p-6 shadow-lg border border-neutral-200/30 hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="flex items-center gap-4">
+              <img
+                src={post.avatar}
+                alt={post.author}
+                className="w-12 h-12 rounded-full border-2 border-neutral-300"
+                loading="lazy"
+              />
+              <div>
+                <span className="block text-lg font-semibold text-neutral-800">
+                  {post.author}
+                </span>
+                <span className="block text-sm text-neutral-500">
+                  {post.date}
+                </span>
+              </div>
+            </div>
+            <p className="mt-4 text-neutral-600 text-base sm:text-lg">
+              {post.description}
+            </p>
+          </div>
+
+          {/* Content */}
+          <div
+            ref={mainContentRef}
+            className="bg-white rounded-xl p-8 shadow-lg border border-neutral-200/30 hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="prose prose-neutral text-neutral-700 text-base sm:text-lg leading-relaxed">
+              {post.content}
             </div>
           </div>
 
-          {/* Description */}
-          <p className="text-lg text-neutral-700 mb-8">{post.description}</p>
-
-          {/* Content */}
-          <div className="prose prose-lg text-neutral-700">{post.content}</div>
-
-          {/* Buttons */}
-          <div className="mt-8 flex flex-col lg:flex-row gap-4">
-            {/* Back Button */}
-            <Link to="/" className="w-full lg:w-auto">
-              <button className="flex items-center justify-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white text-xl  transform hover:scale-95 transition-all hover:shadow-2xl duration-500 gap-2 w-full">
-                <Icon icon="mdi:arrow-left" className="text-xl" />
+          {/* Action Buttons */}
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
+            <Link to="/" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-6 py-3 bg-neutral-800 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-neutral-700 transition-all duration-300 hover:scale-105">
+                <Icon icon="mdi:arrow-left" className="text-lg" />
                 Back to Home
               </button>
             </Link>
-
-            {/* Shop Button */}
-            <Link
-              to="/shop" // Replace with your actual shop route
-              className="w-full lg:w-auto"
-            >
-              <button className="flex items-center justify-center px-6 py-3 bg-gradient-to-tr from-neutral-700 to-neutral-950 text-white text-xl transform hover:scale-95 transition-all hover:shadow-2xl duration-500 gap-2 w-full">
-                <Icon icon="weui:shop-outlined" className="text-xl" />
-                <span className="leading-7">Shop Now</span>
+            <Link to="/shop" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto px-6 py-3 bg-neutral-800 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-neutral-700 transition-all duration-300 hover:scale-105">
+                <Icon icon="weui:shop-outlined" className="text-lg" />
+                Shop Now
               </button>
             </Link>
           </div>

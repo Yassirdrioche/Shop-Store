@@ -92,7 +92,7 @@ const Blog = () => {
                   {/* Read More Button */}
                   <Link
                     to={`/blog/${post.id}`}
-                    className="inline-block px-5 py-2.5 bg-neutral-800/90 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-200"
+                    className="inline-block px-5 py-2.5 bg-neutral-800/90 text-white font-semibold rounded-lg hover:bg-neutral-700 transition-colors duration-200"
                   >
                     Read More
                   </Link>
