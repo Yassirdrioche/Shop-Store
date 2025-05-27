@@ -38,13 +38,6 @@ const ProductDetails = () => {
   useEffect(() => {
     if (!product) return;
 
-    // Initial hidden state
-    gsap.set([jacketRef.current, hologramRef.current], {
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-      filter: "blur(5px)",
-    });
 
     gsap.set([titleRef.current, priceRef.current, descRef.current], {
       opacity: 0,
@@ -236,18 +229,12 @@ const ProductDetails = () => {
 
       <div className="relative z-10  px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Jacket Visualization */}
+
           <div className="relative h-[500px] lg:h-[600px] flex  justify-center">
             {/* Hologram effect */}
-            <div
-              ref={hologramRef}
-              className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,245,150,0.1)_0%,transparent_70%)] pointer-events-none"
-              style={{
-                backgroundSize: "200% 200%",
-              }}
-            />
+           
 
-            {/* Jacket image with reflection */}
+
             <div className="h-3/4 w-3/4 flex items-center justify-center perspective-1000 sticky top-0">
               <img
                 ref={jacketRef}
