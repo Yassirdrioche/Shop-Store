@@ -1,86 +1,128 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
-import { toast } from "react-toastify"; // For notifications
-import { Icon } from "@iconify/react"; // For icons
-import "./Login.css";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import { gsap } from "gsap";
+import { Icon } from "@iconify/react";
+import DottedBg from "../../components/DottedBg";
 
 const Login = () => {
-  const { login } = useContext(AuthContext); // Access login function from AuthContext
+  const { login } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-  const [errors, setErrors] = useState({}); // State for validation errors
-  const [passwordStrength, setPasswordStrength] = useState(0); // State for password strength
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const cardRef = useRef(null);
+  const imageRef = useRef(null);
+  const titleRef = useRef(null);
+  const formRef = useRef(null);
+  const buttonRef = useRef(null);
+  const float1Ref = useRef(null);
+  const float2Ref = useRef(null);
 
-  // Validate username
-  const validateUsername = (username) => {
-    if (!username.trim()) {
-      return "Username is required.";
-    }
-    if (username.length < 3) {
-      return "Username must be at least 3 characters long.";
-    }
-    if (/\d/.test(username)) {
-      return "Username should not contain numbers.";
-    }
+  useEffect(() => {
+    // Card animation
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" }
+    );
+
+    // Image animation
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 1, ease: "power3.out", delay: 0.2 }
+    );
+
+    // Title animation
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.4 }
+    );
+
+    // Form animation
+    gsap.fromTo(
+      formRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.6 }
+    );
+
+    // Button animation
+    gsap.fromTo(
+      buttonRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.8 }
+    );
+
+    // Floating elements animation
+    gsap.to(float1Ref.current, {
+      y: -20,
+      x: 10,
+      rotate: 5,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.5,
+      ease: "sine.inOut",
+    });
+    gsap.to(float2Ref.current, {
+      y: 20,
+      x: -10,
+      rotate: -5,
+      repeat: -1,
+      yoyo: true,
+      duration: 3,
+      ease: "sine.inOut",
+    });
+  }, []);
+
+  const validateUsername = (email) => {
+    if (!email.trim()) return "Username is required.";
+    if (email.length < 3) return "Username must be at least 3 characters long.";
+    if (/\d/.test(email)) return "Username should not contain numbers.";
     return null;
   };
 
-  // Validate password and calculate strength
   const validatePassword = (password) => {
     let strength = 0;
+    if (password.length >= 8) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[a-z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1;
+    setPasswordStrength((strength / 5) * 100);
 
-    if (password.length >= 8) strength += 1; // Minimum length
-    if (/[A-Z]/.test(password)) strength += 1; // Uppercase letter
-    if (/[a-z]/.test(password)) strength += 1; // Lowercase letter
-    if (/[0-9]/.test(password)) strength += 1; // Number
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 1; // Special character
-
-    setPasswordStrength((strength / 5) * 100); // Convert to percentage
-
-    if (!password.trim()) {
-      return "Password is required.";
-    }
-    if (password.length < 8) {
+    if (!password.trim()) return "Password is required.";
+    if (password.length < 8)
       return "Password must be at least 8 characters long.";
-    }
-    if (!/[A-Z]/.test(password)) {
+    if (!/[A-Z]/.test(password))
       return "Password must contain at least one uppercase letter.";
-    }
-    if (!/[a-z]/.test(password)) {
+    if (!/[a-z]/.test(password))
       return "Password must contain at least one lowercase letter.";
-    }
-    if (!/[0-9]/.test(password)) {
+    if (!/[0-9]/.test(password))
       return "Password must contain at least one number.";
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password))
       return "Password must contain at least one special character.";
-    }
     return null;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate inputs
     const usernameError = validateUsername(username);
     const passwordError = validatePassword(password);
 
     if (usernameError || passwordError) {
-      setErrors({
-        username: usernameError,
-        password: passwordError,
-      });
+      setErrors({ username: usernameError, password: passwordError });
       return;
     }
 
-    setIsLoading(true); // Start loading
-
-    // Simulate login (replace with actual authentication logic)
+    setIsLoading(true);
     setTimeout(() => {
-      const userData = { name: username }; // Example user data
-      login(userData); // Call login function with user data
-      setIsLoading(false); // Stop loading
+      const userData = { name: username };
+      login(userData);
+      setIsLoading(false);
       toast.success("Login successful!", {
         position: "bottom-right",
         autoClose: 3000,
@@ -89,152 +131,197 @@ const Login = () => {
         pauseOnHover: true,
         draggable: true,
       });
-    }, 1500); // Simulate a 1.5-second delay
+    }, 1500);
   };
 
   return (
-    <div className="flex min-h-screen bg-neutral-900 border-b border-neutral-200 login relative z-50">
-      {/* Left Side: Image */}
+    <div className="min-h-screen bg-neutral-100 relative z-[10002] overflow-hidden">
+      {/* Floating Decorative Elements */}
       <div
-        className="hidden lg:block w-1/2 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://i.pinimg.com/736x/91/16/9b/91169b15543600d72fad0dbf05d8b0d4.jpg')",
-        }}
-      >
-        {/* Optional: Add overlay or text on the image */}
-        <div className="h-full bg-black/50 flex items-center justify-center">
-          <h1 className="text-5xl font-bold text-white text-center">
-            Welcome Back
-          </h1>
-        </div>
-      </div>
+        ref={float1Ref}
+        className="absolute top-20 left-12 w-14 h-14 bg-neutral-200/30 rounded-full shadow-lg"
+      />
+      <div
+        ref={float2Ref}
+        className="absolute bottom-24 right-16 w-10 h-10 bg-neutral-300/30 rounded-full shadow-lg"
+      />
 
-      {/* Right Side: Transparent Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 mt-16">
-        <div className="w-full max-w-md bg-black/30 backdrop-blur-lg rounded-2xl shadow-2xl p-8 transform transition-all duration-500 ">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <Icon
-              icon="material-symbols-light:login"
-              className="w-16 h-16 mx-auto text-white mb-4"
+      {/* Main Layout */}
+      <div className="flex min-h-screen w-full">
+        {/* Left: Image Section */}
+        <div ref={imageRef} className="hidden lg:block w-1/2 relative h-screen">
+          <div className="relative h-full shadow-2xl overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-800/40 to-neutral-900/20 z-10" />
+            <img
+              src="https://i.pinimg.com/736x/91/16/9b/91169b15543600d72fad0dbf05d8b0d4.jpg"
+              alt="Welcome Back"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
-            <h1 className="text-3xl font-bold text-white">Login</h1>
-            <p className="text-  neutral-300">Sign in to your account</p>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <h1 className="text-5xl font-bold text-white  text-center tracking-tight">
+                Unlock Your Journey
+              </h1>
+            </div>
           </div>
+        </div>
 
-          {/* Login Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Username Field */}
-            <div>
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium text-  neutral-300"
-              >
-                Username
-              </label>
-              <div className="mt-1">
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="Enter your username"
-                  value={username}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                    setErrors({
-                      ...errors,
-                      username: validateUsername(e.target.value),
-                    });
-                  }}
-                  className={`w-full px-4 py-2 bg-neutral-800 border ${
-                    errors.username ? "border-red-500" : "border-neutral-700"
-                  } rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-neutral-100 transition-all text-white`}
-                  required
-                />
-                {errors.username && (
-                  <p className="text-red-500 text-sm mt-1">{errors.username}</p>
-                )}
-              </div>
+        {/* Right: Form Section */}
+        <div className="w-full lg:w-1/2 h-screen flex  justify-center ">
+          <div
+            ref={cardRef}
+            className="w-full  bg-white/5 backdrop-blur-2xl shadow-xl p-10 border border-neutral-300/20"
+          >
+            {/* {<DottedBg />} */}
+            {/* Header */}
+            <div ref={titleRef} className="text-center mb-10">
+              <Icon
+                icon="material-symbols-light:login"
+                className="w-10 h-10 mx-auto text-neutral-500 mb-4 animate-pulse"
+              />
+              <h1 className="text-4xl font-bold text-neutral-800  tracking-tight">
+                Sign In
+              </h1>
+              <p className="text-neutral-500 text-lg mt-3">
+                Join the adventure with your account
+              </p>
             </div>
 
-            {/* Password Field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-  neutral-300"
-              >
-                Password
-              </label>
-              <div className="mt-1">
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setErrors({
-                      ...errors,
-                      password: validatePassword(e.target.value),
-                    });
-                  }}
-                  className={`w-full px-4 py-2 bg-neutral-800 border ${
-                    errors.password ? "border-red-500" : "border-neutral-700"
-                  } rounded-lg focus:ring-2 focus:ring-neutral-100 focus:border-blue-500 transition-all text-white`}
-                  required
-                />
-                {/* Password Strength Progress Bar */}
-                <div className="w-full bg-neutral-700 rounded-full h-1 mt-2 overflow-hidden">
-                  <div
-                    className="h-1 rounded-full transition-all duration-300"
-                    style={{
-                      width: `${passwordStrength}%`,
-                      backgroundColor:
-                        passwordStrength < 40
-                          ? "red"
-                          : passwordStrength < 70
-                          ? "orange"
-                          : "green",
+            {/* Login Form */}
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+              {/* Username Field */}
+              <div>
+                <label
+                  htmlFor="username"
+                  className="block text-sm font-medium text-neutral-600"
+                >
+                  Username
+                </label>
+                <div className="mt-2 relative">
+                  <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                      setErrors({
+                        ...errors,
+                        username: validateUsername(e.target.value),
+                      });
                     }}
-                  ></div>
-                </div>
-                {errors.password && (
-                  <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-                )}
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isLoading} // Disable button while loading
-              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-900 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 focus:ring-2 focus:ring-neutral-100 focus:ring-offset"
-            >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <span className="ml-2">Logging in</span>
-                  <Icon
-                    icon="eos-icons:three-dots-loading"
-                    className="w-5 h-5"
+                    className={`w-full px-5 py-3 bg-neutral-100/10 border ${
+                      errors.username
+                        ? "border-red-500"
+                        : "border-neutral-200/30"
+                    } rounded-xl focus:ring-2 focus:ring-neutral-500 outline-none focus:border-neutral-500 transition-all duration-300 text-neutral-800 placeholder-neutral-400 shadow-sm hover:shadow-md`}
+                    required
                   />
+                  {errors.username && (
+                    <p className="text-red-400 text-sm mt-2">
+                      {errors.username}
+                    </p>
+                  )}
                 </div>
-              ) : (
-                "Login"
-              )}
-            </button>
-          </form>
+              </div>
 
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-  neutral-300">
-              Don't have an account?{" "}
-              <a href="/signup" className="text-blue-500 hover:underline">
-                Sign up
-              </a>
-            </p>
+              {/* Password Field */}
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-neutral-600"
+                >
+                  Password
+                </label>
+                <div className="mt-2 relative">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setErrors({
+                        ...errors,
+                        password: validatePassword(e.target.value),
+                      });
+                    }}
+                    className={`w-full px-5 py-3 bg-neutral-100/10 border outline-none ${
+                      errors.password
+                        ? "border-red-500"
+                        : "border-neutral-200/30"
+                    } rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all duration-300 text-neutral-800 placeholder-neutral-400 shadow-sm hover:shadow-md`}
+                    required
+                  />
+                  <div className="w-full bg-neutral-200/20 rounded-full h-2 mt-3 overflow-hidden">
+                    <div
+                      className="h-2 rounded-full transition-all duration-300"
+                      style={{
+                        width: `${passwordStrength}%`,
+                        backgroundColor:
+                          passwordStrength < 40
+                            ? "#ef4444"
+                            : passwordStrength < 70
+                            ? "#f97316"
+                            : "#10b981",
+                      }}
+                    ></div>
+                  </div>
+                  {errors.password && (
+                    <p className="text-red-400 text-sm mt-2">
+                      {errors.password}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <div ref={buttonRef}>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-neutral-600 to-neutral-900 text-white py-3 px-4 rounded-xl font-semibold hover:from-neutral-700 hover:to-neutral-950 transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:ring-offset-neutral-100 shadow-lg hover:shadow-xl"
+                >
+                  {isLoading ? (
+                    <div className="flex items-center justify-center gap-3">
+                      <span>Logging In</span>
+                      <Icon
+                        icon="eos-icons:three-dots-loading"
+                        className="w-6 h-6 animate-spin"
+                      />
+                    </div>
+                  ) : (
+                    "Sign In"
+                  )}
+                </button>
+              </div>
+            </form>
+
+            {/* Footer */}
+            <div className="mt-8 text-center">
+              <p className="text-neutral-500 text-sm">
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="text-neutral-500 hover:underline font-medium"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Custom Styles */}
+      <style jsx>{`
+        input:focus {
+          box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+        button:hover {
+          box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+      `}</style>
     </div>
   );
 };
