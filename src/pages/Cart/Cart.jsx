@@ -37,7 +37,7 @@ const Cart = () => {
             <p className="text-xl text-neutral-700 mb-6">Your cart is empty.</p>
             <Link
               to="/shop"
-              className="bg-gradient-to-r from-neutral-600 to-neutral-900 text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-neutral-700 to-neutral-900 text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:shadow-lg transition-all duration-300"
             >
               Go To Shop
               <Icon
@@ -63,10 +63,6 @@ const Cart = () => {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="flex items-center justify-center gap-3 mb-12">
-                <Icon
-                  icon="mdi:cart-outline"
-                  className="w-10 h-10 text-neutral-900"
-                />
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
                   Your Cart
                 </h2>
@@ -78,19 +74,19 @@ const Cart = () => {
 
                 <div className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-neutral-600">Subtotal</span>
+                    <span className="text-neutral-700">Subtotal</span>
                     <span className="text-neutral-900">
                       ${calculateTotal.toFixed(2)}
                     </span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span className="text-neutral-600">Shipping</span>
+                    <span className="text-neutral-700">Shipping</span>
                     <span className="text-neutral-900">$0.00</span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span className="text-neutral-600">Taxes</span>
+                    <span className="text-neutral-700">Taxes</span>
                     <span className="text-neutral-900">$0.00</span>
                   </div>
 

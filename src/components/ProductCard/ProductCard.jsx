@@ -101,7 +101,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="product-card bg-white w-full md:w-auto relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border border-neutral-100"
+      className="product-card bg-white w-full md:w-auto relative overflow-hidden group shadow-md hover:shadow-xl transition-all duration-300 transform flex flex-col h-full border "
       ref={prodCardRef}
     >
       {/* Wishlist Button - Desktop */}
@@ -131,7 +131,7 @@ const ProductCard = ({ product }) => {
         )}
 
         {/* Product Image */}
-        <div className="product-image-container relative aspect-square overflow-hidden">
+        <div className="product-image-container relative  aspect-square overflow-hidden">
           <img
             alt={product.name}
             src={product.image}

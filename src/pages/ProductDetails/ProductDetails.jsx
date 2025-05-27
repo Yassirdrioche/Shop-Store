@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from "react";
+import React, { useContext, useRef, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import { Icon } from "@iconify/react";
@@ -10,9 +10,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products, addToCart } = useContext(AppContext);
+  const { products, addToCart, toggleWishlist, wishlist } =
+    useContext(AppContext);
   const product = products.find((p) => p.id === parseInt(id));
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
 
+  const handleWishlistToggle = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleWishlist(product);
+    },
+    [toggleWishlist, product]
+  );
   // Animation refs
   const containerRef = useRef(null);
   const jacketRef = useRef(null);
@@ -175,7 +185,7 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-fixed bg-neutral-900 text-white">
+      <div className="flex justify-center items-center min-h-screen bg-fixed bg-neutral-900 text-neutral">
         <div className="text-center p-8">
           <Icon
             icon="mdi:alert-circle-outline"
@@ -216,7 +226,7 @@ const ProductDetails = () => {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-neutral-900 z-50 py-28 relative text-white overflow-hidden"
+      className="min-h-screen bg-neutral-900 z-50 py-28 relative text-neutral overflow-hidden text-neutral-200"
     >
       <DottedBgWhite />
       {/* Floating particles */}
@@ -224,7 +234,7 @@ const ProductDetails = () => {
         {renderParticles()}
       </div>
 
-      <div className="relative z-10  px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-10  px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Jacket Visualization */}
           <div className="relative h-[500px] lg:h-[600px] flex  justify-center">
@@ -238,7 +248,7 @@ const ProductDetails = () => {
             />
 
             {/* Jacket image with reflection */}
-            <div className="relative h-3/4 w-3/4 flex items-center justify-center perspective-1000">
+            <div className="h-3/4 w-3/4 flex items-center justify-center perspective-1000 sticky top-0">
               <img
                 ref={jacketRef}
                 src={product.image}
@@ -260,10 +270,7 @@ const ProductDetails = () => {
           {/* Product Information */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1
-                ref={titleRef}
-                className="text-4xl md:text-5xl font-bold text-neutral-100"
-              >
+              <h1 ref={titleRef} className="text-4xl md:text-5xl font-bold ">
                 {product.name}
               </h1>
 
@@ -285,7 +292,7 @@ const ProductDetails = () => {
               <button
                 ref={ctaRef}
                 onClick={() => addToCart(product)}
-                className="relative overflow-hidden group w-full lg:w-auto px-8 py-3 bg-gradient-to-r from-neutral-600 to-neutral-800 text-white font-semibold rounded-lg hover:from-neutral-500 hover:to-neutral-700 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
+                className="relative overflow-hidden group w-full lg:w-auto px-8 py-3 bg-gradient-to-r from-neutral-600 to-neutral-800 text-neutral font-semibold rounded-lg hover:from-neutral-500 hover:to-neutral-700 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <Icon icon="mdi:cart-plus" className="w-5 h-5" />
@@ -298,7 +305,6 @@ const ProductDetails = () => {
             {/* Features */}
             <div className="space-y-4">
               <h2 className="text-2xl font-bold flex items-center gap-2 text-neutral-200">
-                <Icon icon="ph:star" className="w-5 h-5" />
                 Premium Features
               </h2>
               <div className="space-y-3">
@@ -340,7 +346,7 @@ const ProductDetails = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-neutral-300">Colors</h3>
-                      <p className="text-white">Black, Brown, Tan</p>
+                      <p className="text-neutral">Black, Brown, Tan</p>
                     </div>
                   </div>
                 </div>
@@ -357,7 +363,7 @@ const ProductDetails = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-neutral-300">Material</h3>
-                      <p className="text-white">100% Genuine Leather</p>
+                      <p className="text-neutral">100% Genuine Leather</p>
                     </div>
                   </div>
                 </div>
@@ -374,7 +380,7 @@ const ProductDetails = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-neutral-300">Lining</h3>
-                      <p className="text-white">Quilted for Warmth</p>
+                      <p className="text-neutral">Quilted for Warmth</p>
                     </div>
                   </div>
                 </div>
@@ -385,12 +391,23 @@ const ProductDetails = () => {
       </div>
 
       {/* Floating action buttons */}
-      <div className="fixed bottom-6 right-6 z-20 flex gap-3">
-        <button className="p-3 bg-neutral-800/60 backdrop-blur-sm rounded-full border border-neutral-700/50 hover:bg-neutral-500/20 hover:border-neutral-400/30 transition-colors duration-300">
-          <Icon icon="ph:heart" className="w-5 h-5" />
-        </button>
-        <button className="p-3 bg-neutral-800/60 backdrop-blur-sm rounded-full border border-neutral-700/50 hover:bg-neutral-500/20 hover:border-neutral-400/30 transition-colors duration-300">
-          <Icon icon="ph:share-network" className="w-5 h-5" />
+      <div className="fixed bottom-12 md:bottom-6 right-6 z-20 flex gap-3">
+        <button
+          className={`p-3  group backdrop-blur-sm rounded-full border border-neutral-700/50  hover:border-neutral-400/30 transition-colors duration-300 ${
+            isInWishlist
+              ? "bg-neutral-800/60 hover:bg-neutral-200 "
+              : "bg-neutral-200 hover:bg-neutral-500/20 hover:text-neutral-200"
+          }`}
+          onClick={handleWishlistToggle}
+        >
+          <Icon
+            icon="ph:heart"
+            className={`${
+              isInWishlist
+                ? "text-neutral-200 group-hover:text-neutral-800 "
+                : "text-neutral-800 group-hover:text-neutral-200 "
+            } w-5 h-5`}
+          />
         </button>
       </div>
     </div>

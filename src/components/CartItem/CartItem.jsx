@@ -15,30 +15,30 @@ const CartItem = ({ item, removeFromCart, updateQuantity }) => {
   };
 
   return (
-    <div className="cart-item bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4 mb-4 flex justify-between items-center gap-2 flex-wrap">
-      <img src={item.image} className="h-24 w-24" alt="" />
+    <div className="cart-item bg-white/70  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4 mb-4 flex justify-between items-center gap-2 flex-wrap">
+      <img src={item.image} className="h-24 w-24 object-contain" alt="" />
       {/* Product Name */}
-      <h3 className="text-xl font-semibold text-  neutral-900 ">{item.name}</h3>
+      <h3 className="text-lg font-medium text-neutral-900 ">{item.name}</h3>
 
       {/* Price */}
       <p className="text-lg text-  neutral-700 ">${item.price}</p>
 
       {/* Quantity Update Section */}
       <div className="flex items-center justify-between  gap-4">
-        <p className="text-  neutral-600">Quantity: </p>
+        <p className="text-neutral-600">Quantity: </p>
         <div className="flex items-center space-x-2">
           <button
             onClick={handleDecrease}
-            className="p-1 text-white bg-black transition-colors duration-200"
+            className="p-1 text-white bg-black transition-colors rounded-sm duration-200"
           >
             <Icon icon="mdi:minus" className="w-5 h-5 " />
           </button>
-          <span className="text-lg font-semibold text-  neutral-900">
+          <span className="text-lg font-semibold text-neutral-900">
             {item.quantity}
           </span>
           <button
             onClick={handleIncrease}
-            className="p-1 text-white bg-black transition-colors duration-200"
+            className="p-1 text-white bg-black transition-colors duration-200 rounded-sm"
           >
             <Icon icon="mdi:plus" className="w-5 h-5 " />
           </button>
@@ -46,7 +46,7 @@ const CartItem = ({ item, removeFromCart, updateQuantity }) => {
       </div>
 
       {/* Total Price for This Item */}
-      <p className="text-lg font-semibold text-  neutral-900 ">
+      <p className="text-md font-medium text-  neutral-900 ">
         Total: ${(item.price * item.quantity).toFixed(2)}
       </p>
 

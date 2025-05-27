@@ -10,21 +10,9 @@ const Wishlist = () => {
   const { wishlist } = useContext(AppContext);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b bg-white relative z-50 flex flex-col gap-5 py-12  overflow-hidden px-4 sm:px-6 lg:px-8">
-      <div className="wishlist-grd" />
+    <div className="min-h-screen bg-gradient-to-b bg-white relative z-50 flex flex-col gap-5 py-20  overflow-hidden px-4 sm:px-6 lg:px-8">
       <DottedBg />
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto text-center mt-10">
-        <h1 className="text-3xl md:text-5xl font-bold text-neutral-50 flex items-center justify-center gap-4">
-          <Icon icon="cil:heart" />
-          <span>Your Wishlist</span>
-        </h1>
-        <p className="text-lg text-neutral-50">
-          {wishlist.length === 0
-            ? "Your wishlist is waiting to be filled with your favorite products!"
-            : "Here are the treasures you've saved for later."}
-        </p>
-      </div>
 
       {/* Wishlist Grid */}
       <div className="max-w-7xl mx-auto">
@@ -53,16 +41,28 @@ const Wishlist = () => {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {wishlist.map((product) => (
-              <div
-                key={product.id}
-                className="relative group transform transition-all h-max w-80 duration-300 md:w-full hover:scale-105 bounce"
-              >
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
+          <section>
+            <div className="flex items-center justify-evenly pt-4">
+              <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 flex items-center justify-center gap-4">
+                <span>Your Wishlist</span>
+              </h2>
+              <p className="text-lg text-neutral-800">
+                {wishlist.length === 0
+                  ? "Your wishlist is waiting to be filled with your favorite products!"
+                  : "Here are the treasures you've saved for later."}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full justify-center">
+              {wishlist.map((product) => (
+                <div
+                  key={product.id}
+                  className="relative group  transition-all h-max w-80 transform scale-90 duration-300 md:w-full hover:scale-95"
+                >
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </div>

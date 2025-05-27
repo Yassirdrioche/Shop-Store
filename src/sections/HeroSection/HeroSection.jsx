@@ -154,10 +154,10 @@ const HeroSection = () => {
           [background-image:radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)]
           bg-[length:20px_20px] opacity-30"
         />
-        <section className="w-full hero flex  items-center max-w-6xl mx-auto flex-wrap text-black min-h-screen px-4 md:px-10 py-20 md:py-0 relative">
+        <section className="w-full hero flex  items-center max-w-6xl 2xl:max-w-none  mx-auto flex-wrap text-black min-h-screen px-4 md:px-10 py-20 md:py-0 relative">
           {/* Text Content */}
           <div className="relative w-full md:w-1/2 text-center md:text-left mb-10 md:mb-0 z-20">
-            <h1 className="text-5xl  md:text-6xl flex flex-wrap justify-center md:justify-start font-bold mb-6 selection:bg-transparent selection:text-neutral-400">
+            <h1 className="text-5xl  md:text-6xl 2xl:text-8xl flex flex-wrap justify-center md:justify-start font-bold mb-6 selection:bg-transparent selection:text-neutral-400">
               {words.map((word, index) => (
                 <span
                   key={index}
@@ -206,12 +206,12 @@ const HeroSection = () => {
           />
 
           {/* Image Container - Hidden on mobile */}
-          <div className="hidden md:flex items-center justify-center relative w-full md:w-1/2 h-full drop-shadow-xl transform scale-95">
+          <div className="hidden md:flex items-center justify-center relative w-full md:w-1/2  h-full drop-shadow-xl transform scale-95">
             {/* <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"> */}
             {/* Main Image */}
             <div
               ref={image1Ref}
-              className="relative z-10 w-3/4 h-1/2 md:h-2/4 md:2/4  lg:w-3/4 lg:h-3/4 rounded-2xl "
+              className="relative z-10 w-3/4 h-1/2 md:h-2/4 md:2/4 lg:w-3/4 lg:h-3/4 rounded-2xl "
               style={{
                 backgroundImage: `url(${headphones})`,
                 backgroundSize: "cover",
@@ -222,7 +222,7 @@ const HeroSection = () => {
             {/* Floating Image 1 (Top Right) */}
             <div
               ref={image2Ref}
-              className="absolute md:w-80 md:h-80 z-20 left-0 top-14  lg:w-96 lg:h-96 rounded-xl transform"
+              className="absolute md:w-80 md:h-80 z-20 left-0 top-14 2xl:top-1/2 lg:w-96 lg:h-96 rounded-xl transform"
               style={{
                 backgroundImage: `url(${shopphone})`,
                 backgroundSize: "cover",
@@ -234,10 +234,8 @@ const HeroSection = () => {
 
             <div
               ref={image3Ref}
-              className="absolute z-20 md:w-80 md:h-80 lg:w-96 lg:h-96 -right-20 lg:right-0 rounded-xl bg-no-repeat"
+              className="absolute z-20 md:w-80 md:h-80 lg:w-96 lg:h-96 top-12 -right-20 lg:right-0 2xl:top-1/2 rounded-xl bg-no-repeat"
               style={{
-                top: "3rem",
-
                 backgroundImage: `url(${shoes})`,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
@@ -247,7 +245,7 @@ const HeroSection = () => {
           {/* </div> */}
         </section>
       </div>
-      <ProductGrid />
+      {/* <ProductGrid /> */}
     </div>
   );
 };
