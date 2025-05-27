@@ -34,6 +34,9 @@ const BlogDetails = lazy(() =>
 const Login = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/Login/Login")
 );
+const Signup = lazy(() =>
+  import(/* webpackPrefetch: true */ "./pages/Signup/Signup")
+);
 const Checkout = lazy(() =>
   import(/* webpackPrefetch: true */ "./pages/Checkout/Checkout")
 );
@@ -88,6 +91,7 @@ const App = () => {
                 <Route path="/product/:id" element={<ProductDetails />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="*" element={<NotFound />} />
